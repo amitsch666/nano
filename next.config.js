@@ -2,7 +2,7 @@ const path = require('path')
 const glob = require('glob')
 
 module.exports = {
-	distDir: 'build',
+	distDir: '.build',
   webpack: (config, { dev }) => {
     config.module.rules.push(
       {
