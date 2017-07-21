@@ -1,0 +1,17 @@
+{
+  "name": "project-nano",
+  "version": "1.0.0",
+  "description": "Boilerplate project for building Isomorphic apps using React and Redux",
+  "license": "MIT",
+  "author": "Amit Schandillia",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "beta",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  }
+}
