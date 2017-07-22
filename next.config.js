@@ -1,5 +1,6 @@
 const path = require('path')
 const glob = require('glob')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
 	distDir: '.build',
@@ -11,16 +12,20 @@ module.exports = {
         options: {
           name: 'dist/[path][name].[ext]'
         }
-      }
-    ,
-      {
-        test: /\.css$/,
-        use: ['babel-loader', 'raw-loader', 'postcss-loader']
-      }
-    ,
+      },
       {
         test: /\.s(a|c)ss$/,
-        use: ['babel-loader', 'raw-loader', 'postcss-loader',
+        use: ExtractTextPlugin.extract([
+					// 'babel-loader',
+					// 'raw-loader',
+					{
+						loader: 'css-loader',
+						options: {
+							sourceMap: false,
+              minimize: true
+						}
+					},
+					'postcss-loader',
           { loader: 'sass-loader',
             options: {
               includePaths: ['styles', 'node_modules']
@@ -29,9 +34,12 @@ module.exports = {
                 .reduce((a, c) => a.concat(c), [])
             }
           }
-        ]
+        ])
       }
     )
+		config.plugins.push(new ExtractTextPlugin({
+			filename: 'main.css',
+		}))
     return config
   }
 }
