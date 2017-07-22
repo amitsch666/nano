@@ -3,7 +3,7 @@ const glob = require('glob')
 
 module.exports = {
 	distDir: '.build',
-  webpack: (config, { dev }) => {
+  webpack: (config) => {
     config.module.rules.push(
       {
         test: /\.(css|scss)/,
