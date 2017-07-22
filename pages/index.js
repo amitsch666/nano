@@ -12,10 +12,13 @@ export default () => (
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 			<link rel="stylesheet" type="text/css" href="_s.css" />
     </Head>
-    <p>Hello world!</p>
-    <button onClick={() => Router.push('/about')}>About</button>
+		<div className="container-fluid">
+			<p>Hello world!</p>
+		</div>
+    <button className="btn-lg btn-primary" onClick={() => Router.push('/about')}>About</button>
     <Link prefetch href="/about">
       <a>About Page</a>
     </Link>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
   </div>
 )

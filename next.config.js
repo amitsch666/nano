@@ -1,13 +1,14 @@
 const path = require('path')
 const glob = require('glob')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const Compression = require('compression-webpack-plugin')
 
 module.exports = {
 	distDir: '.build',
   webpack: (config) => {
     config.module.rules.push(
       {
-        test: /\.(css|scss)/,
+        test: /\main.(css|scss)/,
         loader: 'emit-file-loader',
         options: {
           name: 'dist/[path][name].[ext]'
@@ -33,13 +34,22 @@ module.exports = {
                 .map((g) => glob.sync(g))
                 .reduce((a, c) => a.concat(c), [])
             }
-          }
+          },
         ])
-      }
+      },
+			{ test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
+			{ test: /\.(ttf|eot)$/, loader: 'file-loader' },
     )
-		config.plugins.push(new ExtractTextPlugin({
-			filename: 'main.css',
-		}))
+		config.plugins.push(
+			new ExtractTextPlugin({
+				filename: 'main.css',
+			}),
+			new Compression({
+	      asset: '[file].gz',
+	    	algorithm: 'gzip',
+				minRatio: 0.8
+	    })
+		)
     return config
   }
 }
