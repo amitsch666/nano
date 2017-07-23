@@ -29,9 +29,27 @@ app.prepare()
     return handle(req, res)
   })
 
-  server.listen(3000, (err) => {
+  // Normalize a port into a number, string, or false.
+  function normalizePort(val) {
+    const port = parseInt(val, 10)
+    if (isNaN(port)) {
+      // named pipe
+      return val
+    }
+    if (port >= 0) {
+      // port number
+      return port
+    }
+    return false
+  }
+
+  // Get port from environment and store in Express.
+  const port = normalizePort(process.env.PORT || '3000')
+  server.set('port', port)
+
+  server.listen(port, (err) => {
     if (err) throw err
-    console.log('> Ready on http://localhost:3000')
+    console.log(`> Listening on port ${port}...`)
   })
 })
 .catch((ex) => {
