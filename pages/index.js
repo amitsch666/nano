@@ -4,6 +4,7 @@ import Router from 'next/router'
 import Link from 'next/link'
 
 import stylesheet from '../styles/main.scss'
+import { Button, UncontrolledTooltip } from 'reactstrap'
 
 export default () => (
   <div>
@@ -15,10 +16,36 @@ export default () => (
 		<div className="container-fluid">
 			<p>Hello world!</p>
 		</div>
-    <button className="btn-lg btn-primary" onClick={() => Router.push('/about')}>About</button>
+		<Button color="primary" size="lg">primary</Button>{` `}
+    <Button type="button" color="success" size="lg" data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={() => Router.push('/about')}>About</Button>
     <Link prefetch href="/about">
       <a>About Page</a>
     </Link>
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" />
+		<hr />
+			<p>Somewhere in here is a <a href="#" id="UncontrolledTooltipExample">tooltip</a>.</p>
+      <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
+        Hello world!
+      </UncontrolledTooltip>
+		<hr />
+		<Button type="button" color="default" size="lg" data-toggle="modal" data-target="#exampleModal">Launch demo modal</Button>
+		<div className="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div className="modal-dialog" role="document">
+		    <div className="modal-content">
+		      <div className="modal-header">
+		        <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+		        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div className="modal-body">
+		        ...
+		      </div>
+		      <div className="modal-footer">
+		        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+		        <button type="button" className="btn btn-primary">Save changes</button>
+		      </div>
+		    </div>
+		  </div>
+		</div>
   </div>
 )

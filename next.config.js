@@ -1,7 +1,6 @@
 const path = require('path')
 const glob = require('glob')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const Compression = require('compression-webpack-plugin')
 
 module.exports = {
 	distDir: '.build',
@@ -44,11 +43,6 @@ module.exports = {
 			new ExtractTextPlugin({
 				filename: 'main.css',
 			}),
-			new Compression({
-	      asset: '[file].gz',
-	    	algorithm: 'gzip',
-				minRatio: 0.8
-	    })
 		)
     return config
   }

@@ -12,12 +12,12 @@ app.prepare()
 .then(() => {
   const server = express()
 
+	server.use(compression())
+
 	server.use(favicon(path.join(__dirname, 'static', 'img', 'favicon.ico')))
 
 	// Custom stylesheet path alias
-	server.use('/_s.css', express.static(path.join(__dirname, '.build', 'main.css')))
-
-  server.use(compression())
+	server.use('/_s.css', express.static(path.join(__dirname, '.build/main.css')))
 
   // server.get('/p/:id', (req, res) => {
   //   const actualPage = '/post'
