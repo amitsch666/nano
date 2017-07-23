@@ -16,15 +16,22 @@ app.prepare()
 
 	server.use(favicon(path.join(__dirname, 'static', 'img', 'favicon.ico')))
 
-	// Custom stylesheet path alias
-	server.use('/_s.css', express.static(path.join(__dirname, '.build/main.css')))
+	// Custom stylesheet alias
+	server.use('/_s', express.static(path.join(__dirname, '.build/static')))
 
-  // server.get('/p/:id', (req, res) => {
+  // Custom routes(s)
+	// server.get('/blog/:slug', (req, res) => {
+  //   const mergedQuery = Object.assign({}, req.query, req.params);
+  //   return app.render(req, res, '/blog', mergedQuery);
+  // });
+	// server.get('/p/:id', (req, res) => {
   //   const actualPage = '/post'
   //   const queryParams = { id: req.params.id }
   //   app.render(req, res, actualPage, queryParams)
   // })
   //
+
+	// Default route (not to be edited)
   server.get('*', (req, res) => {
     return handle(req, res)
   })

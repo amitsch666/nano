@@ -7,6 +7,7 @@ export default () => (
     <Head>
       <title>About us</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+			<link rel="stylesheet" type="text/css" href="_s/main.css" />
     </Head>
     <p>Hello world!</p>
     <button onClick={() => Router.push('/')}>Home</button>

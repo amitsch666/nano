@@ -41,7 +41,7 @@ module.exports = {
     )
 		config.plugins.push(
 			new ExtractTextPlugin({
-				filename: 'main.css',
+				filename: '/static/main.css',
 			}),
 		)
     return config
