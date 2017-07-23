@@ -6,6 +6,8 @@ import Link from 'next/link'
 import stylesheet from '../styles/main.scss'
 import { Button, UncontrolledTooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
+import Navigation from '../components/Navigation'
+
 class IndexPage extends React.Component {
 	constructor(props) {
     super(props);
@@ -27,10 +29,11 @@ class IndexPage extends React.Component {
 		      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 					<link rel="stylesheet" type="text/css" href="_s/main.css" />
 				</Head>
+				<Navigation />
 				<Button type="button" color="success" size="lg" data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={() => Router.push('/about')}>About</Button>
 				<Link prefetch href="/about"><a>About Page</a></Link>
 				<hr />
-				<p>Somewhere in here is a <a href="#" id="UncontrolledTooltipExample">tooltip</a>.</p>
+				<p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
 				<UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
 	        <strong>Hello</strong> world!
 	      </UncontrolledTooltip>
