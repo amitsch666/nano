@@ -1,7 +1,11 @@
 @import "./bootstrap/bootstrap.scss";
 
-$primary-color: teal;
+$test-color: yellow;
+
+// * {
+// 	border-radius: 0 !important;
+// }
 
 body {
-	background-color: $primary-color;
+	background-color: $test-color;
 }

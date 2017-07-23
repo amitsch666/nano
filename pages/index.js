@@ -16,6 +16,7 @@ export default () => (
 		<div className="container-fluid">
 			<p>Hello world!</p>
 		</div>
+		<button className="btn btn-sm btn-success">test</button>
 		<Button color="primary" size="lg">primary</Button>{` `}
     <Button type="button" color="success" size="lg" data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={() => Router.push('/about')}>About</Button>
     <Link prefetch href="/about">
@@ -24,7 +25,7 @@ export default () => (
 		<hr />
 			<p>Somewhere in here is a <a href="#" id="UncontrolledTooltipExample">tooltip</a>.</p>
       <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
-        Hello world!
+        <strong>Hello</strong> world!
       </UncontrolledTooltip>
 		<hr />
 		<Button type="button" color="default" size="lg" data-toggle="modal" data-target="#exampleModal">Launch demo modal</Button>
