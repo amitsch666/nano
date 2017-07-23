@@ -18,7 +18,7 @@ export default class Navigation extends React.Component {
   render() {
     return (
       <div>
-        <Navbar color="faded" light toggleable>
+        <Navbar color="inverse" inverse toggleable={`md`} fixed={`top`}>
           <NavbarToggler right onClick={this.toggle} />
           <NavbarBrand href="/">reactstrap</NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>
