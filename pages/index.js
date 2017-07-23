@@ -6,7 +6,7 @@ import Link from 'next/link'
 import stylesheet from '../styles/main.scss'
 import { Button, UncontrolledTooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
-import Navigation from '../components/Navigation'
+import NavLarge from '../components/NavLarge'
 
 class IndexPage extends React.Component {
 	constructor(props) {
@@ -29,8 +29,8 @@ class IndexPage extends React.Component {
 		      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 					<link rel="stylesheet" type="text/css" href="_s/main.css" />
 				</Head>
-				<Navigation />
-				<main className="container-fluid mt-6">
+				<NavLarge />
+				<main className="container-fluid mt-6 px-0">
 					<Button type="button" color="success" size="lg" data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={() => Router.push('/about')}>About</Button>
 					<Link prefetch href="/about"><a>About Page</a></Link>
 					<hr />

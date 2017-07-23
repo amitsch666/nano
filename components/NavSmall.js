@@ -1,7 +1,7 @@
 import React from 'react';
 import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
-export default class Navigation extends React.Component {
+export default class NavSmall extends React.Component {
   constructor(props) {
     super(props);
 
@@ -17,7 +17,6 @@ export default class Navigation extends React.Component {
   }
   render() {
     return (
-      <div>
         <Navbar color="inverse" inverse toggleable={`md`} fixed={`top`}>
           <NavbarToggler right onClick={this.toggle} />
           <NavbarBrand href="/">reactstrap</NavbarBrand>
@@ -32,7 +31,6 @@ export default class Navigation extends React.Component {
             </Nav>
           </Collapse>
         </Navbar>
-      </div>
     );
   }
 }
