@@ -7,7 +7,8 @@ export default class NavLarge extends React.Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+			fatnav: `fatnav`
     };
   }
   toggle() {
@@ -15,9 +16,20 @@ export default class NavLarge extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+	componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll.bind(this));
+	}
+	handleScroll() {
+		if(window.scrollY !== 0){
+			this.setState({ fatnav: `` })
+		}
+		else {
+			this.setState({ fatnav: `fatnav` })
+		}
+	}
   render() {
     return (
-        <Navbar color="inverse" inverse toggleable={`md`} fixed={`top`} className={`h-50`}>
+        <Navbar color="inverse" inverse toggleable={`md`} fixed={`top`} className={this.state.fatnav}>
           <NavbarToggler right onClick={this.toggle} />
           <NavbarBrand href="/">reactstrap</NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>
