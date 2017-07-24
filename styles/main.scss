@@ -5,6 +5,10 @@ $test-color: #FFF5C3;
 .fatnav {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
+	transition: all 0.3s ease;
+}
+.slimnav {
+	transition: all 0.3s ease;
 }
 
 body {

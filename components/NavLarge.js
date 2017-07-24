@@ -21,7 +21,7 @@ export default class NavLarge extends React.Component {
 	}
 	handleScroll() {
 		if(window.scrollY !== 0){
-			this.setState({ fatnav: `` })
+			this.setState({ fatnav: `slimnav` })
 		}
 		else {
 			this.setState({ fatnav: `fatnav` })
