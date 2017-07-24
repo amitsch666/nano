@@ -19,7 +19,7 @@ export default class NavSmall extends React.Component {
     return (
         <Navbar color="inverse" inverse toggleable={`md`} fixed={`top`}>
           <NavbarToggler right onClick={this.toggle} />
-          <NavbarBrand href="/">reactstrap</NavbarBrand>
+          <NavbarBrand href="/">TaleSpinners</NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>

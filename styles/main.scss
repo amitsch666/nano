@@ -1,16 +1,18 @@
 @import "./bootstrap/bootstrap.scss";
 
-$test-color: #FFF5C3;
-
 .fatnav {
 	padding-top: 2rem;
 	padding-bottom: 2rem;
 	transition: all 0.3s ease;
+	box-shadow: none !important;
+}
+nav.fixed-top {
+	box-shadow: 0px 2px 10px -3px rgba(0,0,0,1);
 }
 .slimnav {
 	transition: all 0.3s ease;
 }
 
-body {
-	background-color: $test-color;
+.bg-inverse{
+	background-color: $themedark !important;
 }

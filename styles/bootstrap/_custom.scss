@@ -3,6 +3,10 @@
 // Copy variables from `_variables.scss` to this file to override default values
 // without modifying source files.
 
+$theme: #00bcd4; // cyan 500
+$logo: $theme;
+$themedark: #006064; // cyan 900
+
 $spacers: (
   0: (
     x: 0,
@@ -35,5 +39,5 @@ $spacers: (
 );
 
 $enable-rounded:   false;
-$tooltip-bg: gray;
-$tooltip-arrow-color: gray;
+$tooltip-bg: $themedark;
+$tooltip-arrow-color: $tooltip-bg;
