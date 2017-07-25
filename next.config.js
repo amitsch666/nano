@@ -37,7 +37,7 @@ module.exports = {
         ])
       },
 			{ test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
-			{ test: /\.(ttf|eot)$/, loader: 'file-loader' },
+			{ test: /\.(ttf|eot|png)$/, loader: 'file-loader' },
     )
 		config.plugins.push(
 			new ExtractTextPlugin({
