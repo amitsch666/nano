@@ -28,13 +28,11 @@ class IndexPage extends React.Component {
 					<title>Project Nano | Home</title>
 		      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 					<link rel="stylesheet" type="text/css" href="_s/main.css" />
-					<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
 				</Head>
 				<NavLarge />
 				<main className="container-fluid mt-6 px-0">
 					<Button type="button" color="success" size="lg" data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={() => Router.push('/about')}>About</Button>
 					<Link prefetch href="/about"><a>About Page</a></Link>
-					<i className="fa fa-user"></i>
 					<hr />
 					<p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
 					<UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">

@@ -1,3 +1,8 @@
+/***************************************************/
+	/* image path: ../static/img */
+	/* font path: ../static/fonts */
+/***************************************************/
+
 @import "./bootstrap/bootstrap.scss";
 
 @font-face {
@@ -8,9 +13,14 @@
 	src: url('../static/fonts/Lemonada/Lemonada-Light.ttf');
 }
 
+@font-face {
+	font-family: 'Londrina';
+	src: url('../static/fonts/LondrinaSolid-Regular.ttf');
+}
+
 .fatnav {
-	padding-top: 2rem;
-	padding-bottom: 2rem;
+	padding-top: 1.5rem;
+	padding-bottom: 1.5rem;
 	transition: all 0.6s ease;
 	box-shadow: none !important;
 	background: linear-gradient(to bottom, rgba(66,66,66,1) 0%,rgba(125,126,125,0.1) 100%) !important;
@@ -32,12 +42,22 @@ ul.navbar-nav {
 .navbar-brand {
 	outline: none;
 }
+.navbar-brand img {
+	margin-right: 0.7rem;
+	width: 1.2rem;
+	height: 1.2rem;
+}
 
 .bg-inverse{
 	background-color: $themedark !important;
 }
 
-body {
-	font-family: 'Lemonada' !important;
-	background-image: url('../static/img/testimg.png');
+#tale, #spinners {
+	font-family: 'Londrina';
+}
+#tale {
+	color: lightyellow;
+}
+#spinners {
+	color: lightblue;
 }

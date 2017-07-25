@@ -7,7 +7,7 @@ module.exports = {
   webpack: (config) => {
     config.module.rules.push(
       {
-        test: /\main.(css|scss)/,
+        test: /\.(css|scss)$/,
         loader: 'emit-file-loader',
         options: {
           name: 'dist/[path][name].[ext]'
@@ -26,7 +26,8 @@ module.exports = {
 						}
 					},
 					'postcss-loader',
-          { loader: 'sass-loader',
+          {
+						loader: 'sass-loader',
             options: {
               includePaths: ['styles', 'node_modules']
                 .map((d) => path.join(__dirname, d))
@@ -36,8 +37,8 @@ module.exports = {
           },
         ])
       },
-			{ test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
-			{ test: /\.(ttf|eot|png)$/, loader: 'file-loader' },
+			// { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
+			{ test: /\.(ttf|eot|png)$/, loader: 'file-loader?outputPath=static/' },
     )
 		config.plugins.push(
 			new ExtractTextPlugin({

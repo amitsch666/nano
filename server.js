@@ -16,8 +16,9 @@ app.prepare()
 
 	server.use(favicon(path.join(__dirname, 'static', 'img', 'favicon.ico')))
 
-	// Custom stylesheet alias
+	// Custom build resources aliases
 	server.use('/_s', express.static(path.join(__dirname, '.build/static')))
+	server.use('/_next/webpack/static', express.static(path.join(__dirname, '.build/static')))
 
   // Custom routes(s)
 	// server.get('/blog/:slug', (req, res) => {
