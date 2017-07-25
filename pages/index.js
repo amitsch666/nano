@@ -57,15 +57,6 @@ class IndexPage extends React.Component {
 	          </ModalFooter>
 	        </Modal>
 				</main>
-				<style jsx>{`
-					#intro {
-						height: 100vh;
-						width: 100%;
-						margin: auto;
-						background: url('../static/img/splash.jpg') no-repeat 50% 50%;
-						background-size: cover;
-					}
-				`}</style>
 			</div>
 		)
 	}
