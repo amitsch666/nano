@@ -30,7 +30,12 @@ class IndexPage extends React.Component {
 					<link rel="stylesheet" type="text/css" href="_s/main.css" />
 				</Head>
 				<NavLarge />
-				<main className="container-fluid mt-6 px-0">
+				<main className="container-fluid px-0">
+					<section id="intro">
+						<div className="intro-inner">
+							<h1>Hello Spinners</h1>
+						</div>
+					</section>
 					<Button type="button" color="success" size="lg" data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={() => Router.push('/about')}>About</Button>
 					<Link prefetch href="/about"><a>About Page</a></Link>
 					<hr />
@@ -52,6 +57,15 @@ class IndexPage extends React.Component {
 	          </ModalFooter>
 	        </Modal>
 				</main>
+				<style jsx>{`
+					#intro {
+						height: 100vh;
+						width: 100%;
+						margin: auto;
+						background: url('../static/img/splash.jpg') no-repeat 50% 50%;
+						background-size: cover;
+					}
+				`}</style>
 			</div>
 		)
 	}
