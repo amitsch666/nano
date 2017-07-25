@@ -1,5 +1,5 @@
 import React from 'react';
-import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Button, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 export default class NavLarge extends React.Component {
   constructor(props) {
@@ -34,11 +34,14 @@ export default class NavLarge extends React.Component {
           <NavbarBrand href="/">TaleSpinners</NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/components/">Components</NavLink>
+							<NavItem>
+                <NavLink href="/browse">Browse</NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="https://github.com/reactstrap/reactstrap">Github</NavLink>
+							<NavItem>
+                <NavLink href="/community">Community</NavLink>
+              </NavItem>
+							<NavItem>
+                <NavLink href="/login">Sign In</NavLink>
               </NavItem>
             </Nav>
           </Collapse>

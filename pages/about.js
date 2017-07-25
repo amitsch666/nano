@@ -2,6 +2,8 @@ import React from 'react'
 import Head from 'next/head'
 import Router from 'next/router'
 
+import { Button } from 'reactstrap'
+
 import NavSmall from '../components/NavSmall'
 
 export default () => (
@@ -14,7 +16,7 @@ export default () => (
 		<NavSmall />
 		<main className="container-fluid mt-6 px-0">
 	    <p>Hello world!</p>
-	    <button onClick={() => Router.push('/')}>Home</button>
+	    <Button color="info" size="lg" onClick={() => Router.push('/')}>Home</Button>
 		</main>
   </div>
 )
