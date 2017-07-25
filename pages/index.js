@@ -32,7 +32,7 @@ class IndexPage extends React.Component {
 				<NavLarge />
 				<main className="container-fluid px-0">
 					<section id="intro">
-						<div className="intro-inner">
+						<div id="intro-inner" className="text-center align-middle">
 							<h1>Hello Spinners</h1>
 						</div>
 					</section>
