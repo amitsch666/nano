@@ -34,6 +34,14 @@ nav.fixed-top {
 .slimnav {
 	transition: all 0.6s ease;
 }
+.fatnav .navbar-brand {
+	font-size: 2rem;
+	line-height: 1;
+}
+.fatnav .navbar-brand img {
+	height: 2rem;
+	width: 2rem;
+}
 ul.navbar-nav {
 	text-transform: uppercase;
 	font-weight: 500;
@@ -44,6 +52,7 @@ ul.navbar-nav {
 }
 .navbar-brand img {
 	margin-right: 0.7rem;
+	margin-top: -.3rem;
 	width: 1.2rem;
 	height: 1.2rem;
 }
