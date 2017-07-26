@@ -5,6 +5,7 @@ import Link from 'next/link'
 
 import stylesheet from '../styles/main.scss'
 import { Button, UncontrolledTooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+require('font-awesome/css/font-awesome.css')
 
 import TopNav from '../components/TopNav'
 
@@ -33,7 +34,7 @@ class IndexPage extends React.Component {
 				<main className="container-fluid px-0">
 					<section id="intro">
 						<div id="intro-inner" className="text-center align-middle">
-							<h1>Hello Spinners</h1>
+							<h1>Hello Spinners<i className="fa fa-twitter"></i></h1>
 						</div>
 					</section>
 					<Button type="button" color="success" size="lg" data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={() => Router.push('/about')}>About</Button>

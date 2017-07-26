@@ -14,7 +14,7 @@ module.exports = {
         }
       },
       {
-        test: /\.s(a|c)ss$/,
+        test: /\.(css|sass|scss)$/,
         use: ExtractTextPlugin.extract([
 					// 'babel-loader',
 					// 'raw-loader',
@@ -38,7 +38,11 @@ module.exports = {
         ])
       },
 			{
-				test: /\.(woff|svg|ttf|eot)$/i,
+				test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+				loader: "url-loader?limit=10000&mimetype=application/font-woff&outputPath=static/"
+			},
+			{
+				test: /\.(svg|ttf|eot)$/i,
 				loader: 'file-loader?outputPath=static/'
 			},
 			{
