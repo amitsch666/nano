@@ -36,7 +36,7 @@ export default class TopNav extends React.Component {
 						<img src="/static/img/logo.svg" class="d-inline-block align-top" alt="TaleSpinners logo" />
 						<span id="tale">Tale</span><span id="spinners">Spinners</span>
           </NavbarBrand>
-          <Collapse isOpen={this.state.isOpen} navbar>
+          <Collapse isOpen={this.state.isOpen} navbar delay={0}>
             <Nav className="ml-auto" navbar>
 							<NavItem>
                 <NavLink href="/browse">Browse</NavLink>

@@ -106,40 +106,22 @@ ul.navbar-nav {
 /*----------------------------------------------------------------------------*/
 /* NAVBAR IN MOBILE VIEW                                                      */
 /*----------------------------------------------------------------------------*/
-// @media (max-width: 991px) {
-// 	.collapse.show {
-// 		padding: 1rem;
-// 		margin-left: -1rem;
-// 		background-color: darkcyan;
-// 		width: 70%;
-// 	}
-// }
-// @media (max-width: 768px) {
-//     .navbar-collapse {
-//         position: absolute;
-//         top: 54px;
-//         left: 0;
-//         padding-left: 15px;
-//         padding-right: 15px;
-//         padding-bottom: 15px;
-//         width: 100%;
-//     }
-//     .navbar-collapse.collapsing {
-//         height: auto;
-//         -webkit-transition: left 0.3s ease;
-//         -o-transition: left 0.3s ease;
-//         -moz-transition: left 0.3s ease;
-//         transition: left 0.3s ease;
-//         left: -100%;
-//     }
-//     .navbar-collapse.show {
-//         left: 0;
-//         -webkit-transition: left 0.3s ease-in;
-//         -o-transition: left 0.3s ease-in;
-//         -moz-transition: left 0.3s ease-in;
-//         transition: left 0.3s ease-in;
-//     }
-// }
+@media (max-width: 991px) {
+  .navbar-collapse {
+		background-color: darkcyan;
+    position: absolute;
+    top: 0;
+    left: -15rem;
+    padding: 2rem 1rem 1rem 2rem;
+    width: 15rem;
+		height: 100vh;
+		transition: left 0.3s ease-out;
+  }
+  .navbar-collapse.show {
+    left: 0;
+    transition: left 0.3s ease-in;
+  }
+}
 /*----------------------------------------------------------------------------*/
 
 #intro {
