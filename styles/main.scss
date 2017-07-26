@@ -18,6 +18,13 @@
 	src: url('../static/fonts/LondrinaSolid-Regular.woff');
 }
 
+.btn:focus {
+	box-shadow: none;
+}
+a:focus {
+	outline: none;
+}
+
 .fatnav {
 	padding-top: 1.5rem;
 	padding-bottom: 1.5rem;
@@ -60,12 +67,16 @@ ul.navbar-nav {
 	width: 1.2rem;
 	height: 1.2rem;
 }
-
-.bg-inverse{
+.bg-inverse {
 	background-color: $themedark !important;
 	opacity: .98;
 }
-
+.navbar-toggler:hover,
+.navbar-toggler:active,
+.navbar-toggler:focus {
+	background-color: darkslategray;
+	outline: none;
+}
 #tale, #spinners {
 	font-family: 'Londrina';
 }
