@@ -32,7 +32,7 @@ export default class NavLarge extends React.Component {
         <Navbar color="inverse" inverse toggleable={`md`} fixed={`top`} className={this.state.fatnav}>
           <NavbarToggler right onClick={this.toggle} />
           <NavbarBrand href="/">
-						<img src="/static/img/testimg.png" class="d-inline-block align-top" alt="TaleSpinners logo" />
+						<img src="/static/img/talespinners-logo.png" class="d-inline-block align-top" alt="TaleSpinners logo" />
 						<span id="tale">Tale</span><span id="spinners">Spinners</span>
           </NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar>

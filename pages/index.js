@@ -44,7 +44,6 @@ class IndexPage extends React.Component {
 		        <strong>Hello</strong> world!
 		      </UncontrolledTooltip>
 					<hr />
-					<img src="/static/img/testimg.png" />
 					<Button color="danger" size="lg" onClick={this.toggle}>Open modal</Button>
 					<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
 	          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
