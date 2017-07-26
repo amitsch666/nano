@@ -6,7 +6,6 @@ import Link from 'next/link'
 import stylesheet from '../styles/main.scss'
 import { Button, UncontrolledTooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
-// import NavLarge from '../components/NavLarge'
 import TopNav from '../components/TopNav'
 
 class IndexPage extends React.Component {

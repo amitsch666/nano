@@ -4,7 +4,6 @@ import Router from 'next/router'
 
 import { Button } from 'reactstrap'
 
-// import NavSmall from '../components/NavSmall'
 import TopNav from '../components/TopNav'
 
 export default () => (
