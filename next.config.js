@@ -37,8 +37,17 @@ module.exports = {
           },
         ])
       },
-			// { test: /\.(woff2?|svg)$/, loader: 'url-loader?limit=10000' },
-			{ test: /\.(woff|svg|ttf|eot|png|jpg|jpeg)$/, loader: 'file-loader?outputPath=static/' },
+			{
+				test: /\.(woff|svg|ttf|eot)$/i,
+				loader: 'file-loader?outputPath=static/'
+			},
+			{
+				test: /\.(png|jpe?g|gif)$/i,
+				loaders: [
+					'file-loader?outputPath=static/',
+					'image-webpack-loader?bypassOnDebug&optimizationLevel=7&interlaced=false'
+				]
+			},
     )
 		config.plugins.push(
 			new ExtractTextPlugin({
