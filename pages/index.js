@@ -4,8 +4,8 @@ import Router from 'next/router'
 import Link from 'next/link'
 
 import stylesheet from '../styles/main.scss'
+import 'font-awesome/scss/font-awesome.scss'
 import { Button, UncontrolledTooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
-require('font-awesome/css/font-awesome.css')
 
 import TopNav from '../components/TopNav'
 
@@ -22,7 +22,7 @@ class IndexPage extends React.Component {
       modal: !this.state.modal
     });
   }
-	render(){
+	render() {
 		return (
 			<div>
 				<Head>
