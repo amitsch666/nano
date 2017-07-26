@@ -49,6 +49,8 @@ nav.fixed-top {
 	transition: all 0.6s ease;
 }
 .navbar-brand img {
+	margin-right: 0.7rem;
+	margin-top: -.3rem;
 	height: 2rem;
 	width: 2rem;
 	transition: all 0.6s ease;
@@ -60,12 +62,6 @@ ul.navbar-nav {
 }
 .navbar-brand {
 	outline: none;
-}
-.navbar-brand img {
-	margin-right: 0.7rem;
-	margin-top: -.3rem;
-	width: 1.2rem;
-	height: 1.2rem;
 }
 .bg-inverse {
 	background-color: $themedark !important;
@@ -112,15 +108,46 @@ ul.navbar-nav {
     position: absolute;
     top: 0;
     left: -15rem;
-    padding: 2rem 1rem 1rem 2rem;
+    padding-top: 0;
+		padding-bottom: 1rem;
+		padding-left: 0rem;
+		padding-right: 0rem;
     width: 15rem;
 		height: 100vh;
 		transition: left 0.3s ease-out;
   }
+	.navbar-collapse::before {
+		content: 'TaleSpinners';
+		color: hsla(0,0%,100%,0.6);
+		display: flex;
+		line-height: 1.325;
+		font-family: 'Londrina';
+		font-size: 2rem;
+		padding-left: 1.5rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		background-color: #006064; // cyan 900
+	}
   .navbar-collapse.show {
     left: 0;
     transition: left 0.3s ease-in;
   }
+	.nav-item {
+		border-top: 1px solid hsla(0,0%,100%,0.3);
+		border-bottom: 1.5px solid hsla(0,0%,100%,0);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+		padding-left: 1.5rem;
+	}
+	.nav-item:first-child {
+		border-top: none;
+	}
+	.nav-item:last-child {
+		border-bottom: none;
+	}
+	.nav-item:hover {
+		background-color: hsla(0,0%,100%,.1);
+	}
 }
 /*----------------------------------------------------------------------------*/
 
