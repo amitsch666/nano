@@ -71,10 +71,14 @@ ul.navbar-nav {
 	background-color: $themedark !important;
 	opacity: .98;
 }
+.navbar-toggler {
+	border: 1.5px solid hsla(0,0%,100%,.5) !important;
+	border-radius: 3px;
+}
 .navbar-toggler:hover,
 .navbar-toggler:active,
 .navbar-toggler:focus {
-	background-color: darkslategray;
+	background-color: hsla(0,0%,100%,0.2);
 	outline: none;
 }
 #tale, #spinners {
@@ -86,6 +90,57 @@ ul.navbar-nav {
 #spinners {
 	color: $brand-spinners;
 }
+.nav-item {
+	font-size: 0.8rem;
+}
+@media (min-width: 992px) {
+	.navbar-toggleable-md .navbar-nav .nav-link {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+	}
+	.navbar-toggleable-md .navbar-nav .nav-item:last-child .nav-link {
+		padding-right: 0.5rem;
+	}
+}
+
+/*----------------------------------------------------------------------------*/
+/* NAVBAR IN MOBILE VIEW                                                      */
+/*----------------------------------------------------------------------------*/
+// @media (max-width: 991px) {
+// 	.collapse.show {
+// 		padding: 1rem;
+// 		margin-left: -1rem;
+// 		background-color: darkcyan;
+// 		width: 70%;
+// 	}
+// }
+// @media (max-width: 768px) {
+//     .navbar-collapse {
+//         position: absolute;
+//         top: 54px;
+//         left: 0;
+//         padding-left: 15px;
+//         padding-right: 15px;
+//         padding-bottom: 15px;
+//         width: 100%;
+//     }
+//     .navbar-collapse.collapsing {
+//         height: auto;
+//         -webkit-transition: left 0.3s ease;
+//         -o-transition: left 0.3s ease;
+//         -moz-transition: left 0.3s ease;
+//         transition: left 0.3s ease;
+//         left: -100%;
+//     }
+//     .navbar-collapse.show {
+//         left: 0;
+//         -webkit-transition: left 0.3s ease-in;
+//         -o-transition: left 0.3s ease-in;
+//         -moz-transition: left 0.3s ease-in;
+//         transition: left 0.3s ease-in;
+//     }
+// }
+/*----------------------------------------------------------------------------*/
 
 #intro {
 	height: 100vh;
