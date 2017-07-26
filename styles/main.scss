@@ -23,7 +23,7 @@
 	padding-bottom: 1.5rem;
 	transition: all 0.6s ease;
 	box-shadow: none !important;
-	background: linear-gradient(to bottom, rgba(66,66,66,1) 0%,rgba(125,126,125,0.1) 100%) !important;
+	background: linear-gradient(to bottom, rgba(0,0,0,1) 0%,rgba(125,125,125,0) 100%) !important;
 }
 .fatnav.bg-inverse {
 	background-color: transparent !important;
@@ -31,16 +31,20 @@
 nav.fixed-top {
 	box-shadow: 0px 2px 10px -3px rgba(0,0,0,1);
 }
-.slimnav {
+.slimnav,
+.slimnav .navbar-brand,
+.slimnav .navbar-brand img {
 	transition: all 0.6s ease;
 }
 .fatnav .navbar-brand {
 	font-size: 2rem;
 	line-height: 1;
+	transition: all 0.6s ease;
 }
 .fatnav .navbar-brand img {
 	height: 2rem;
 	width: 2rem;
+	transition: all 0.6s ease;
 }
 ul.navbar-nav {
 	text-transform: uppercase;
@@ -59,17 +63,17 @@ ul.navbar-nav {
 
 .bg-inverse{
 	background-color: $themedark !important;
-	opacity: .9;
+	opacity: .98;
 }
 
 #tale, #spinners {
 	font-family: 'Londrina';
 }
 #tale {
-	color: lightyellow;
+	color: $brand-tale;
 }
 #spinners {
-	color: lightblue;
+	color: $brand-spinners;
 }
 // #intro {
 // 	position: relative;

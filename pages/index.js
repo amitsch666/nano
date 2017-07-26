@@ -6,7 +6,8 @@ import Link from 'next/link'
 import stylesheet from '../styles/main.scss'
 import { Button, UncontrolledTooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
 
-import NavLarge from '../components/NavLarge'
+// import NavLarge from '../components/NavLarge'
+import TopNav from '../components/TopNav'
 
 class IndexPage extends React.Component {
 	constructor(props) {
@@ -29,7 +30,7 @@ class IndexPage extends React.Component {
 		      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 					<link rel="stylesheet" type="text/css" href="_s/main.css" />
 				</Head>
-				<NavLarge />
+				<TopNav fat />
 				<main className="container-fluid px-0">
 					<section id="intro">
 						<div id="intro-inner" className="text-center align-middle">
