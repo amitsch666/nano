@@ -9,6 +9,10 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js"
   },
+	"browserslist": [
+		"> 1%",
+		"ie > 8"
+	],
   "dependencies": {
     "compression": "^1.7.0",
     "dotenv": "^4.0.0",
