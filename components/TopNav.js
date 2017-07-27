@@ -16,6 +16,7 @@ export default class TopNav extends React.Component {
     });
   }
 	componentDidMount() {
+		this.handleScroll.bind(this);
 		if(this.props.fat){
 			window.addEventListener('scroll', this.handleScroll.bind(this));
 		}

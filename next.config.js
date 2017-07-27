@@ -10,14 +10,12 @@ module.exports = {
         test: /\.(css|scss)$/,
         loader: 'emit-file-loader',
         options: {
-          name: 'dist/[path][name].[ext]'
+					name: path.join('dist', '[path][name].[ext]')
         }
       },
       {
         test: /\.(css|sass|scss)$/,
         use: ExtractTextPlugin.extract([
-					// 'babel-loader',
-					// 'raw-loader',
 					{
 						loader: 'css-loader',
 						options: {
@@ -39,7 +37,7 @@ module.exports = {
       },
 			{
 				test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-				loader: "url-loader?limit=10000&mimetype=application/font-woff&outputPath=static/"
+				loader: 'url-loader?limit=10000&mimetype=application/font-woff&outputPath=static/'
 			},
 			{
 				test: /\.(svg|ttf|eot)$/i,
@@ -55,7 +53,7 @@ module.exports = {
     )
 		config.plugins.push(
 			new ExtractTextPlugin({
-				filename: '/static/main.css',
+				filename: path.join('static', 'main.css')
 			}),
 		)
     return config
