@@ -4,7 +4,7 @@
 // without modifying source files.
 
 @import 'node_modules/sass-material-colors/sass/sass-material-colors';
-$theme-base: 'red';
+$theme-base: 'cyan';
 $theme: material-color($theme-base, '500');
 $logo: $theme;
 $theme-bg: material-color($theme-base, '50');
