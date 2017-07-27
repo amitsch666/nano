@@ -4,9 +4,11 @@
 // without modifying source files.
 
 @import 'node_modules/sass-material-colors/sass/sass-material-colors';
-$theme: material-color('cyan', '500');
+$theme-base: 'red';
+$theme: material-color($theme-base, '500');
 $logo: $theme;
-$themedark: material-color('cyan', '900');
+$theme-bg: material-color($theme-base, '50');
+$themedark: material-color($theme-base, '900');
 $brand-tale: material-color('blue', '400');
 $brand-spinners: material-color('red', '400');
 

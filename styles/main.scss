@@ -18,6 +18,10 @@
 	src: url('../static/fonts/LondrinaSolid-Regular.woff');
 }
 
+body {
+	background-color: $theme-bg;
+}
+
 .btn:focus {
 	box-shadow: none;
 }
