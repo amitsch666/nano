@@ -6,9 +6,10 @@
 @import 'node_modules/sass-material-colors/sass/sass-material-colors';
 $theme-base: 'cyan';
 $theme: material-color($theme-base, '500');
-$logo: $theme;
+$logo: $theme; // hex value to be used in static/img/logo.svg
 $theme-bg: material-color($theme-base, '50');
 $themedark: material-color($theme-base, '900');
+$themelight: material-color($theme-base, '800');
 $brand-tale: material-color('blue', '400');
 $brand-spinners: material-color('red', '400');
 

@@ -38,6 +38,10 @@ export default class TopNav extends React.Component {
 						<span id="tale">Tale</span><span id="spinners">Spinners</span>
           </NavbarBrand>
           <Collapse isOpen={this.state.isOpen} navbar delay={0}>
+						<div id="collapse-nav-head" className={this.state.isOpen ? `shown` : ``}>
+							<div id="collapse-nav-title" className="p-2">TaleSpinners</div>
+							<Button outline color="secondary" onClick={this.toggle} className="m-auto"><span aria-hidden="true">&times;</span></Button>
+						</div>
             <Nav className="ml-auto" navbar>
 							<NavItem>
                 <NavLink href="/browse">Browse</NavLink>
