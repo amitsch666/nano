@@ -125,8 +125,7 @@ ul.navbar-nav {
 /* NAVBAR IN MOBILE VIEW                                                      */
 /*----------------------------------------------------------------------------*/
 @media (max-width: 991px) {
-	.collapsing #collapse-nav-head,
-	#collapse-nav-head.shown {
+	#collapse-nav-head {
 		display: flex;
 	}
   .navbar-collapse {
