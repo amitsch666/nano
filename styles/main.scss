@@ -98,7 +98,8 @@ ul.navbar-nav {
 	color: hsla(0,0%,100%,0.6);
 }
 #collapse-nav-head button:hover {
-	background-color: hsla(0,0%,100%,0.6);
+	background-color: hsla(0,0%,100%,0.3);
+	border-color: hsla(0,0%,100%,0.3);
 	color: $themedark;
 }
 #tale, #spinners {

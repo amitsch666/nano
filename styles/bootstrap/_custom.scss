@@ -4,7 +4,7 @@
 // without modifying source files.
 
 @import 'node_modules/sass-material-colors/sass/sass-material-colors';
-$theme-base: 'cyan';
+$theme-base: 'deep-orange';
 $theme: material-color($theme-base, '500');
 $logo: $theme; // hex value to be used in static/img/logo.svg
 $theme-bg: material-color($theme-base, '50');
