@@ -4,14 +4,14 @@
 // without modifying source files.
 
 @import 'node_modules/sass-material-colors/sass/sass-material-colors';
-$theme-base: 'deep-orange';
+$theme-base: 'blue-grey';
 $theme: material-color($theme-base, '500');
 $logo: $theme; // hex value to be used in static/img/logo.svg
 $theme-bg: material-color($theme-base, '50');
-$themedark: material-color($theme-base, '900');
-$themelight: material-color($theme-base, '800');
-$brand-tale: material-color('blue', '400');
-$brand-spinners: material-color('red', '400');
+$themedark: material-color($theme-base, '800');
+$themelight: material-color($theme-base, '700');
+$brand-part-1: material-color($theme-base, '100');
+$brand-part-2: material-color('orange', '500');
 
 $spacers: (
   0: (

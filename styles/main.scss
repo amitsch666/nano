@@ -17,6 +17,10 @@
 	font-family: 'Londrina';
 	src: url('../static/fonts/LondrinaSolid-Regular.woff');
 }
+@font-face {
+	font-family: 'Moderna';
+		src: url('../static/fonts/Moderna/MODERNA_.TTF');
+}
 
 .btn:focus {
 	box-shadow: none;
@@ -106,10 +110,10 @@ ul.navbar-nav {
 	font-family: 'Londrina';
 }
 #tale {
-	color: $brand-tale;
+	color: $brand-part-1;
 }
 #spinners {
-	color: $brand-spinners;
+	color: $brand-part-2;
 }
 @media (min-width: 992px) {
 	.navbar-toggleable-md .navbar-nav .nav-link {
