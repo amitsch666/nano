@@ -9,7 +9,7 @@ import { Button, UncontrolledTooltip, Modal, ModalHeader, ModalBody, ModalFooter
 
 import TopNav from '../components/TopNav'
 
-class IndexPage extends React.Component {
+export default class IndexPage extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
@@ -61,4 +61,3 @@ class IndexPage extends React.Component {
 		)
 	}
 }
-export default IndexPage

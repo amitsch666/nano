@@ -125,6 +125,7 @@ ul.navbar-nav {
 /* NAVBAR IN MOBILE VIEW                                                      */
 /*----------------------------------------------------------------------------*/
 @media (max-width: 991px) {
+	.collapsing #collapse-nav-head,
 	#collapse-nav-head.shown {
 		display: flex;
 	}
@@ -132,15 +133,19 @@ ul.navbar-nav {
 		background-color: $themedark;
     position: absolute;
     top: 0;
-		right: -15rem;
+		right: 0rem;
     padding-top: 0;
 		padding-bottom: 1rem;
 		padding-left: 0rem;
 		padding-right: 0rem;
     width: 15rem;
 		height: 100vh;
-		transition: right 0.3s ease-out;
   }
+	.navbar-collapse.collapsing {
+		right: -15rem;
+		transition: right .3s ease;
+		height: 100vh !important;
+	}
   .navbar-collapse.show {
 		right: 0;
 		transition: right 0.3s ease-in;
