@@ -1,0 +1,29 @@
+/***************************************************/
+	/* image path: ../static/img */
+	/* font path: ../static/fonts */
+/***************************************************/
+
+@font-face {
+	font-family: 'Lemonada';
+	src: url('../static/fonts/Lemonada/Lemonada-Regular.ttf');
+	src: url('../static/fonts/Lemonada/Lemonada-Bold.ttf');
+	src: url('../static/fonts/Lemonada/Lemonada-SemiBold.ttf');
+	src: url('../static/fonts/Lemonada/Lemonada-Light.ttf');
+}
+
+@font-face {
+	font-family: 'Londrina';
+	src: url('../static/fonts/LondrinaSolid-Regular.woff');
+}
+@font-face {
+	font-family: 'Moderna';
+		src: url('../static/fonts/Moderna/MODERNA_.TTF');
+}
+
+button:focus,
+.btn:focus {
+	box-shadow: none;
+}
+*:focus {
+	outline: none;
+}
