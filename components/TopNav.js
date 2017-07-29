@@ -39,7 +39,7 @@ export default class TopNav extends React.Component {
 					<img src="/static/img/logo.svg" class="d-inline-block align-top" alt="TaleSpinners logo" />
 					<span id="tale">Tale</span><span id="spinners">Spinners</span>
         </NavbarBrand>
-        <NavPane isOpen={this.state.isOpen} evtToggler={this.toggle} />
+        <NavPane isOpen={this.state.isOpen} toggle={this.toggle} />
       </Navbar>
     );
   }

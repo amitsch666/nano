@@ -5,21 +5,22 @@ import Link from 'next/link'
 
 import stylesheet from '../styles/main.scss'
 import 'font-awesome/scss/font-awesome.scss'
-import { Button, UncontrolledTooltip, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap'
+import { Button, UncontrolledTooltip } from 'reactstrap'
 
 import TopNav from '../components/TopNav'
+import MyModal from '../components/MyModal'
 
 export default class IndexPage extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-      modal: false
+      modal1: false
     };
-    this.toggle = this.toggle.bind(this);
+    this.toggleModal1 = this.toggleModal1.bind(this);
   }
-  toggle() {
+  toggleModal1() {
     this.setState({
-      modal: !this.state.modal
+      modal1: !this.state.modal1
     });
   }
 	render() {
@@ -37,7 +38,7 @@ export default class IndexPage extends React.Component {
 							<h1>Hello Spinners<i className="fa fa-twitter"></i></h1>
 						</div>
 					</section>
-					<Button type="button" color="success" size="lg" data-toggle="tooltip" data-placement="top" title="Tooltip on top" onClick={() => Router.push('/about')}>About</Button>
+					<Button type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</Button>
 					<Link prefetch href="/about"><a>About Page</a></Link>
 					<hr />
 					<p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
@@ -45,17 +46,8 @@ export default class IndexPage extends React.Component {
 		        <strong>Hello</strong> world!
 		      </UncontrolledTooltip>
 					<hr />
-					<Button color="danger" size="lg" onClick={this.toggle}>Open modal</Button>
-					<Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-	          <ModalHeader toggle={this.toggle}>Modal title</ModalHeader>
-	          <ModalBody>
-	            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-	          </ModalBody>
-	          <ModalFooter>
-	            <Button color="primary" onClick={this.toggle}>Do Something</Button>{' '}
-	            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-	          </ModalFooter>
-	        </Modal>
+					<Button color="danger" size="lg" onClick={this.toggleModal1}>Open modal</Button>
+					<MyModal isOpen={this.state.modal1} toggle={this.toggleModal1} className={`amit-test`} /> {/* value in className gets added to .modal-dialog */}
 				</main>
 			</div>
 		)
