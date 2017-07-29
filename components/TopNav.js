@@ -1,5 +1,7 @@
 import React from 'react';
-import { Button, Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import { Button, Navbar, NavbarToggler, NavbarBrand } from 'reactstrap';
+
+import NavPane from './NavPane'
 
 export default class TopNav extends React.Component {
   constructor(props) {
@@ -31,30 +33,14 @@ export default class TopNav extends React.Component {
 	}
   render() {
     return (
-        <Navbar color="inverse" inverse toggleable={`md`} fixed={`top`} className={this.state.fatnav}>
-          <NavbarToggler right onClick={this.toggle} />
-          <NavbarBrand href="/">
-						<img src="/static/img/logo.svg" class="d-inline-block align-top" alt="TaleSpinners logo" />
-						<span id="tale">Tale</span><span id="spinners">Spinners</span>
-          </NavbarBrand>
-          <Collapse isOpen={this.state.isOpen} navbar delay={{show: 0, hide: 350}}>
-						<div id="collapse-nav-head">
-							<div id="collapse-nav-title" className="p-2">TaleSpinners</div>
-							<Button outline color="secondary" onClick={this.toggle} className="m-auto"><span aria-hidden="true">&times;</span></Button>
-						</div>
-            <Nav className="ml-auto" navbar>
-							<NavItem>
-                <NavLink href="/browse">Browse</NavLink>
-              </NavItem>
-							<NavItem>
-                <NavLink href="/community">Community</NavLink>
-              </NavItem>
-							<NavItem>
-                <NavLink href="/login">Sign In</NavLink>
-              </NavItem>
-            </Nav>
-          </Collapse>
-        </Navbar>
+      <Navbar color="inverse" inverse toggleable={`md`} fixed={`top`} className={this.state.fatnav}>
+        <NavbarToggler right onClick={this.toggle} />
+        <NavbarBrand href="/">
+					<img src="/static/img/logo.svg" class="d-inline-block align-top" alt="TaleSpinners logo" />
+					<span id="tale">Tale</span><span id="spinners">Spinners</span>
+        </NavbarBrand>
+        <NavPane isOpen={this.state.isOpen} evtToggler={this.toggle} />
+      </Navbar>
     );
   }
 }
