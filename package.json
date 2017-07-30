@@ -17,6 +17,7 @@
     "next": "beta",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
+    "react-onclickoutside": "^6.4.0",
     "react-transition-group": "^1.1.2",
     "reactstrap": "^4.8.0",
     "serve-favicon": "^2.4.3"
