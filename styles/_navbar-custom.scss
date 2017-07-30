@@ -104,6 +104,15 @@ ul.navbar-nav {
 	// .navbar-toggleable-md .navbar-nav .nav-item:last-child .nav-link {
 	// 	padding-right: 0.5rem;
 	// }
+	.nav-item.show,
+	.nav-item:hover,
+	.nav-item:active,
+	.nav-item:focus {
+		padding-top: 1rem;
+	  padding-bottom: 1rem;
+	  margin-top: -1rem;
+	  margin-bottom: -1rem;
+	}
 }
 .nav-item:hover {
 	background-color: lighten($themedarker, 20%);
@@ -112,17 +121,6 @@ ul.navbar-nav {
 .nav-item:active,
 .nav-item:focus {
 	background-color: $themedarker;
-}
-.nav-item.show,
-.nav-item:hover,
-.nav-item:active,
-.nav-item:focus {
-	padding-top: 1rem;
-  padding-bottom: 1rem;
-  margin-top: -1rem;
-  margin-bottom: -1rem;
-  // background-color: hsla(0,100%,0%,.5);
-	// background-color: $themedarker;
 }
 .dropdown-menu {
 	margin-top: 0;
@@ -200,6 +198,16 @@ ul.navbar-nav {
 	}
 	.nav-item:hover {
 		background-color: hsla(0,0%,100%,.1);
+	}
+	.nav-item.dropdown.show:hover {
+		background-color: $themedarker;
+	}
+	.show .dropdown-menu {
+		border-bottom: 0;
+		margin-left: -1.5rem;
+	}
+	.dropdown-item {
+		padding-left: 2.5rem;
 	}
 }
 /*----------------------------------------------------------------------------*/
