@@ -1,11 +1,17 @@
 import React from 'react';
-import { Button, Collapse, Navbar, Nav, NavItem, NavLink } from 'reactstrap';
+import { Button, Collapse, Navbar, Nav, NavItem, NavLink, NavDropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
 import onClickOutside from 'react-onclickoutside'
 
 class NavPane extends React.Component {
   constructor(props) {
     super(props);
     let lastX = 0;
+    this.toggledropdown = this.toggledropdown.bind(this);
+    this.toggledropdown2 = this.toggledropdown2.bind(this);
+    this.state = {
+      dropdownOpen: false,
+      dropdown2Open: false
+    };
   }
   handleClickOutside = evt => {
     if(this.props.isOpen){
@@ -22,6 +28,16 @@ class NavPane extends React.Component {
     }
     this.lastX = currentX;
   }
+  toggledropdown() {
+    this.setState({
+      dropdownOpen: !this.state.dropdownOpen
+    });
+  }
+  toggledropdown2() {
+    this.setState({
+      dropdown2Open: !this.state.dropdown2Open
+    });
+  }
   render(){
     return(
       <Collapse isOpen={this.props.isOpen} navbar delay={{show: 0, hide: 350}} onTouchStart={this._onTouchStart} onTouchMove={this._onTouchMove}>
@@ -33,9 +49,30 @@ class NavPane extends React.Component {
           <NavItem>
             <NavLink href="/browse">Browse</NavLink>
           </NavItem>
-          <NavItem>
-            <NavLink href="/community">Community</NavLink>
-          </NavItem>
+          <NavDropdown isOpen={this.state.dropdownOpen} toggle={this.toggledropdown}>
+            <DropdownToggle nav caret>
+              Dropdown
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem header>Header</DropdownItem>
+              <DropdownItem disabled>Action</DropdownItem>
+              <DropdownItem>Another Action</DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>Another Action</DropdownItem>
+            </DropdownMenu>
+          </NavDropdown>
+          <NavDropdown isOpen={this.state.dropdown2Open} toggle={this.toggledropdown2}>
+            <DropdownToggle nav caret>
+              Dropdown 2
+            </DropdownToggle>
+            <DropdownMenu>
+              <DropdownItem header>Header</DropdownItem>
+              <DropdownItem disabled>Action</DropdownItem>
+              <DropdownItem>Another Action</DropdownItem>
+              <DropdownItem divider />
+              <DropdownItem>Another Action</DropdownItem>
+            </DropdownMenu>
+          </NavDropdown>
           <NavItem>
             <NavLink href="/login">Sign In</NavLink>
           </NavItem>
