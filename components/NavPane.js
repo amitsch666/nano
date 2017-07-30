@@ -17,7 +17,6 @@ class NavPane extends React.Component {
   }
   _onTouchMove = e => {
     let currentX = e.touches[0].clientX;
-    // alert(`lastx=${this.lastX}, currentx=${currentX}`);
     if(currentX > this.lastX + 10){
       this.props.toggle()
     }
