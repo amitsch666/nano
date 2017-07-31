@@ -7,7 +7,7 @@ import stylesheet from '../styles/main.scss'
 import 'font-awesome/scss/font-awesome.scss'
 import { Button, UncontrolledTooltip } from 'reactstrap'
 
-import TopNav from '../components/TopNav'
+import TopNav from '../containers/TopNav'
 import MyModal from '../components/MyModal'
 import FullScreenBanner from '../components/FullScreenBanner'
 

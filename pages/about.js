@@ -5,7 +5,7 @@ import stylesheet from '../styles/main.scss'
 import 'font-awesome/scss/font-awesome.scss'
 import { Button } from 'reactstrap'
 
-import TopNav from '../components/TopNav'
+import TopNav from '../containers/TopNav'
 
 export default () => (
   <div>
