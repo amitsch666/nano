@@ -60,10 +60,12 @@ class NavPane extends React.Component {
           <Button outline color="secondary" onClick={this.props.toggle} className="m-auto"><span aria-hidden="true">&times;</span></Button>
         </div>
         <Nav className="ml-auto" navbar>
-          <NavItem>
+          <NavItem className={`px-1`}>
             <Form className="form-inline my-2 my-lg-0">
-              <Input type="text" name="search" id="search" className="form-control mr-sm-2" placeholder="Search..." />
-              <i className="fa fa-search fa-lg"></i>
+              <InputGroup>
+                <Input onMouseOver={this.focus} type="text" name="search" id="search" placeholder="Search..." />
+                <i className="fa fa-search fa-lg"></i>
+              </InputGroup>
             </Form>
           </NavItem>
           <NavItem className="py-1">
