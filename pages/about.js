@@ -19,6 +19,10 @@ export default () => (
 	    <p>Hello world!</p>
 			<i className="fa fa-twitter"></i>
 	    <Button color="info" size="lg" onClick={() => Router.push('/')}>Home</Button>
+      <p>No magic is involved, it auto-creates Redux store when getInitialProps is called by Next.js and then passes this store down to React Redux's Provider, which is used to wrap the original component, also automatically. On the client side it also takes care of using same store every time, whereas on server new store is created for each request.</p>
+      <p>No magic is involved, it auto-creates Redux store when getInitialProps is called by Next.js and then passes this store down to React Redux's Provider, which is used to wrap the original component, also automatically. On the client side it also takes care of using same store every time, whereas on server new store is created for each request.</p>
+      <p>No magic is involved, it auto-creates Redux store when getInitialProps is called by Next.js and then passes this store down to React Redux's Provider, which is used to wrap the original component, also automatically. On the client side it also takes care of using same store every time, whereas on server new store is created for each request.</p>
+      <p>No magic is involved, it auto-creates Redux store when getInitialProps is called by Next.js and then passes this store down to React Redux's Provider, which is used to wrap the original component, also automatically. On the client side it also takes care of using same store every time, whereas on server new store is created for each request.</p>
 		</main>
   </div>
 )
