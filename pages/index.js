@@ -1,4 +1,4 @@
-import React from 'react'
+import { Component } from 'react';
 import Head from 'next/head'
 import Router from 'next/router'
 import Link from 'next/link'
@@ -9,8 +9,9 @@ import { Button, UncontrolledTooltip } from 'reactstrap'
 
 import TopNav from '../components/TopNav'
 import MyModal from '../components/MyModal'
+import FullScreenBanner from '../components/FullScreenBanner'
 
-export default class IndexPage extends React.Component {
+export default class IndexPage extends Component {
 	constructor(props) {
     super(props);
     this.state = {
@@ -33,12 +34,7 @@ export default class IndexPage extends React.Component {
 				</Head>
 				<TopNav fat />
 				<main className="container-fluid px-0">
-					<section id="intro">
-						<div id="intro-inner" className="text-center align-middle">
-							<h1>Hello Spinners<i className="fa fa-twitter"></i></h1>
-							<p>{process.env.MY_NAME}</p>
-						</div>
-					</section>
+					<FullScreenBanner headline={`Welcome home, Spinners!`} tagline={`This is just a random tagline, don't worry`} />
 					<Button type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</Button>
 					<Link prefetch href="/about"><a>About Page</a></Link>
 					<hr />

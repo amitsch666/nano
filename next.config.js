@@ -2,8 +2,7 @@ const path = require('path')
 const glob = require('glob')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
-
-require('dotenv').config()
+const dotenv = require('dotenv').config()
 
 module.exports = {
 	distDir: '.build',

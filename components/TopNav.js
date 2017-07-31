@@ -1,9 +1,9 @@
-import React from 'react';
+import { Component } from 'react';
 import { Button, Navbar, NavbarToggler, NavbarBrand } from 'reactstrap';
 
 import NavPane from './NavPane'
 
-export default class TopNav extends React.Component {
+export default class TopNav extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);

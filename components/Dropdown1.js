@@ -1,7 +1,7 @@
-import React from 'react';
+import { Component } from 'react';
 import { NavDropdown, DropdownMenu, DropdownToggle, DropdownItem } from 'reactstrap';
 
-class Dropdown1 extends React.Component {
+class Dropdown1 extends Component {
   constructor(props) {
     super(props);
     this.toggledropdown = this.toggledropdown.bind(this);

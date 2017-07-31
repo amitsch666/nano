@@ -1,4 +1,4 @@
-import React from 'react';
+import { Component } from 'react';
 import {
   Button,
   Collapse,
@@ -15,7 +15,7 @@ import onClickOutside from 'react-onclickoutside'
 import Dropdown1 from './Dropdown1'
 import Dropdown2 from './Dropdown2'
 
-class NavPane extends React.Component {
+class NavPane extends Component {
   constructor(props) {
     super(props);
     let lastX = 0;
@@ -47,7 +47,7 @@ class NavPane extends React.Component {
             <Form className="form-inline my-2 my-lg-0">
               <InputGroup>
                 <Input onMouseOver={this.focus} type="text" name="search" id="search" placeholder="Search..." />
-                <i className="fa fa-search fa-lg"></i>
+                  <i className="fa fa-search fa-lg"></i>
               </InputGroup>
             </Form>
           </NavItem>
