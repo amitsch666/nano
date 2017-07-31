@@ -1,5 +1,19 @@
 import React from 'react';
-import { Button, Collapse, Navbar, Nav, NavItem, NavLink, NavDropdown, DropdownItem, DropdownToggle, DropdownMenu } from 'reactstrap';
+import {
+  Button,
+  Collapse,
+  Navbar,
+  Nav,
+  NavItem,
+  NavLink,
+  NavDropdown,
+  DropdownItem,
+  DropdownToggle,
+  DropdownMenu,
+  Form,
+  Input,
+  InputGroup
+} from 'reactstrap';
 import onClickOutside from 'react-onclickoutside'
 
 class NavPane extends React.Component {
@@ -47,11 +61,17 @@ class NavPane extends React.Component {
         </div>
         <Nav className="ml-auto" navbar>
           <NavItem>
-            <NavLink href="/browse">Browse</NavLink>
+            <Form className="form-inline my-2 my-lg-0">
+              <Input type="text" name="search" id="search" className="form-control mr-sm-2" placeholder="Search..." />
+              <i className="fa fa-search fa-lg"></i>
+            </Form>
           </NavItem>
-          <NavDropdown isOpen={this.state.dropdownOpen} toggle={this.toggledropdown}>
+          <NavItem className="py-1">
+            <NavLink href="/browse"><i className="fa fa-folder-open"></i>Browse</NavLink>
+          </NavItem>
+          <NavDropdown className="py-1" isOpen={this.state.dropdownOpen} toggle={this.toggledropdown}>
             <DropdownToggle nav caret>
-              Dropdown
+              <i className="fa fa-folder-open"></i>Dropdown
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem header>Header</DropdownItem>
@@ -61,9 +81,9 @@ class NavPane extends React.Component {
               <DropdownItem>Another Action</DropdownItem>
             </DropdownMenu>
           </NavDropdown>
-          <NavDropdown isOpen={this.state.dropdown2Open} toggle={this.toggledropdown2}>
+          <NavDropdown className="py-1" isOpen={this.state.dropdown2Open} toggle={this.toggledropdown2}>
             <DropdownToggle nav caret>
-              Dropdown 2
+              <i className="fa fa-folder-open"></i>Dropdown 2
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem header>Header</DropdownItem>
@@ -74,8 +94,8 @@ class NavPane extends React.Component {
               <DropdownItem>Another Action</DropdownItem>
             </DropdownMenu>
           </NavDropdown>
-          <NavItem>
-            <NavLink href="/login">Sign In</NavLink>
+          <NavItem className="py-1">
+            <NavLink href="/login"><i className="fa fa-user"></i>Sign In</NavLink>
           </NavItem>
         </Nav>
       </Collapse>

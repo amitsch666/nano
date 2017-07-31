@@ -25,6 +25,9 @@ button:focus,
 	box-shadow: none;
 	outline: none;
 }
+input:focus {
+	border-color: inherit !important;
+}
 *:focus {
 	outline: none;
 }

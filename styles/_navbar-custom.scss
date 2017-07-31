@@ -93,27 +93,43 @@ ul.navbar-nav {
 #spinners {
 	color: $brand-part-2;
 }
+.navbar-toggleable-md .navbar-nav form input {
+	border-radius: 3rem;
+	background-color: lighten($theme, 10%);
+	transition: all 0.6s ease;
+}
+.navbar-toggleable-md .navbar-nav form i {
+	position:relative;
+	left:-2rem;
+	color: darken($theme, 10%);
+}
+.navbar-toggleable-md .navbar-nav form input:hover {
+	background-color: $theme-bg;
+	transition: all 0.6s ease;
+}
 @media (min-width: 992px) {
 	.navbar-toggleable-md .navbar-nav .nav-link {
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
 	}
-	.nav-item.show,
-	.nav-item:hover,
-	.nav-item:active,
-	.nav-item:focus {
-		padding-top: 1rem;
-	  padding-bottom: 1rem;
-	  margin-top: -1rem;
-	  margin-bottom: -1rem;
+	.nav-item.py-1.show,
+	.nav-item.py-1:hover,
+	.nav-item.py-1:active,
+	.nav-item.py-1:focus {
+		padding-top: .9rem !important;
+	  margin-top: -.65rem;
+	  margin-bottom: -.65rem;
 	}
 }
-.nav-item:hover {
+.nav-link>i {
+	margin-right: .5rem;
+}
+.nav-item.py-1:hover {
 	background-color: lighten($themedarker, 20%);
 }
-.nav-item.show,
-.nav-item:active,
-.nav-item:focus {
+.nav-item.py-1.show,
+.nav-item.py-1:active,
+.nav-item.py-1:focus {
 	background-color: $themedarker;
 }
 .dropdown-menu {
