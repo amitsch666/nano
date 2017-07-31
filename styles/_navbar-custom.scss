@@ -139,6 +139,10 @@ ul.navbar-nav {
 .nav-item.py-1:focus {
 	background-color: $themedarker;
 }
+.nav-item.dropdown.show {
+	padding-bottom: 0 !important;
+	border-bottom: 0 !important;
+}
 .dropdown-menu {
 	margin-top: 0;
 	margin-bottom: 0;
@@ -168,10 +172,6 @@ ul.navbar-nav {
 }
 .disabled.dropdown-item {
 	color: hsla(0,0%,100%,.3);
-}
-.dropdown-divider {
-	background-color: hsla(0,100%,0%,.5);
-	margin: 0;
 }
 
 /*----------------------------------------------------------------------------*/

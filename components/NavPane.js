@@ -77,9 +77,11 @@ class NavPane extends React.Component {
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem header>Header</DropdownItem>
+              <hr className="my-0" />
               <DropdownItem disabled>Action</DropdownItem>
+              <hr className="my-0" />
               <DropdownItem>Another Action</DropdownItem>
-              <DropdownItem divider />
+              <hr className="my-0" />
               <DropdownItem>Another Action</DropdownItem>
             </DropdownMenu>
           </NavDropdown>
@@ -89,10 +91,13 @@ class NavPane extends React.Component {
             </DropdownToggle>
             <DropdownMenu>
               <DropdownItem header>Header</DropdownItem>
+              <hr className="my-0" />
               <DropdownItem disabled>Action</DropdownItem>
+              <hr className="my-0" />
               <DropdownItem>Another Action</DropdownItem>
+              <hr className="my-0" />
               <DropdownItem>Third Action</DropdownItem>
-              <DropdownItem divider />
+              <hr className="my-0" />
               <DropdownItem>Another Action</DropdownItem>
             </DropdownMenu>
           </NavDropdown>
