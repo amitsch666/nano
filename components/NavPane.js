@@ -16,16 +16,13 @@ import {
 } from 'reactstrap';
 import onClickOutside from 'react-onclickoutside'
 
+import Dropdown1 from './Dropdown1'
+import Dropdown2 from './Dropdown2'
+
 class NavPane extends React.Component {
   constructor(props) {
     super(props);
     let lastX = 0;
-    this.toggledropdown = this.toggledropdown.bind(this);
-    this.toggledropdown2 = this.toggledropdown2.bind(this);
-    this.state = {
-      dropdownOpen: false,
-      dropdown2Open: false
-    };
   }
   handleClickOutside = evt => {
     if(this.props.isOpen){
@@ -41,16 +38,6 @@ class NavPane extends React.Component {
       this.props.toggle()
     }
     this.lastX = currentX;
-  }
-  toggledropdown() {
-    this.setState({
-      dropdownOpen: !this.state.dropdownOpen
-    });
-  }
-  toggledropdown2() {
-    this.setState({
-      dropdown2Open: !this.state.dropdown2Open
-    });
   }
   render(){
     return(
@@ -71,36 +58,8 @@ class NavPane extends React.Component {
           <NavItem className="py-1">
             <NavLink href="/browse"><i className="fa fa-folder-open"></i>Browse</NavLink>
           </NavItem>
-          <NavDropdown className="py-1" isOpen={this.state.dropdownOpen} toggle={this.toggledropdown}>
-            <DropdownToggle nav caret>
-              <i className="fa fa-folder-open"></i>Dropdown
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem header>Header</DropdownItem>
-              <hr className="my-0" />
-              <DropdownItem disabled>Action</DropdownItem>
-              <hr className="my-0" />
-              <DropdownItem>Another Action</DropdownItem>
-              <hr className="my-0" />
-              <DropdownItem>Another Action</DropdownItem>
-            </DropdownMenu>
-          </NavDropdown>
-          <NavDropdown className="py-1" isOpen={this.state.dropdown2Open} toggle={this.toggledropdown2}>
-            <DropdownToggle nav caret>
-              <i className="fa fa-folder-open"></i>Dropdown 2
-            </DropdownToggle>
-            <DropdownMenu>
-              <DropdownItem header>Header</DropdownItem>
-              <hr className="my-0" />
-              <DropdownItem disabled>Action</DropdownItem>
-              <hr className="my-0" />
-              <DropdownItem>Another Action</DropdownItem>
-              <hr className="my-0" />
-              <DropdownItem>Third Action</DropdownItem>
-              <hr className="my-0" />
-              <DropdownItem>Another Action</DropdownItem>
-            </DropdownMenu>
-          </NavDropdown>
+          <Dropdown1 />
+          <Dropdown2 />
           <NavItem className="py-1">
             <NavLink href="/login"><i className="fa fa-user"></i>Sign In</NavLink>
           </NavItem>
