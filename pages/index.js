@@ -36,6 +36,7 @@ export default class IndexPage extends React.Component {
 					<section id="intro">
 						<div id="intro-inner" className="text-center align-middle">
 							<h1>Hello Spinners<i className="fa fa-twitter"></i></h1>
+							<p>{process.env.MY_NAME}</p>
 						</div>
 					</section>
 					<Button type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</Button>
