@@ -31,6 +31,14 @@
 ### Close All Running Instances of Node.js
 `killall node`
 
+## Deploy to Production
+
+### Start a NextJS App in Production
+`pm2 start npm --name "next" -- start`
+
+### Stop All Running PM2 Processes
+`pm2 stop all`
+
 ## MongoDB
 ### Install MongoDB
   (Refer to [https://docs.mongodb.com/v3.0/tutorial/install-mongodb-on-ubuntu/](https://docs.mongodb.com/v3.0/tutorial/install-mongodb-on-ubuntu/))
