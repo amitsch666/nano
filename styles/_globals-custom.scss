@@ -31,3 +31,13 @@ input:focus {
 *:focus {
 	outline: none;
 }
+
+html,
+body,
+body>div,
+div#__next,
+div#__next>div,
+div.testdiv,
+main {
+	height: 100%;
+}

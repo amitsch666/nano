@@ -26,7 +26,7 @@ export default class IndexPage extends Component {
   }
 	render() {
 		return (
-			<div>
+			<div className={`testdiv`}>
 				<Head>
 					<title>Project Nano | Home</title>
 		      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
@@ -44,7 +44,7 @@ export default class IndexPage extends Component {
 		      </UncontrolledTooltip>
 					<hr />
 					<Button color="danger" size="lg" onClick={this.toggleModal1}>Open modal</Button>
-					<MyModal isOpen={this.state.modal1} toggle={this.toggleModal1} className={`classname`} modalClassName={`centered-modal`} /> {/* value in className gets added to .modal-dialog */}
+					<MyModal isOpen={this.state.modal1} toggle={this.toggleModal1} className={`someclass`} modalClassName={`centered-modal`} /> {/* value in className gets added to .modal-dialog */}
 				</main>
 			</div>
 		)
