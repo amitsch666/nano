@@ -40,7 +40,10 @@
 `pm2 stop all`
 
 ### List All PM2 Processes
-`pm2 list`
+`pm2 ls`
+
+### Delete Process from List
+`pm2 delete <id>`
 
 ## MongoDB
 ### Install MongoDB
