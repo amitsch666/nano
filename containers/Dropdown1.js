@@ -6,19 +6,19 @@ class Dropdown1 extends Component {
     super(props);
     this.toggledropdown = this.toggledropdown.bind(this);
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
     };
   }
   toggledropdown() {
     this.setState({
-      dropdownOpen: !this.state.dropdownOpen
+      dropdownOpen: !this.state.dropdownOpen,
     });
   }
-  render(){
-    return(
+  render() {
+    return (
       <NavDropdown className="py-1" isOpen={this.state.dropdownOpen} toggle={this.toggledropdown}>
         <DropdownToggle nav caret>
-          <i className="fa fa-folder-open"></i>Dropdown
+          <i className="fa fa-folder-open" />Dropdown
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem header>Header</DropdownItem>
@@ -30,7 +30,7 @@ class Dropdown1 extends Component {
           <DropdownItem>Another Action</DropdownItem>
         </DropdownMenu>
       </NavDropdown>
-    )
+    );
   }
 }
-export default Dropdown1
+export default Dropdown1;
