@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import {
   Button,
   Collapse,
@@ -17,19 +18,19 @@ import Dropdown2 from './Dropdown2';
 class NavPane extends Component {
   constructor(props) {
     super(props);
-    let lastX = 0;
+    this.lastX = 0;
   }
-  handleClickOutside = e => {
-    if(this.props.isOpen){
+  handleClickOutside = () => {
+    if (this.props.isOpen) {
       this.props.toggle();
     }
   }
-  NavOnTouchStart = e => {
+  NavOnTouchStart = (e) => {
     this.lastX = e.touches[0].clientX;
   }
-  NavOnTouchMove = e => {
-    let currentX = e.touches[0].clientX;
-    if(currentX > this.lastX + 10){
+  NavOnTouchMove = (e) => {
+    const currentX = e.touches[0].clientX;
+    if (currentX > this.lastX + 10) {
       this.props.toggle();
     }
     this.lastX = currentX;
@@ -77,4 +78,10 @@ class NavPane extends Component {
     );
   }
 }
+
+NavPane.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  toggle: PropTypes.func.isRequired,
+};
+
 export default onClickOutside(NavPane);

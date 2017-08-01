@@ -16,15 +16,18 @@
     "dev": "next",
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
-    "lint": "eslint ."
+    "lint": "eslint",
+    "lintall": "eslint ."
   },
   "main": "./server.js",
   "dependencies": {
+    "babel-eslint": "^7.2.3",
     "compression": "^1.7.0",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
     "font-awesome": "^4.7.0",
     "next": "beta",
+    "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "react-onclickoutside": "^6.4.0",

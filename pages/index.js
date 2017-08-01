@@ -6,6 +6,7 @@ import Router from 'next/router';
 import Link from 'next/link';
 
 import 'font-awesome/scss/font-awesome.scss';
+// eslint-disable-next-line no-unused-vars
 import stylesheet from '../styles/main.scss';
 
 import TopNav from '../containers/TopNav';

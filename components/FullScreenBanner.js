@@ -1,6 +1,7 @@
+import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 
-export default props => (
+const FullScreenBanner = props => (
   <section id="intro">
     <div id="intro-inner" className="text-center align-middle">
       <h1>{props.headline}</h1>
@@ -10,3 +11,14 @@ export default props => (
     </div>
   </section>
 );
+
+FullScreenBanner.propTypes = {
+  headline: PropTypes.string,
+  tagline: PropTypes.string,
+};
+FullScreenBanner.defaultProps = {
+  headline: '',
+  tagline: '',
+};
+
+export default FullScreenBanner;
