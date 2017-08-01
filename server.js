@@ -22,6 +22,7 @@ app.prepare()
     server.use('/_next/webpack/static', express.static(path.join(__dirname, '.build/static')));
 
     // Custom routes(s)
+    // ---------------------------------------------------------------
     // server.get('/blog/:slug', (req, res) => {
     //   const mergedQuery = Object.assign({}, req.query, req.params);
     //   return app.render(req, res, '/blog', mergedQuery);
@@ -31,7 +32,7 @@ app.prepare()
     //   const queryParams = { id: req.params.id }
     //   app.render(req, res, actualPage, queryParams)
     // })
-    //
+    // ---------------------------------------------------------------
 
     // Default route (not to be edited)
     server.get('*', (req, res) => handle(req, res));
