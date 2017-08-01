@@ -1,0 +1,10 @@
+.centered-modal .modal-dialog {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: auto;
+  @media(max-width: 991px) {
+    min-height: calc(100vh - 20px);
+  }
+}
