@@ -39,6 +39,9 @@
 ### Stop All Running PM2 Processes
 `pm2 stop all`
 
+### List All PM2 Processes
+`pm2 list`
+
 ## MongoDB
 ### Install MongoDB
   (Refer to [https://docs.mongodb.com/v3.0/tutorial/install-mongodb-on-ubuntu/](https://docs.mongodb.com/v3.0/tutorial/install-mongodb-on-ubuntu/))
