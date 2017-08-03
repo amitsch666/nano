@@ -102,34 +102,6 @@
 
   `mongo`
 
-### Automate Git
-
-  1. Locate the `.bashrc` file and open it for editing
-
-    `sudo vim ~/.bashrc`
-
-    `i`
-
-  2. Add the function to the script
-
-    `function cgit() {
-      git add .
-      git commit -a -m "$1"
-      git push
-    }`
-
-    `<esc>`
-
-    `:wq`
-
-  3. Make the command shell recognize the script
-
-    `source ~/.bashrc`
-
-  4. Run the new function
-
-    `mygit "<commit message>"`
-
 
 ### Set up git ssh: https://devmarketer.io/learn/set-ssh-key-github/
 
