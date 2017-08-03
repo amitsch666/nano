@@ -112,7 +112,7 @@
 
   2. Add the function to the script
 
-    `function mygit() {
+    `function cgit() {
       git add .
       git commit -a -m "$1"
       git push
