@@ -44,7 +44,7 @@ export default class TopNav extends Component {
         <NavbarToggler right onClick={this.toggle} />
         <Link prefetch href="/" passHref>
           <NavbarBrand>
-            <img src="/static/img/logo.svg" alt="TaleSpinners logo" />
+            <img src={`/static/img/${process.env.NAVBAR_LOGO}.svg`} alt="TaleSpinners logo" />
             <span id="tale">Tale</span><span id="spinners">Spinners</span>
           </NavbarBrand>
         </Link>

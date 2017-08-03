@@ -32,7 +32,7 @@ export default class IndexPage extends Component {
         <Head>
           <title>Project Nano | Home</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-          <link rel="stylesheet" type="text/css" href="_s/main.css" />
+          <link rel="stylesheet" type="text/css" href={`_s/${process.env.CSS}.min.css`} />
         </Head>
         <TopNav fat />
         <main className="container-fluid px-0">

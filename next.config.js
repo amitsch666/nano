@@ -56,11 +56,11 @@ module.exports = {
     );
     config.plugins.push(
       new ExtractTextPlugin({
-        filename: path.join('static', 'main.css'),
+        filename: path.join('static', `${process.env.CSS}.min.css`),
       }),
       new webpack.DefinePlugin({
-        'process.env.MY_NAME': JSON.stringify(process.env.MY_NAME),
-        'process.env.MY_CITY': JSON.stringify(process.env.MY_CITY),
+        'process.env.CSS': JSON.stringify(process.env.CSS),
+        'process.env.NAVBAR_LOGO': JSON.stringify(process.env.NAVBAR_LOGO),
       }),
     );
     return config;

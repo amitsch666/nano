@@ -20,6 +20,9 @@
 		src: url('../static/fonts/Moderna/MODERNA_.TTF');
 }
 
+::selection {
+	background-color: $selection;
+}
 button:focus,
 .btn:focus {
 	box-shadow: none;

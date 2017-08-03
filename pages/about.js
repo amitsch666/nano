@@ -13,7 +13,7 @@ export default () => (
     <Head>
       <title>About us</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      <link rel="stylesheet" type="text/css" href="_s/main.css" />
+      <link rel="stylesheet" type="text/css" href={`_s/${process.env.CSS}.min.css`} />
     </Head>
     <TopNav />
     <main className="container-fluid mt-6 px-0">
