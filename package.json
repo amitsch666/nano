@@ -29,6 +29,8 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "font-awesome": "^4.7.0",
     "glob": "^7.1.2",
+    "isomorphic-unfetch": "^2.0.0",
+    "mongodb": "^2.2.30",
     "next": "beta",
     "postcss-easy-import": "^2.1.0",
     "prop-types": "^15.5.10",

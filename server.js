@@ -14,7 +14,6 @@ app.prepare()
     const server = express();
 
     server.use(compression());
-
     server.use(favicon(path.join(__dirname, 'static', 'img', 'favicon.ico')));
 
     // Custom build resources aliases
