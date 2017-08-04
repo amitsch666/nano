@@ -8,6 +8,7 @@ const favicon = require('serve-favicon');
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const api = require('./lib/api');
 
 app.prepare()
   .then(() => {
@@ -32,6 +33,9 @@ app.prepare()
     //   app.render(req, res, actualPage, queryParams)
     // })
     // ---------------------------------------------------------------
+
+    // API router
+    server.use('/api', api);
 
     // Default route (not to be edited)
     server.get('*', (req, res) => handle(req, res));
