@@ -22,16 +22,26 @@ class NavPane extends Component {
     this.lastX = 0;
     this.state = {
       LoginModalState: false,
+      ClickOutside: true,
     };
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
   }
   toggleLoginModal() {
+    if (!this.state.LoginModalState) {
+      this.setState({
+        ClickOutside: false,
+      });
+    } else {
+      this.setState({
+        ClickOutside: true,
+      });
+    }
     this.setState({
       LoginModalState: !this.state.LoginModalState,
     });
   }
   handleClickOutside = () => {
-    if (this.props.isOpen) {
+    if (this.props.isOpen && this.state.ClickOutside) {
       this.props.toggle();
     }
   }
@@ -57,10 +67,11 @@ class NavPane extends Component {
         <div id="collapse-nav-head">
           <div id="collapse-nav-title" className="p-2">TaleSpinners</div>
           <Button outline color="secondary" onClick={this.props.toggle} className="m-auto">
-            <span aria-hidden="true">&times;</span>
+            <span className="cross-line line-a" aria-hidden="true" />
+            <span className="cross-line line-b" aria-hidden="true" />
           </Button>
         </div>
-        <Nav className="ml-auto" navbar>
+        <Nav className="ml-auto text-uppercase font-weight-bold" navbar>
           <NavItem className="px-1">
             <Form className="form-inline my-2 my-lg-0">
               <InputGroup>
@@ -84,7 +95,7 @@ class NavPane extends Component {
             <NavLink onClick={this.toggleLoginModal}><i className="fa fa-user" />Log In</NavLink>
           </NavItem>
         </Nav>
-        <LoginModal isOpen={this.state.LoginModalState} toggle={this.toggleLoginModal} className={'someclass'} modalClassName={'otherclass'} />
+        <LoginModal isOpen={this.state.LoginModalState} toggle={this.toggleLoginModal} className={'someclass'} modalClassName={'login-modal'} />
       </Collapse>
     );
   }

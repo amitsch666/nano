@@ -8,3 +8,64 @@
     min-height: calc(100vh - 20px);
   }
 }
+.modal-content {
+  border: none;
+  box-shadow: 0 0 50px -10px #222;
+}
+
+.login-modal .modal-header,
+.login-modal .modal-footer,
+.login-modal .modal-body {
+  background-color: $modal-header;
+  border: none;
+}
+.modal-brand-tagline {
+  opacity: .5;
+  font-weight: normal;
+}
+.login-modal button.close {
+  position: absolute;
+  top: .5rem;
+  right: .75rem;
+}
+
+.social-login {
+  color: white;
+}
+.social-login div {
+  cursor: pointer;
+}
+.social-login .fb {
+  background-color: $facebook;
+}
+.social-login .tw {
+  background-color: $twitter;
+}
+.social-login .gg {
+  background-color: $google;
+}
+.or p {
+  opacity: .5;
+  font-size: .75rem;
+}
+.login-form input {
+  padding-right: 2.5rem;
+}
+.login-form input:hover {
+  border-color: rgba(0,0,0,.15) !important;
+}
+.login-form span {
+  position: absolute;
+  z-index: 99;
+  top: 1.56rem;
+  right: .7rem;
+  opacity: .5;
+}
+// .login-form input {
+//   background-color: lighten($theme, 10%);
+//   transition: all 0.6s ease;
+// }
+// .login-form input:hover {
+//   background-color: $theme-bg;
+// 	transition: all 0.6s ease;
+// }

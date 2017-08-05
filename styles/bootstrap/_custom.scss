@@ -12,9 +12,16 @@ $themedark: material-color($theme-base, '700');
 $themedarker: material-color($theme-base, '800');
 $themedarkest: material-color($theme-base, '900');
 $themelight: material-color($theme-base, '600');
-$brand-part-1: material-color($theme-base, '300');
+$themelighter: material-color($theme-base, '300');
+$brand-part-1: material-color($theme-base, '500');
 $brand-part-2: material-color('orange', '500');
 $selection: $brand-part-2;
+$modal-header: material-color('orange', '800');
+$modal-header: $themelighter;
+
+$facebook: #3b5998;
+$twitter: #00b6f1;
+$google: #df4a32;
 
 $spacers: (
   0: (

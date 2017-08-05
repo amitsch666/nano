@@ -21,13 +21,13 @@ class Dropdown1 extends Component {
           <i className="fa fa-folder-open" />Dropdown
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem header>Header</DropdownItem>
+          <DropdownItem className="font-weight-bold text-uppercase" header>Header</DropdownItem>
           <hr className="my-0" />
-          <DropdownItem disabled>Action</DropdownItem>
+          <DropdownItem className="font-weight-bold text-uppercase" disabled>Action</DropdownItem>
           <hr className="my-0" />
-          <DropdownItem>Another Action</DropdownItem>
+          <DropdownItem className="font-weight-bold text-uppercase">Another Action</DropdownItem>
           <hr className="my-0" />
-          <DropdownItem>Another Action</DropdownItem>
+          <DropdownItem className="font-weight-bold text-uppercase">Another Action</DropdownItem>
         </DropdownMenu>
       </NavDropdown>
     );

@@ -8,7 +8,10 @@ const MyModal = props => (
     className={props.className}
     modalClassName={props.modalClassName}
   >
-    <ModalHeader toggle={props.toggle}>Modal title</ModalHeader>
+    <ModalHeader toggle={props.toggle}>
+      <img src={`/static/img/${process.env.NAVBAR_LOGO}.svg`} alt="TaleSpinners logo" />
+      <span id="tale">Tale</span><span id="spinners">Spinners</span>
+    </ModalHeader>
     <ModalBody>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
       incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud

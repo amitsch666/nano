@@ -1,0 +1,42 @@
+/* Inside navbar */
+.slimnav,
+.slimnav .navbar-brand,
+.slimnav .navbar-brand img {
+	transition: all 0.6s ease;
+}
+.navbar-brand {
+	font-size: 2rem;
+	line-height: 1;
+	transition: all 0.6s ease;
+	text-shadow: 1px 1px 2px #222;
+}
+.navbar-brand img {
+	margin-right: 0.7rem;
+	margin-top: -.3rem;
+	height: 2rem;
+	width: 2rem;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=1, OffY=1, Color='#222')";
+	filter: drop-shadow(1px 1px 2px #222);
+	transition: all 0.6s ease;
+}
+.tale, .spinners {
+	font-family: 'Londrina';
+	// text-shadow: 1px 1px 2px #222;
+}
+.tale {
+	color: $brand-part-1;
+}
+.spinners {
+	color: $brand-part-2;
+}
+
+// .navbar-brand img,
+// .modal-brand img {
+// 	-ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=1, OffY=1, Color='#222')";
+// 	filter: drop-shadow(1px 1px 2px #222);
+// }
+
+/* Inside modals */
+.modal-brand img {
+	height: 2.5rem;
+}
