@@ -1,6 +1,7 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button, UncontrolledTooltip } from 'reactstrap';
-import fetch from 'isomorphic-unfetch'
+import fetch from 'isomorphic-unfetch';
 
 import Head from 'next/head';
 import Router from 'next/router';
@@ -46,30 +47,31 @@ export default class IndexPage extends Component {
             <strong>Hello</strong> world!
           </UncontrolledTooltip>
           <hr />
-            <ul>
-              {this.props.shows.map(({show}) => (
-                <li key={show.id}>
-                  <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
-                    <a>{show.name}</a>
-                  </Link>
-                </li>
-              ))}
-            </ul>
+          <ul>
+            {this.props.shows.map(({ show }) => (
+              <li key={show.id}>
+                <Link as={`/p/${show.id}`} href={`/post?id=${show.id}`}>
+                  <a>{show.name}</a>
+                </Link>
+              </li>
+            ))}
+          </ul>
           <Button color="danger" size="lg" onClick={this.toggleModal1}>Open modal</Button>
-          <MyModal isOpen={this.state.modal1} toggle={this.toggleModal1} className={'someclass'} modalClassName={'centered-modal'} /> {/* value in className gets added to .modal-dialog */}
+          <MyModal isOpen={this.state.modal1} toggle={this.toggleModal1} className={'someclass'} modalClassName={'otherclass'} /> {/* value in className gets added to .modal-dialog */}
         </main>
       </div>
     );
   }
 }
 
+IndexPage.propTypes = {
+  shows: PropTypes.arrayOf(PropTypes.string).isRequired,
+};
+
 IndexPage.getInitialProps = async function () {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman')
-  const data = await res.json()
-
-  console.log(`Show data fetched. Count: ${data.length}`)
-
+  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+  const data = await res.json();
   return {
-    shows: data
-  }
-}
+    shows: data,
+  };
+};

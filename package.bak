@@ -34,6 +34,8 @@
     "font-awesome": "^4.7.0",
     "glob": "^7.1.2",
     "isomorphic-unfetch": "^2.0.0",
+    "mongodb": "^2.2.30",
+    "mongoose": "^4.11.5",
     "next": "beta",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
@@ -66,3 +68,5 @@
     "url-loader": "^0.5.9"
   }
 }
+
+yarn add mongoose isomorphic-unfetch mongodb 

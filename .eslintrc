@@ -1,9 +1,9 @@
 {
-  # "parser": "babel-eslint",
+  "parser": "babel-eslint",
   "extends": "airbnb",
   "env": {"browser": true},
   "rules": {
-  	"no-unused-vars": ["error", {"argIgnorePattern":"next"}],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "next" }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/react-in-jsx-scope": 0,
   }

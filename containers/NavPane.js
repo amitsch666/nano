@@ -14,11 +14,21 @@ import onClickOutside from 'react-onclickoutside';
 
 import Dropdown1 from './Dropdown1';
 import Dropdown2 from './Dropdown2';
+import LoginModal from '../components/LoginModal';
 
 class NavPane extends Component {
   constructor(props) {
     super(props);
     this.lastX = 0;
+    this.state = {
+      LoginModalState: false,
+    };
+    this.toggleLoginModal = this.toggleLoginModal.bind(this);
+  }
+  toggleLoginModal() {
+    this.setState({
+      LoginModalState: !this.state.LoginModalState,
+    });
   }
   handleClickOutside = () => {
     if (this.props.isOpen) {
@@ -70,10 +80,11 @@ class NavPane extends Component {
           </NavItem>
           <Dropdown1 />
           <Dropdown2 />
-          <NavItem className="py-1">
-            <NavLink href="/login"><i className="fa fa-user" />Sign In</NavLink>
+          <NavItem className="py-1 login loggedout">
+            <NavLink onClick={this.toggleLoginModal}><i className="fa fa-user" />Log In</NavLink>
           </NavItem>
         </Nav>
+        <LoginModal isOpen={this.state.LoginModalState} toggle={this.toggleLoginModal} className={'someclass'} modalClassName={'otherclass'} />
       </Collapse>
     );
   }
