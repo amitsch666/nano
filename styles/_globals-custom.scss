@@ -40,6 +40,32 @@
 ::selection {
 	background-color: $selection;
 }
+
+a {
+	color: $link;
+}
+a:focus,
+a:hover {
+	color: $link;
+	text-decoration: none;
+	opacity: .8;
+}
+a:visited {
+	color: $link;
+}
+a.dotted-line {
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+}
+a.underline-on-hover:focus,
+a.underline-on-hover:hover {
+	text-decoration: underline;
+}
+a.color-unchanged:focus,
+a.color-unchanged:hover {
+	opacity: 1;
+}
+
 button:focus,
 .btn:focus {
 	box-shadow: none;

@@ -1,0 +1,68 @@
+// Bootstrap overrides (imported into bootstrap/_custom.scss)
+//
+// Copy variables from `_variables.scss` to this file to override default values
+// without modifying source files.
+
+@import 'node_modules/sass-material-colors/sass/sass-material-colors';
+
+$theme-grayscale-base: 'grey';
+$theme-color-base: 'orange';
+
+$brand-logo-color: material-color('cyan', '500'); // hex value to be used in static/img/logo.svg
+
+$theme-grayscale: material-color($theme-grayscale-base, '500');
+$theme-color: material-color($theme-color-base, '500');
+$selection: material-color($theme-color-base, '400');
+$brand-part-1: material-color($theme-grayscale-base, '500');
+$brand-part-2: material-color($theme-color-base, '500');
+$link: material-color($theme-color-base, '800');
+$modal-bg: material-color($theme-color-base, '100');
+$slimnav-bg: material-color($theme-grayscale-base, '700');
+$navpane-header-bg: material-color($theme-grayscale-base, '600');
+$input-grayscale: material-color($theme-grayscale-base, '400');
+$input-grayscale-hover: material-color($theme-grayscale-base, '50');
+$input-box-icon: material-color($theme-grayscale-base, '600');
+$navitem-hover: material-color($theme-grayscale-base, '600');
+$navitem-active: material-color($theme-grayscale-base, '800');
+$navitem-dropdown-bg: material-color($theme-grayscale-base, '800');
+$navpane-bg: material-color($theme-grayscale-base, '700');
+$navpane-item-dropdown-hover: material-color($theme-grayscale-base, '800');
+$tooltip-bg: material-color($theme-color-base, '700');
+$tooltip-arrow-color: $tooltip-bg;
+
+$facebook: #3b5998;
+$twitter: #00b6f1;
+$google: #df4a32;
+
+$spacers: (
+  0: (
+    x: 0,
+    y: 0
+  ),
+  1: (
+    x: ($spacer-x * .25),
+    y: ($spacer-y * .25)
+  ),
+  2: (
+    x: ($spacer-x * .5),
+    y: ($spacer-y * .5)
+  ),
+  3: (
+    x: $spacer-x,
+    y: $spacer-y
+  ),
+  4: (
+    x: ($spacer-x * 1.5),
+    y: ($spacer-y * 1.5)
+  ),
+	5: (
+    x: ($spacer-x * 3),
+    y: ($spacer-y * 3)
+  ),
+	6: (
+    x: ($spacer-x * 3.53),
+    y: ($spacer-y * 3.53)
+  )
+);
+
+$enable-rounded:   false;

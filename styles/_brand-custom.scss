@@ -21,7 +21,6 @@
 }
 .tale, .spinners {
 	font-family: 'Londrina';
-	// text-shadow: 1px 1px 2px #222;
 }
 .tale {
 	color: $brand-part-1;
@@ -30,13 +29,10 @@
 	color: $brand-part-2;
 }
 
-// .navbar-brand img,
-// .modal-brand img {
-// 	-ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=1, OffY=1, Color='#222')";
-// 	filter: drop-shadow(1px 1px 2px #222);
-// }
-
 /* Inside modals */
 .modal-brand img {
-	height: 2.5rem;
+	height: 2rem;
+}
+.modal-brand .h2 {
+	margin-top: -.5rem;
 }

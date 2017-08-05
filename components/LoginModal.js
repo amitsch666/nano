@@ -13,24 +13,24 @@ const LoginModal = props => (
         <div className="d-flex justify-content-center mb-2">
           <img src={`/static/img/${process.env.NAVBAR_LOGO}.svg`} alt="TaleSpinners logo" />
         </div>
-        <div className="d-flex justify-content-center h1">
+        <div className="d-flex justify-content-center h2">
           <span className="tale">Tale</span><span className="spinners">Spinners</span>
         </div>
-        <div className="modal-brand-tagline text-center lead">Just log in and start spinning...</div>
+        <div className="modal-brand-tagline text-center">Just log in and start spinning...</div>
       </div>
       <button type="button" className="close" onClick={props.toggle} aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <ModalBody className="pt-0">
+    <ModalBody className="py-0">
       <div className="row social-login">
-        <div className="col col-xs-4 d-flex m-2 p-4 fb">
+        <div className="col col-xs-4 d-flex m-2 p-3 fb">
           <i className="fa fa-lg fa-facebook m-auto"></i>
         </div>
-        <div className="col col-xs-4 d-flex m-2 p-4 tw">
+        <div className="col col-xs-4 d-flex m-2 p-3 tw">
           <i className="fa fa-lg fa-twitter m-auto"></i>
         </div>
-        <div className="col col-xs-4 d-flex m-2 p-4 gg">
+        <div className="col col-xs-4 d-flex m-2 p-3 gg">
           <i className="fa fa-lg fa-google m-auto"></i>
         </div>
       </div>
@@ -38,20 +38,22 @@ const LoginModal = props => (
         <p className="m-auto text-uppercase font-weight-bold">OR</p>
       </div>
       <form className="login-form">
-        <div className="input-group input-group-lg">
+        <div className="input-group input-group">
           <input type="text" className="form-control my-2" id="login-userid" placeholder="Your username or email" />
-          <span className="fa fa-lg fa-user"></span>
+          <span className="fa fa fa-user"></span>
         </div>
-        <div className="input-group input-group-lg">
+        <div className="input-group input-group">
           <input type="password" className="form-control my-2" id="login-password" placeholder="Password" />
-          <span className="fa fa-lg fa-key"></span>
+          <span className="fa fa fa-key"></span>
         </div>
-        <button type="submit" className="btn btn-lg btn-primary w-100 my-2">LOG IN</button>
+        <button type="submit" className="btn btn btn-primary w-100 my-2">LOGIN</button>
       </form>
     </ModalBody>
-    <ModalFooter>
-      <Button color="primary" onClick={props.toggle}>Do Something</Button>{' '}
-      <Button color="secondary" onClick={props.toggle}>Cancel</Button>
+    <ModalFooter className="pt-0">
+    <div className="p-1">
+      <a className="small color-unchanged p-2" href="#">Forgot password?</a>
+      <a className="small color-unchanged p-2" href="#">New user?</a>
+    </div>
     </ModalFooter>
   </Modal>
 );
