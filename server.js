@@ -33,13 +33,8 @@ app.prepare()
     server.use(cookieParser());
 
     // ---------------------------------------------------------------
-    // Configure express-session
+    // Configure express-session with Redis store
     // ---------------------------------------------------------------
-    // server.use(expressSession({
-    //   secret: 'some cats are black',
-    //   resave: false,
-    //   saveUninitialized: false,
-    // }));
     server.use(expressSession({
       secret: 'some cats are black',
       // create new redis store.
