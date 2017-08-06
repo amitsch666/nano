@@ -85,7 +85,7 @@ ul.navbar-nav {
 	top: 33%;
 	right: 1rem;
 	z-index: 99;
-	color: $input-box-icon;
+	opacity: .5;
 }
 .navbar-toggleable-md .navbar-nav form input:hover {
 	background-color: $input-grayscale-hover;
@@ -189,8 +189,8 @@ ul.navbar-nav {
 	.nav-item {
 		border-top: 1px solid hsla(0,0%,100%,0.2);
 		border-bottom: 1.5px solid hsla(0,0%,100%,0);
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
 		padding-left: 1.5rem;
 	}
 	.nav-item:last-child {
@@ -205,6 +205,11 @@ ul.navbar-nav {
 	.show .dropdown-menu {
 		border-bottom: 0;
 		margin-left: -1.5rem;
+	}
+	.dropdown-header,
+	.dropdown-item {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
 	}
 	.dropdown-item {
 		padding-left: 2.5rem;

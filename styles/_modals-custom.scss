@@ -45,6 +45,19 @@
 .social-login .gg {
   background-color: $google;
 }
+.social-login .fb:hover,
+.social-login .fb:focus, {
+  background-color: darken($facebook, 10%);
+}
+.social-login .tw:hover,
+.social-login .tw:focus, {
+  background-color: darken($twitter, 10%);
+}
+.social-login .gg:hover,
+.social-login .gg:focus, {
+  background-color: darken($google, 10%);
+}
+
 .or p {
   opacity: .5;
   font-size: .75rem;

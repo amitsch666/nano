@@ -5,22 +5,42 @@ const next = require('next');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const expressSession = require('express-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const favicon = require('serve-favicon');
 
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+const User = require('./models/user');
 const api = require('./lib/api/index');
+const users = require('./lib/api/users');
+const authentication = require('./lib/api/authentication');
 
 app.prepare()
   .then(() => {
     const server = express();
+
+    // Connect to Mongoose
+    // mongoose.connection.openUri(process.env.MONGO_PATH);
+    mongoose.connect(process.env.MONGO_PATH, {
+      useMongoClient: true
+    });
 
     server.use(compression());
     server.use(favicon(path.join(__dirname, 'static', 'img', 'favicon.ico')));
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({ extended: false }));
     server.use(cookieParser());
+    server.use(expressSession({
+      secret: 'some cats are black',
+      resave: false,
+      saveUninitialized: false,
+    }));
+    server.use(passport.initialize());
+    server.use(passport.session());
 
     // Custom build resources aliases
     server.use('/_s', express.static(path.join(__dirname, '.build/static')));
@@ -39,10 +59,17 @@ app.prepare()
     // })
     // API router
     server.use('/api', api);
+    server.use('/api/users', users);
+    server.use('/api/authentication', authentication);
     // ---------------------------------------------------------------
 
     // Default route (not to be edited)
     server.get('*', (req, res) => handle(req, res));
+
+    // Configure Passport
+    passport.use(new LocalStrategy(User.authenticate()));
+    passport.serializeUser(User.serializeUser());
+    passport.deserializeUser(User.deserializeUser());
 
     // Normalize a port into a number, string, or false.
     function normalizePort(val) {
