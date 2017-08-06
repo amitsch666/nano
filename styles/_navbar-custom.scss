@@ -75,10 +75,10 @@ ul.navbar-nav {
 }
 
 .navbar-toggleable-md .navbar-nav form input {
-	border-radius: 3rem;
+	height: inherit;
+	min-height: inherit;
 	padding-right: 2.2rem;
 	background-color: $input-grayscale;
-	transition: all 0.6s ease;
 }
 .navbar-toggleable-md .navbar-nav form i.fa-search {
 	position:absolute;
@@ -89,7 +89,6 @@ ul.navbar-nav {
 }
 .navbar-toggleable-md .navbar-nav form input:hover {
 	background-color: $input-grayscale-hover;
-	transition: all 0.6s ease;
 }
 .login a {
 	cursor: pointer;

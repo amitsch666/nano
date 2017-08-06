@@ -39,12 +39,12 @@ const LoginModal = props => (
       </div>
       <form className="login-form">
         <div className="input-group input-group">
-          <input type="text" className="form-control my-2" id="login-userid" placeholder="Your username or email" />
-          <span className="fa fa fa-user"></span>
+          <input type="text" className="form-control my-2 input-on-colorbg" id="login-userid" placeholder="Your username or email" />
+          <span className="fa fa fa-user input-box-icon"></span>
         </div>
         <div className="input-group input-group">
-          <input type="password" className="form-control my-2" id="login-password" placeholder="Password" />
-          <span className="fa fa fa-key"></span>
+          <input type="password" className="form-control my-2 input-on-colorbg" id="login-password" placeholder="Password" />
+          <span className="fa fa fa-key input-box-icon"></span>
         </div>
         <button type="submit" className="btn btn btn-primary w-100 my-2">LOGIN</button>
       </form>

@@ -71,19 +71,50 @@ button:focus,
 	box-shadow: none;
 	outline: none;
 }
-input:focus {
-	border-color: inherit !important;
-}
+
 *:focus {
 	outline: none;
 }
 
-// html,
-// body,
-// body>div,
-// div#__next,
-// div#__next>div,
-// div.masterdiv,
-// main {
-// 	height: 100%;
-// }
+/* Input boxes */
+input.form-control {
+	height: 3rem;
+	min-height: 3rem;
+	padding-right: 2rem;
+	box-shadow: none;
+	color: $input-text;
+	background-color: $input-color;
+	transition: all 0.4s ease;
+}
+input.form-control:hover,
+input.form-control:focus,
+input.form-control:active {
+	background-color: white;
+	transition: all 0.4s ease;
+}
+.input-on-colorbg,
+.input-on-colorbg:hover,
+.input-on-colorbg:focus,
+.input-on-colorbg:active {
+  border-right: 1px solid white;
+  border-bottom: 1px solid white;
+  border-left: 1px solid $input-color-top-left-border;
+  border-top: 1px solid $input-color-top-left-border;
+}
+.input-rounded,
+.input-rounded:hover,
+.input-rounded:focus,
+.input-rounded:active {
+	border-radius: 1.5rem;
+	border-right: 1px solid $input-rounded-bottom-right-border;
+	border-bottom: 1px solid $input-rounded-bottom-right-border;
+	border-left: 1px solid $input-rounded-top-left-border;
+  border-top: 1px solid $input-rounded-top-left-border;
+}
+.input-box-icon {
+	position: absolute;
+  z-index: 99;
+  top: 1.5rem;
+  right: .7rem;
+  opacity: .5;
+}

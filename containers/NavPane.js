@@ -80,6 +80,7 @@ class NavPane extends Component {
                   type="text"
                   name="search"
                   id="search"
+                  className="input-rounded"
                   placeholder="Search..."
                 />
                 <i className="fa fa-search fa-lg" />
