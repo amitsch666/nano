@@ -5,7 +5,7 @@ const next = require('next');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+const { mongoose } = require('./dbconfig')
 const expressSession = require('express-session');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -22,12 +22,6 @@ const authentication = require('./lib/api/authentication');
 app.prepare()
   .then(() => {
     const server = express();
-
-    // Connect to Mongoose
-    // mongoose.connection.openUri(process.env.MONGO_PATH);
-    mongoose.connect(process.env.MONGO_PATH, {
-      useMongoClient: true
-    });
 
     server.use(compression());
     server.use(favicon(path.join(__dirname, 'static', 'img', 'favicon.ico')));
