@@ -5,12 +5,15 @@ const next = require('next');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const { mongoose } = require('./dbconfig')
+const { mongoose } = require('./dbconfig');
+const redis   = require("redis");
 const expressSession = require('express-session');
+const redisStore = require('connect-redis')(expressSession);
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const favicon = require('serve-favicon');
 
+const client  = redis.createClient();
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -28,18 +31,44 @@ app.prepare()
     server.use(bodyParser.json());
     server.use(bodyParser.urlencoded({ extended: false }));
     server.use(cookieParser());
+
+    // ---------------------------------------------------------------
+    // Configure express-session
+    // ---------------------------------------------------------------
+    // server.use(expressSession({
+    //   secret: 'some cats are black',
+    //   resave: false,
+    //   saveUninitialized: false,
+    // }));
     server.use(expressSession({
       secret: 'some cats are black',
-      resave: false,
+      // create new redis store.
+      store: new redisStore({
+        host: process.env.REDIS_HOST,
+        port: process.env.REDIS_PORT,
+        client: client,
+        ttl :  260
+      }),
       saveUninitialized: false,
+      resave: false
     }));
+    // ---------------------------------------------------------------
+
+    // ---------------------------------------------------------------
+    // Passport initialization middleware
+    // ---------------------------------------------------------------
     server.use(passport.initialize());
     server.use(passport.session());
+    // ---------------------------------------------------------------
 
+    // ---------------------------------------------------------------
     // Custom build resources aliases
+    // ---------------------------------------------------------------
     server.use('/_s', express.static(path.join(__dirname, '.build/static')));
     server.use('/_next/webpack/static', express.static(path.join(__dirname, '.build/static')));
+    // ---------------------------------------------------------------
 
+    // ---------------------------------------------------------------
     // Custom routes(s)
     // ---------------------------------------------------------------
     // server.get('/blog/:slug', (req, res) => {
@@ -51,7 +80,11 @@ app.prepare()
     //   const queryParams = { id: req.params.id }
     //   app.render(req, res, actualPage, queryParams)
     // })
+    // ---------------------------------------------------------------
+
+    // ---------------------------------------------------------------
     // API router
+    // ---------------------------------------------------------------
     server.use('/api', api);
     server.use('/api/users', users);
     server.use('/api/authentication', authentication);
@@ -60,10 +93,13 @@ app.prepare()
     // Default route (not to be edited)
     server.get('*', (req, res) => handle(req, res));
 
+    // ---------------------------------------------------------------
     // Configure Passport
+    // ---------------------------------------------------------------
     passport.use(new LocalStrategy(User.authenticate()));
     passport.serializeUser(User.serializeUser());
     passport.deserializeUser(User.deserializeUser());
+    // ---------------------------------------------------------------
 
     // Normalize a port into a number, string, or false.
     function normalizePort(val) {
