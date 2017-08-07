@@ -5,15 +5,14 @@ const next = require('next');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const { mongoose } = require('./dbconfig');
-const redis   = require("redis");
+const redis = require('redis');
 const expressSession = require('express-session');
-const redisStore = require('connect-redis')(expressSession);
+const RedisStore = require('connect-redis')(expressSession);
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const favicon = require('serve-favicon');
 
-const client  = redis.createClient();
+const client = redis.createClient();
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -37,15 +36,15 @@ app.prepare()
     // ---------------------------------------------------------------
     server.use(expressSession({
       secret: 'some cats are black',
-      // create new redis store.
-      store: new redisStore({
+      // create new Redis store.
+      store: new RedisStore({
         host: process.env.REDIS_HOST,
         port: process.env.REDIS_PORT,
-        client: client,
-        ttl :  260
+        client,
+        ttl: 260,
       }),
       saveUninitialized: false,
-      resave: false
+      resave: false,
     }));
     // ---------------------------------------------------------------
 

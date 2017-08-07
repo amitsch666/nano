@@ -68,7 +68,7 @@ IndexPage.propTypes = {
   shows: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-IndexPage.getInitialProps = async function () {
+IndexPage.getInitialProps = async function getshows() {
   const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
   const data = await res.json();
   return {

@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Modal, ModalBody, ModalFooter } from 'reactstrap';
 
 const LoginModal = props => (
   <Modal
@@ -25,13 +25,13 @@ const LoginModal = props => (
     <ModalBody className="py-0">
       <div className="row social-login">
         <div className="col col-xs-4 d-flex m-2 p-3 fb">
-          <i className="fa fa-lg fa-facebook m-auto"></i>
+          <i className="fa fa-lg fa-facebook m-auto" />
         </div>
         <div className="col col-xs-4 d-flex m-2 p-3 tw">
-          <i className="fa fa-lg fa-twitter m-auto"></i>
+          <i className="fa fa-lg fa-twitter m-auto" />
         </div>
         <div className="col col-xs-4 d-flex m-2 p-3 gg">
-          <i className="fa fa-lg fa-google m-auto"></i>
+          <i className="fa fa-lg fa-google m-auto" />
         </div>
       </div>
       <div className="or row p-2">
@@ -40,20 +40,20 @@ const LoginModal = props => (
       <form className="login-form">
         <div className="input-group input-group">
           <input type="text" className="form-control my-2 input-on-colorbg" id="login-userid" placeholder="Your username or email" />
-          <span className="fa fa fa-user input-box-icon"></span>
+          <span className="fa fa fa-user input-box-icon" />
         </div>
         <div className="input-group input-group">
           <input type="password" className="form-control my-2 input-on-colorbg" id="login-password" placeholder="Password" />
-          <span className="fa fa fa-key input-box-icon"></span>
+          <span className="fa fa fa-key input-box-icon" />
         </div>
         <button type="submit" className="btn btn btn-primary w-100 my-2">LOGIN</button>
       </form>
     </ModalBody>
     <ModalFooter className="pt-0">
-    <div className="p-1">
-      <a className="small color-unchanged p-2" href="#">Forgot password?</a>
-      <a className="small color-unchanged p-2" href="#">New user?</a>
-    </div>
+      <div className="p-1">
+        <a className="small color-unchanged p-2" href="/forgot">Forgot password?</a>
+        <a className="small color-unchanged p-2" href="/signup">New user?</a>
+      </div>
     </ModalFooter>
   </Modal>
 );
