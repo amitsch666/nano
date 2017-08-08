@@ -13,6 +13,13 @@ import stylesheet from '../styles/main.scss';
 import TopNav from '../containers/TopNav';
 
 export default class AboutPage extends Component {
+  static getInitialProps = async function getshows() {
+    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+    const data = await res.json();
+    return {
+      shows: data,
+    };
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -69,12 +76,4 @@ export default class AboutPage extends Component {
 
 AboutPage.propTypes = {
   shows: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
-AboutPage.getInitialProps = async function getshows() {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
-  const data = await res.json();
-  return {
-    shows: data,
-  };
 };

@@ -15,6 +15,13 @@ import MyModal from '../components/MyModal';
 import FullScreenBanner from '../components/FullScreenBanner';
 
 export default class IndexPage extends Component {
+  static getInitialProps = async function getshows() {
+    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+    const data = await res.json();
+    return {
+      shows: data,
+    };
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -65,12 +72,4 @@ export default class IndexPage extends Component {
 
 IndexPage.propTypes = {
   shows: PropTypes.arrayOf(PropTypes.string).isRequired,
-};
-
-IndexPage.getInitialProps = async function getshows() {
-  const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
-  const data = await res.json();
-  return {
-    shows: data,
-  };
 };
