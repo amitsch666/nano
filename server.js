@@ -31,8 +31,7 @@ app.prepare()
     server.use(bodyParser.urlencoded({ extended: false }));
     server.use(cookieParser());
 
-    // ---------------------------------------------------------------
-    // Configure express-session with Redis store
+    // Express Session middleware
     // ---------------------------------------------------------------
     server.use(expressSession({
       secret: 'some cats are black',
@@ -48,21 +47,18 @@ app.prepare()
     }));
     // ---------------------------------------------------------------
 
-    // ---------------------------------------------------------------
     // Passport initialization middleware
     // ---------------------------------------------------------------
     server.use(passport.initialize());
     server.use(passport.session());
     // ---------------------------------------------------------------
 
-    // ---------------------------------------------------------------
     // Custom build resources aliases
     // ---------------------------------------------------------------
     server.use('/_s', express.static(path.join(__dirname, '.build/static')));
     server.use('/_next/webpack/static', express.static(path.join(__dirname, '.build/static')));
     // ---------------------------------------------------------------
 
-    // ---------------------------------------------------------------
     // Custom routes(s)
     // ---------------------------------------------------------------
     // server.get('/blog/:slug', (req, res) => {
@@ -76,7 +72,6 @@ app.prepare()
     // })
     // ---------------------------------------------------------------
 
-    // ---------------------------------------------------------------
     // API router
     // ---------------------------------------------------------------
     server.use('/api', api);
@@ -87,7 +82,6 @@ app.prepare()
     // Default route (not to be edited)
     server.get('*', (req, res) => handle(req, res));
 
-    // ---------------------------------------------------------------
     // Configure Passport
     // ---------------------------------------------------------------
     passport.use(new LocalStrategy(User.authenticate()));

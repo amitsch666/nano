@@ -2,7 +2,6 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, UncontrolledTooltip } from 'reactstrap';
 import fetch from 'isomorphic-unfetch';
-
 import Head from 'next/head';
 import Router from 'next/router';
 import Link from 'next/link';
@@ -39,7 +38,7 @@ export default class IndexPage extends Component {
         <TopNav fat />
         <main className="container-fluid px-0">
           <FullScreenBanner headline={'Welcome home, Spinners!'} tagline={'This is just a random tagline, don\'t worry'} />
-          <Button type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</Button>
+          <Button type="button" color="success" size="lg" onClick={() => Router.push('/page1')}>Page1</Button>
           <Link prefetch href="/about"><a>About Page</a></Link>
           <hr />
           <p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
