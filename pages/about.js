@@ -34,7 +34,7 @@ export default class AboutPage extends Component {
   }
   render() {
     return (
-      <div className={'masterdiv'}>
+      <div className="masterdiv">
         <Head>
           <title>About Us | Project Nano</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />

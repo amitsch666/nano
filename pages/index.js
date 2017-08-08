@@ -36,7 +36,7 @@ export default class IndexPage extends Component {
   }
   render() {
     return (
-      <div className={'masterdiv'}>
+      <div className="masterdiv-with-fatnav">
         <Head>
           <title>Project Nano | Home</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
