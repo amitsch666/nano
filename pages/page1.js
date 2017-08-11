@@ -1,10 +1,12 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
 import withRedux from 'next-redux-wrapper';
 import Head from 'next/head';
 import Router from 'next/router';
 import Link from 'next/link';
 import axios from 'axios';
+// import Cookies from 'universal-cookie';
 
 import 'font-awesome/scss/font-awesome.scss';
 // eslint-disable-next-line no-unused-vars
@@ -12,30 +14,31 @@ import stylesheet from '../styles/main.scss';
 
 import makeStore from '../store';
 import TopNav from '../containers/TopNav';
-import MyModal from '../components/MyModal';
+import sessdata from '../lib/session-data';
 
 class Page1 extends Component {
-  static getInitialProps({ store, isServer, pathname, query }) {
+  static getInitialProps({ store, req }) {
     store.dispatch({ type: 'FOO', payload: 'foo' }); // component will be able to read from store's state when rendered
-    return { custom: 'custom' }; // you can pass some custom props to component from here
+    const activeuser = sessdata(req);
+    return { custom: 'test', resvals: activeuser };
   }
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       username: '',
       email: '',
       password: '',
       passwordConfirmation: '',
-    }
+    };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
   }
-  onChange(e){
+  onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
-  onSubmit(e){
+  onSubmit(e) {
     e.preventDefault();
     axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
       .then(function (response) {
@@ -56,6 +59,7 @@ class Page1 extends Component {
         </Head>
         <TopNav />
         <main>
+          <p>{this.props.resvals}</p> {/* retrieve res.locals.user (WIP) */}
           <Button type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</Button>
           <Link prefetch href="/"><a>Home Page</a></Link>
           <form onSubmit={this.onSubmit} className="col col-md-4 offset-md-4">
@@ -89,4 +93,9 @@ class Page1 extends Component {
 }
 
 Page1 = withRedux(makeStore, state => ({ foo: state.foo }))(Page1);
+
+Page1.propTypes = {
+  resvals: PropTypes.string.isRequired,
+};
+
 export default Page1;

@@ -13,15 +13,15 @@ import stylesheet from '../styles/main.scss';
 import TopNav from '../containers/TopNav';
 import MyModal from '../components/MyModal';
 import FullScreenBanner from '../components/FullScreenBanner';
+import sessdata from '../lib/session-data';
 
 export default class IndexPage extends Component {
-  static getInitialProps = async function getshows() {
-    const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
-    const data = await res.json();
-    return {
-      shows: data,
-    };
-  };
+  static async getInitialProps({ req }) {
+    const getshows = await fetch('https://api.tvmaze.com/search/shows?q=batman');
+    const shows = await getshows.json();
+    const resvals = sessdata(req);
+    return { shows, resvals };
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -47,6 +47,7 @@ export default class IndexPage extends Component {
           <FullScreenBanner headline={'Welcome home, Spinners!'} tagline={'This is just a random tagline, don\'t worry'} />
           <Button type="button" color="success" size="lg" onClick={() => Router.push('/page1')}>Page1</Button>
           <Link prefetch href="/about"><a>About Page</a></Link>
+          <p>{this.props.resvals}</p>
           <hr />
           <p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
           <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
@@ -72,4 +73,5 @@ export default class IndexPage extends Component {
 
 IndexPage.propTypes = {
   shows: PropTypes.arrayOf(PropTypes.string).isRequired,
+  resvals: PropTypes.string.isRequired,
 };

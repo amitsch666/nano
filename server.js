@@ -34,7 +34,7 @@ app.prepare()
     // Express Session middleware
     // ---------------------------------------------------------------
     server.use(expressSession({
-      secret: 'some cats are black',
+      secret: process.env.SESSION_SECRET,
       // create new Redis store.
       store: new RedisStore({
         host: process.env.REDIS_HOST,
@@ -80,7 +80,11 @@ app.prepare()
     // ---------------------------------------------------------------
 
     // Default route (not to be edited)
-    server.get('*', (req, res) => handle(req, res));
+    server.get('*', (req, res) => {
+      res.locals.user = req.user || null;
+      // console.log(res.locals.user);
+      handle(req, res);
+    });
 
     // Configure Passport
     // ---------------------------------------------------------------

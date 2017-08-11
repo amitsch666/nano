@@ -14,7 +14,7 @@ import onClickOutside from 'react-onclickoutside';
 
 import Dropdown1 from './Dropdown1';
 import Dropdown2 from './Dropdown2';
-import LoginModal from '../components/LoginModal';
+import LoginModal from './LoginModal';
 
 class NavPane extends Component {
   constructor(props) {
