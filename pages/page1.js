@@ -17,18 +17,23 @@ import TopNav from '../containers/TopNav';
 import sessdata from '../lib/session-data';
 
 class Page1 extends Component {
-  static getInitialProps({ store, req }) {
-    store.dispatch({ type: 'FOO', payload: 'foo' }); // component will be able to read from store's state when rendered
-    const activeuser = sessdata(req);
-    return { custom: 'test', resvals: activeuser };
+  static getInitialProps({ store, isServer, res, req }) {
+		if(isServer) {
+			if(res) {
+				if(res.locals) {
+					if (res.locals.user) {
+						store.dispatch({ type: 'USER_FIRSTNAME', payload: res.locals.user.firstName }); // component will be able to read from store's state when rendered
+					}
+				}
+			}
+		}
+    return { prop1: 'test', prop2: 'test2' };
   }
   constructor(props) {
     super(props);
     this.state = {
       username: '',
-      email: '',
       password: '',
-      passwordConfirmation: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -39,11 +44,12 @@ class Page1 extends Component {
     });
   }
   onSubmit(e) {
+		const self = this;
     e.preventDefault();
     axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
       .then(function (response) {
-        console.log(response);
-        console.log('First: ', response.data.firstName);
+				// dispatch user data to the store
+				self.props.add_firstname(response.data.firstName);
       })
       .catch(function (error) {
         console.log(error);
@@ -59,40 +65,35 @@ class Page1 extends Component {
         </Head>
         <TopNav />
         <main>
-          <p>{this.props.resvals}</p> {/* retrieve res.locals.user (WIP) */}
+          <p>{this.props.user_firstname}</p>
           <Button type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</Button>
           <Link prefetch href="/"><a>Home Page</a></Link>
           <form onSubmit={this.onSubmit} className="col col-md-4 offset-md-4">
-            <h1>Test Login</h1>
             <div className="form-group">
               <label className="control-label">Username</label>
               <input type="text" name="username" className="form-control" value={this.state.username} onChange={this.onChange} />
-            </div>
-            <div className="form-group">
-              <label className="control-label">Email</label>
-              <input type="email" name="email" className="form-control" value={this.state.email} onChange={this.onChange} />
             </div>
             <div className="form-group">
               <label className="control-label">Password</label>
               <input type="password" name="password" className="form-control" value={this.state.password} onChange={this.onChange} />
             </div>
             <div className="form-group">
-              <label className="control-label">Confirm Password</label>
-              <input type="password" name="passwordConfirmation" className="form-control" value={this.state.passwordConfirmation} onChange={this.onChange} />
-            </div>
-            <div className="form-group">
               <button className="btn btn-primary btn-lg">Sign Up</button>
             </div>
           </form>
-          <div>Prop from Redux {this.props.foo}</div>
-          <div>Prop from getInitialProps {this.props.custom}</div>
         </main>
       </div>
     );
   }
 }
 
-Page1 = withRedux(makeStore, state => ({ foo: state.foo }))(Page1);
+const mapDispatchToProps = (dispatch) => {
+	return {
+		add_firstname: (currUser) => dispatch({ type: 'USER_FIRSTNAME', payload: currUser })
+	}
+}
+
+Page1 = withRedux(makeStore, state => ({ user_firstname: state.user_firstname }), mapDispatchToProps)(Page1);
 
 Page1.propTypes = {
   resvals: PropTypes.string.isRequired,
