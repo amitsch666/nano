@@ -11,21 +11,12 @@ import 'font-awesome/scss/font-awesome.scss';
 import stylesheet from '../styles/main.scss';
 
 import TopNav from '../containers/TopNav';
-import sessdata from '../lib/session-data';
 
 export default class AboutPage extends Component {
-  // static getInitialProps = async function getshows() {
-  //   const res = await fetch('https://api.tvmaze.com/search/shows?q=batman');
-  //   const data = await res.json();
-  //   return {
-  //     shows: data,
-  //   };
-  // };
   static async getInitialProps({ req }) {
     const getshows = await fetch('https://api.tvmaze.com/search/shows?q=batman');
     const shows = await getshows.json();
-    const resvals = sessdata(req);
-    return { shows, resvals };
+		return { shows };
   }
   constructor(props) {
     super(props);
@@ -50,7 +41,6 @@ export default class AboutPage extends Component {
         <TopNav />
         <main className="container-fluid px-0">
           <Button color="info" size="lg" onClick={() => Router.push('/')}>Home</Button>
-          <p>{this.props.resvals}</p>
           <p>No magic is involved, it auto-creates Redux store when getInitialProps
           is called by Next.js and then passes this store down to React Reduxs
           Provider, which is used to wrap the original component, also automatically.
@@ -84,5 +74,4 @@ export default class AboutPage extends Component {
 
 AboutPage.propTypes = {
   shows: PropTypes.arrayOf(PropTypes.string).isRequired,
-  resvals: PropTypes.string.isRequired,
 };

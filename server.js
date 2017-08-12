@@ -82,7 +82,6 @@ app.prepare()
     // Default route (not to be edited)
     server.get('*', (req, res) => {
       res.locals.user = req.user || null;
-      // console.log(res.locals.user);
       handle(req, res);
     });
 
