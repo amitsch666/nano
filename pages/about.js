@@ -13,10 +13,10 @@ import stylesheet from '../styles/main.scss';
 import TopNav from '../containers/TopNav';
 
 export default class AboutPage extends Component {
-  static async getInitialProps({ req }) {
+  static async getInitialProps() {
     const getshows = await fetch('https://api.tvmaze.com/search/shows?q=batman');
     const shows = await getshows.json();
-		return { shows };
+    return { shows };
   }
   constructor(props) {
     super(props);

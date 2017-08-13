@@ -15,7 +15,7 @@ import MyModal from '../components/MyModal';
 import FullScreenBanner from '../components/FullScreenBanner';
 
 export default class IndexPage extends Component {
-  static async getInitialProps({ req }) {
+  static async getInitialProps() {
     const getshows = await fetch('https://api.tvmaze.com/search/shows?q=batman');
     const shows = await getshows.json();
     return { shows };

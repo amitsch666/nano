@@ -1,9 +1,16 @@
 import { createStore } from 'redux';
+import allReducers from './reducers';
 
-const reducer = (state = { user_firstname: null }, action) => {
+const reducer = (state = { allReducers }, action) => {
   switch (action.type) {
-    case 'USER_FIRSTNAME':
-      return { ...state, user_firstname: action.payload };
+		case 'USER':
+			return {
+				...state,
+				user_firstname: action.payload.firstName,
+				user_lastname: action.payload.lastName,
+				user_email: action.payload.email,
+			};
+			break;
     default:
       return state;
   }
