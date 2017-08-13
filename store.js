@@ -15,9 +15,6 @@ const reducer = (state = { allReducers }, action) => {
   }
 };
 
-// const makeStore = (initialState) => {
-//   return createStore(reducer, initialState);
-// };
 const makeStore = initialState => (
   createStore(reducer, initialState)
 );
