@@ -3,22 +3,24 @@ import allReducers from './reducers';
 
 const reducer = (state = { allReducers }, action) => {
   switch (action.type) {
-		case 'USER':
-			return {
-				...state,
-				user_firstname: action.payload.firstName,
-				user_lastname: action.payload.lastName,
-				user_email: action.payload.email,
-			};
-			break;
+    case 'USER':
+      return {
+        ...state,
+        user_firstname: action.payload.firstName,
+        user_lastname: action.payload.lastName,
+        user_email: action.payload.email,
+      };
     default:
       return state;
   }
 };
 
-const makeStore = (initialState, options) => {
-  return createStore(reducer, initialState);
-};
+// const makeStore = (initialState) => {
+//   return createStore(reducer, initialState);
+// };
+const makeStore = initialState => (
+  createStore(reducer, initialState)
+);
 
 // exports the functionality to initialize the store
 // rather than exporting the store instance

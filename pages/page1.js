@@ -40,7 +40,7 @@ class Page1 extends Component {
     axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
       .then((response) => {
         // dispatch user data to the store
-				self.props.get_user(response.data);
+        self.props.get_user(response.data);
       })
       .catch((error) => {
         // console.log(error);
@@ -56,8 +56,8 @@ class Page1 extends Component {
         </Head>
         <TopNav />
         <main>
-					<p>{this.props.user_firstname} {this.props.user_lastname}</p>
-					<p>{this.props.user_email}</p>
+          <p>{this.props.user_firstname} {this.props.user_lastname}</p>
+          <p>{this.props.user_email}</p>
           <Button type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</Button>
           <Link prefetch href="/"><a>Home Page</a></Link>
           <form onSubmit={this.login} className="col col-md-4 offset-md-4">
@@ -80,18 +80,18 @@ class Page1 extends Component {
 }
 
 const mapDispatchToProps = dispatch => ({
-	get_user: currUser => dispatch({ type: 'USER', payload: currUser }),
+  get_user: currUser => dispatch({ type: 'USER', payload: currUser }),
 });
 const mapStateToProps = state => ({
-	user_firstname: state.user_firstname,
-	user_lastname: state.user_lastname,
-	user_email: state.user_email,
+  user_firstname: state.user_firstname,
+  user_lastname: state.user_lastname,
+  user_email: state.user_email,
 });
 
 Page1.propTypes = {
-	user_firstname: PropTypes.string.isRequired,
-	user_lastname: PropTypes.string.isRequired,
-	user_email: PropTypes.string.isRequired,
+  user_firstname: PropTypes.string.isRequired,
+  user_lastname: PropTypes.string.isRequired,
+  user_email: PropTypes.string.isRequired,
 };
 
 // export default Page1;
