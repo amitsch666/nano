@@ -24,20 +24,11 @@ class AboutPage extends Component {
   }
   constructor(props) {
     super(props);
-    this.state = {
-      modal1: false,
-    };
-    this.toggleModal1 = this.toggleModal1.bind(this);
 		this.onLogin = this.onLogin.bind(this);
   }
 	onLogin(data) {
 		this.props.get_user(data);
 	}
-  toggleModal1() {
-    this.setState({
-      modal1: !this.state.modal1,
-    });
-  }
   render() {
     return (
       <div className="masterdiv">

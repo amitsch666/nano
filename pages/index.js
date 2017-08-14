@@ -26,19 +26,14 @@ class IndexPage extends Component {
   }
   constructor(props) {
     super(props);
-    this.state = {
-      modal1: false,
-    };
 		this.toggleModal1 = this.toggleModal1.bind(this);
 		this.onLogin = this.onLogin.bind(this);
   }
 	onLogin(data) {
 		this.props.get_user(data);
 	}
-  toggleModal1() {
-    this.setState({
-      modal1: !this.state.modal1,
-    });
+	toggleModal1() {
+    this.props.toggle_modal1(!this.props.modal1_state);
   }
   render() {
     return (
@@ -70,7 +65,7 @@ class IndexPage extends Component {
             ))}
           </ul>
           <Button color="danger" size="lg" onClick={this.toggleModal1}>Open modal</Button>
-          <MyModal isOpen={this.state.modal1} toggle={this.toggleModal1} className={'someclass'} modalClassName={'otherclass'} /> {/* value in className gets added to .modal-dialog */}
+          <MyModal isOpen={this.props.modal1_state} toggle={this.toggleModal1} className={'someclass'} modalClassName={'otherclass'} /> {/* value in className gets added to .modal-dialog */}
         </main>
       </div>
     );
@@ -86,11 +81,13 @@ IndexPage.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   get_user: currUser => dispatch({ type: 'USER', payload: currUser }),
+	toggle_modal1: modal1_state => dispatch({ type: 'TOGGLE_MODAL1', payload: modal1_state }),
 });
 const mapStateToProps = state => ({
   user_firstname: state.user_firstname,
   user_lastname: state.user_lastname,
   user_email: state.user_email,
+	modal1_state: state.modal1_state,
 });
 
 export default withRedux(
