@@ -85,7 +85,6 @@ const mapDispatchToProps = dispatch => ({
 const mapStateToProps = state => ({
   user_firstname: state.user_firstname,
   user_lastname: state.user_lastname,
-  user_email: state.user_email,
 });
 
 Page1.propTypes = {

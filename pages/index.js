@@ -19,20 +19,20 @@ import FullScreenBanner from '../components/FullScreenBanner';
 
 class IndexPage extends Component {
   static async getInitialProps({ store, isServer, res }) {
-		sessdata(store, isServer, res);
+    sessdata(store, isServer, res);
     const getshows = await fetch('https://api.tvmaze.com/search/shows?q=batman');
     const shows = await getshows.json();
     return { shows };
   }
   constructor(props) {
     super(props);
-		this.toggleModal1 = this.toggleModal1.bind(this);
-		this.onLogin = this.onLogin.bind(this);
+    this.toggleModal1 = this.toggleModal1.bind(this);
+    this.onLogin = this.onLogin.bind(this);
   }
-	onLogin(data) {
-		this.props.get_user(data);
-	}
-	toggleModal1() {
+  onLogin(data) {
+    this.props.get_user(data);
+  }
+  toggleModal1() {
     this.props.toggle_modal1(!this.props.modal1_state);
   }
   render() {
@@ -49,7 +49,7 @@ class IndexPage extends Component {
           <Button type="button" color="success" size="lg" onClick={() => Router.push('/page1')}>Page1</Button>
           <Link prefetch href="/about"><a>About Page</a></Link>
           <hr />
-					<p>{this.props.user_firstname} {this.props.user_lastname}</p>
+          <p>{this.props.user_firstname} {this.props.user_lastname}</p>
           <p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
           <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
             <strong>Hello</strong> world!
@@ -74,20 +74,22 @@ class IndexPage extends Component {
 
 IndexPage.propTypes = {
   shows: PropTypes.arrayOf(PropTypes.string).isRequired,
-	user_firstname: PropTypes.string.isRequired,
+  user_firstname: PropTypes.string.isRequired,
   user_lastname: PropTypes.string.isRequired,
-  user_email: PropTypes.string.isRequired,
+  modal1_state: PropTypes.bool.isRequired,
+  get_user: PropTypes.func.isRequired,
+  toggle_modal1: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({
   get_user: currUser => dispatch({ type: 'USER', payload: currUser }),
-	toggle_modal1: modal1_state => dispatch({ type: 'TOGGLE_MODAL1', payload: modal1_state }),
+  toggle_modal1: modal1State => dispatch({ type: 'TOGGLE_MODAL1', payload: modal1State }),
 });
 const mapStateToProps = state => ({
   user_firstname: state.user_firstname,
   user_lastname: state.user_lastname,
   user_email: state.user_email,
-	modal1_state: state.modal1_state,
+  modal1_state: state.modal1_state,
 });
 
 export default withRedux(

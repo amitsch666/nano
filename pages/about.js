@@ -17,18 +17,18 @@ import sessdata from '../lib/session-data';
 
 class AboutPage extends Component {
   static async getInitialProps({ store, isServer, res }) {
-		sessdata(store, isServer, res);
+    sessdata(store, isServer, res);
     const getshows = await fetch('https://api.tvmaze.com/search/shows?q=batman');
     const shows = await getshows.json();
     return { shows };
   }
   constructor(props) {
     super(props);
-		this.onLogin = this.onLogin.bind(this);
+    this.onLogin = this.onLogin.bind(this);
   }
-	onLogin(data) {
-		this.props.get_user(data);
-	}
+  onLogin(data) {
+    this.props.get_user(data);
+  }
   render() {
     return (
       <div className="masterdiv">
@@ -39,7 +39,7 @@ class AboutPage extends Component {
         </Head>
         <TopNav onLogin={this.onLogin} />
         <main className="container-fluid px-0">
-					<p>{this.props.user_firstname} {this.props.user_lastname}</p>
+          <p>{this.props.user_firstname} {this.props.user_lastname}</p>
           <Button color="info" size="lg" onClick={() => Router.push('/')}>Home</Button>
           <p>No magic is involved, it auto-creates Redux store when getInitialProps
           is called by Next.js and then passes this store down to React Reduxs
@@ -74,9 +74,9 @@ class AboutPage extends Component {
 
 AboutPage.propTypes = {
   shows: PropTypes.arrayOf(PropTypes.string).isRequired,
-	user_firstname: PropTypes.string.isRequired,
+  user_firstname: PropTypes.string.isRequired,
   user_lastname: PropTypes.string.isRequired,
-  user_email: PropTypes.string.isRequired,
+  get_user: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = dispatch => ({

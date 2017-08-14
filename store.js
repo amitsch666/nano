@@ -10,11 +10,11 @@ const reducer = (state = { allReducers }, action) => {
         user_lastname: action.payload.lastName,
         user_email: action.payload.email,
       };
-		case 'TOGGLE_MODAL1':
-			return {
-				...state,
-				modal1_state: action.payload,
-			}
+    case 'TOGGLE_MODAL1':
+      return {
+        ...state,
+        modal1_state: action.payload,
+      };
     default:
       return state;
   }

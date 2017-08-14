@@ -1,3 +1,0 @@
-
-
-class Testform extends Component {}

@@ -56,6 +56,7 @@ export default class TopNav extends Component {
 
 TopNav.propTypes = {
   fat: PropTypes.bool,
+  onLogin: PropTypes.func.isRequired,
 };
 TopNav.defaultProps = {
   fat: false,

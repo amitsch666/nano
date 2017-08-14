@@ -3,8 +3,8 @@ import UserReducer from './user';
 import ModalsReducer from './modals';
 
 const allReducers = combineReducers({
-	user: UserReducer,
-	modals: ModalsReducer,
+  user: UserReducer,
+  modals: ModalsReducer,
 });
 
 export default allReducers;

@@ -105,6 +105,7 @@ class NavPane extends Component {
 NavPane.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
+  onLogin: PropTypes.func.isRequired,
 };
 
 export default onClickOutside(NavPane);
