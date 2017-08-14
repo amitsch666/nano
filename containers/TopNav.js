@@ -48,7 +48,7 @@ export default class TopNav extends Component {
             <span className="tale">Tale</span><span className="spinners">Spinners</span>
           </NavbarBrand>
         </Link>
-        <NavPane isOpen={this.state.isOpen} toggle={this.toggle} />
+        <NavPane isOpen={this.state.isOpen} toggle={this.toggle} onLogin={this.props.onLogin} />
       </Navbar>
     );
   }

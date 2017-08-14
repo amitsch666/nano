@@ -22,6 +22,7 @@ export default class LoginModal extends Component {
     e.preventDefault();
     axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
       .then((response) => {
+				this.props.onLogin(response.data);
         console.log(response); // eslint-disable-line no-console
         console.log('First: ', response.data.firstName); // eslint-disable-line no-console
       })
@@ -68,6 +69,7 @@ export default class LoginModal extends Component {
           </div>
           <form className="login-form" onSubmit={this.onSubmit}>
             <div className="input-group input-group">
+              <p>{this.props.testname}</p>
               <input name="username" type="text" className="form-control form-control-lg my-2 input-custom" id="login-userid" placeholder="Your username or email" value={this.state.username} onChange={this.onChange} />
               <span className="fa fa fa-user input-box-icon" />
             </div>

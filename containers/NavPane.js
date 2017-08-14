@@ -96,7 +96,7 @@ class NavPane extends Component {
             <NavLink onClick={this.toggleLoginModal}><i className="fa fa-user" />Log In</NavLink>
           </NavItem>
         </Nav>
-        <LoginModal isOpen={this.state.LoginModalState} toggle={this.toggleLoginModal} className={'someclass'} modalClassName={'login-modal'} />
+        <LoginModal isOpen={this.state.LoginModalState} toggle={this.toggleLoginModal} className={'someclass'} modalClassName={'login-modal'} onLogin={this.props.onLogin} />
       </Collapse>
     );
   }

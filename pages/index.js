@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, UncontrolledTooltip } from 'reactstrap';
+import withRedux from 'next-redux-wrapper';
 import fetch from 'isomorphic-unfetch';
 import Head from 'next/head';
 import Router from 'next/router';
@@ -10,12 +11,15 @@ import 'font-awesome/scss/font-awesome.scss';
 // eslint-disable-next-line no-unused-vars
 import stylesheet from '../styles/main.scss';
 
+import makeStore from '../store';
 import TopNav from '../containers/TopNav';
+import sessdata from '../lib/session-data';
 import MyModal from '../components/MyModal';
 import FullScreenBanner from '../components/FullScreenBanner';
 
-export default class IndexPage extends Component {
-  static async getInitialProps() {
+class IndexPage extends Component {
+  static async getInitialProps({ store, isServer, res }) {
+		sessdata(store, isServer, res);
     const getshows = await fetch('https://api.tvmaze.com/search/shows?q=batman');
     const shows = await getshows.json();
     return { shows };
@@ -25,8 +29,12 @@ export default class IndexPage extends Component {
     this.state = {
       modal1: false,
     };
-    this.toggleModal1 = this.toggleModal1.bind(this);
+		this.toggleModal1 = this.toggleModal1.bind(this);
+		this.onLogin = this.onLogin.bind(this);
   }
+	onLogin(data) {
+		this.props.get_user(data);
+	}
   toggleModal1() {
     this.setState({
       modal1: !this.state.modal1,
@@ -40,12 +48,13 @@ export default class IndexPage extends Component {
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="stylesheet" type="text/css" href={`_s/${process.env.CSS}.min.css`} />
         </Head>
-        <TopNav fat />
+        <TopNav fat onLogin={this.onLogin} />
         <main className="container-fluid px-0">
           <FullScreenBanner headline={'Welcome home, Spinners!'} tagline={'This is just a random tagline, don\'t worry'} />
           <Button type="button" color="success" size="lg" onClick={() => Router.push('/page1')}>Page1</Button>
           <Link prefetch href="/about"><a>About Page</a></Link>
           <hr />
+					<p>{this.props.user_firstname} {this.props.user_lastname}</p>
           <p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
           <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
             <strong>Hello</strong> world!
@@ -70,4 +79,22 @@ export default class IndexPage extends Component {
 
 IndexPage.propTypes = {
   shows: PropTypes.arrayOf(PropTypes.string).isRequired,
+	user_firstname: PropTypes.string.isRequired,
+  user_lastname: PropTypes.string.isRequired,
+  user_email: PropTypes.string.isRequired,
 };
+
+const mapDispatchToProps = dispatch => ({
+  get_user: currUser => dispatch({ type: 'USER', payload: currUser }),
+});
+const mapStateToProps = state => ({
+  user_firstname: state.user_firstname,
+  user_lastname: state.user_lastname,
+  user_email: state.user_email,
+});
+
+export default withRedux(
+  makeStore,
+  mapStateToProps,
+  mapDispatchToProps,
+)(IndexPage);
