@@ -15,6 +15,21 @@ const reducer = (state = { allReducers }, action) => {
         ...state,
         modal1_state: action.payload,
       };
+    case 'TOGGLE_LOGIN_MODAL_STATE':
+      return {
+        ...state,
+        LoginModalState: action.payload,
+      };
+    case 'TOGGLE_CLICK_OUTSIDE_STATE':
+      return {
+        ...state,
+        ClickOutsideState: action.payload,
+      };
+    case 'TOGGLE_NAV':
+      return {
+        ...state,
+        NavPaneIsOpen: action.payload,
+      };
     default:
       return state;
   }

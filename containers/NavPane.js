@@ -20,28 +20,22 @@ class NavPane extends Component {
   constructor(props) {
     super(props);
     this.lastX = 0;
-    this.state = {
-      LoginModalState: false,
-      ClickOutside: true,
-    };
     this.toggleLoginModal = this.toggleLoginModal.bind(this);
   }
+  componentDidMount() {
+    this.props.toggleLoginModalState(true);
+    this.props.toggleClickOutsideState(true);
+  }
   toggleLoginModal() {
-    if (!this.state.LoginModalState) {
-      this.setState({
-        ClickOutside: false,
-      });
+    if (!this.props.LoginModalState) {
+      this.props.toggleClickOutsideState(false);
     } else {
-      this.setState({
-        ClickOutside: true,
-      });
+      this.props.toggleClickOutsideState(true);
     }
-    this.setState({
-      LoginModalState: !this.state.LoginModalState,
-    });
+    this.props.toggleLoginModalState();
   }
   handleClickOutside = () => {
-    if (this.props.isOpen && this.state.ClickOutside) {
+    if (this.props.isOpen && this.props.ClickOutsideState) {
       this.props.toggle();
     }
   }
@@ -96,16 +90,20 @@ class NavPane extends Component {
             <NavLink onClick={this.toggleLoginModal}><i className="fa fa-user" />Log In</NavLink>
           </NavItem>
         </Nav>
-        <LoginModal isOpen={this.state.LoginModalState} toggle={this.toggleLoginModal} className={'someclass'} modalClassName={'login-modal'} onLogin={this.props.onLogin} />
+        <LoginModal isOpen={this.props.LoginModalState} toggle={this.toggleLoginModal} className={'someclass'} modalClassName={'login-modal'} onLogin={this.props.onLogin} />
       </Collapse>
     );
   }
 }
 
 NavPane.propTypes = {
+  LoginModalState: PropTypes.bool.isRequired,
+  ClickOutsideState: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
+  toggleLoginModalState: PropTypes.func.isRequired,
+  toggleClickOutsideState: PropTypes.func.isRequired,
 };
 
 export default onClickOutside(NavPane);

@@ -8,9 +8,7 @@ import NavPane from './NavPane';
 export default class TopNav extends Component {
   constructor(props) {
     super(props);
-    this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false,
       fatnav: (this.props.fat ? 'fatnav' : 'slimnav'),
     };
   }
@@ -26,11 +24,6 @@ export default class TopNav extends Component {
   changeNav() {
     this.setState({ fatnav: 'slimnav' });
   }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen,
-    });
-  }
   handleScroll() {
     if (window.pageYOffset > 0) {
       this.setState({ fatnav: 'slimnav' });
@@ -41,14 +34,22 @@ export default class TopNav extends Component {
   render() {
     return (
       <Navbar color="inverse" inverse toggleable={'md'} fixed={'top'} className={this.state.fatnav}>
-        <NavbarToggler right onClick={this.toggle} />
+        <NavbarToggler right onClick={this.props.toggleNav} />
         <Link prefetch href="/" passHref>
           <NavbarBrand>
             <img src={`/static/img/${process.env.NAVBAR_LOGO}.svg`} alt="TaleSpinners logo" />
             <span className="tale">Tale</span><span className="spinners">Spinners</span>
           </NavbarBrand>
         </Link>
-        <NavPane isOpen={this.state.isOpen} toggle={this.toggle} onLogin={this.props.onLogin} />
+        <NavPane
+          isOpen={this.props.isOpen}
+          toggle={this.props.toggleNav}
+          onLogin={this.props.onLogin}
+          LoginModalState={this.props.LoginModalState}
+          toggleLoginModalState={this.props.toggleLoginModalState}
+          toggleClickOutsideState={this.props.toggleClickOutsideState}
+          ClickOutsideState={this.props.ClickOutsideState}
+        />
       </Navbar>
     );
   }
@@ -56,6 +57,12 @@ export default class TopNav extends Component {
 
 TopNav.propTypes = {
   fat: PropTypes.bool,
+  LoginModalState: PropTypes.bool.isRequired,
+  ClickOutsideState: PropTypes.bool.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  toggleNav: PropTypes.func.isRequired,
+  toggleLoginModalState: PropTypes.func.isRequired,
+  toggleClickOutsideState: PropTypes.func.isRequired,
   onLogin: PropTypes.func.isRequired,
 };
 TopNav.defaultProps = {

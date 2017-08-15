@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Modal, ModalBody, ModalFooter } from 'reactstrap';
+import Link from 'next/link';
 import axios from 'axios';
 
 export default class LoginModal extends Component {
@@ -9,6 +10,7 @@ export default class LoginModal extends Component {
     this.state = {
       username: '',
       password: '',
+      buttonState: 'btn btn-lg btn-primary w-100 my-2',
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -20,11 +22,18 @@ export default class LoginModal extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
+    this.setState({
+      buttonState: 'btn btn-lg btn-primary w-100 my-2 disabled',
+    });
     axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
       .then((response) => {
+        this.setState({
+          username: '',
+          password: '',
+          buttonState: 'btn btn-lg btn-primary w-100 my-2',
+        });
         this.props.onLogin(response.data);
-        console.log(response); // eslint-disable-line no-console
-        console.log('First: ', response.data.firstName); // eslint-disable-line no-console
+        this.props.toggle();
       })
       .catch((error) => {
         console.log(error); // eslint-disable-line no-console
@@ -76,11 +85,12 @@ export default class LoginModal extends Component {
               <input name="password" type="password" className="form-control form-control-lg my-2 input-custom" id="login-password" placeholder="Password" value={this.state.password} onChange={this.onChange} />
               <span className="fa fa fa-key input-box-icon" />
             </div>
-            <button type="submit" className="btn btn-lg btn-primary w-100 my-2">LOGIN</button>
+            <button type="submit" className={this.state.buttonState}>LOGIN</button>
           </form>
         </ModalBody>
         <ModalFooter className="pt-0">
           <div className="p-1">
+            <Link prefetch href="/about"><a className="small color-unchanged p-2">About Page</a></Link>
             <a className="small color-unchanged p-2" href="/forgot">Forgot password?</a>
             <a className="small color-unchanged p-2" href="/signup">New user?</a>
           </div>
