@@ -61,6 +61,7 @@ module.exports = {
       new webpack.DefinePlugin({
         'process.env.CSS': JSON.stringify(process.env.CSS),
         'process.env.NAVBAR_LOGO': JSON.stringify(process.env.NAVBAR_LOGO),
+        'process.env.PROFILE_THUMBNAIL_PATH': JSON.stringify(process.env.PROFILE_THUMBNAIL_PATH),
       }),
     );
     return config;

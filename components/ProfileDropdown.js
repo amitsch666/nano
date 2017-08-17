@@ -21,7 +21,12 @@ export default class ProfileDropdown extends Component {
         <DropdownToggle nav>
           <img
             className="user-thumbnail"
-            src="/static/img/ndiamond.jpg"
+            src={
+              this.props.user.img ?
+                `${process.env.PROFILE_THUMBNAIL_PATH}${this.props.user.img}.jpg`
+                :
+                `${process.env.PROFILE_THUMBNAIL_PATH}default/default.jpg`
+            }
             alt={`${this.props.user.firstName} ${this.props.user.lastName}`}
           />
         </DropdownToggle>
@@ -44,6 +49,7 @@ ProfileDropdown.propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     userame: PropTypes.string.isRequired,
+    img: PropTypes.string,
     email: PropTypes.string.isRequired,
   }).isRequired,
 };

@@ -61,6 +61,7 @@ TopNav.propTypes = {
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
     userame: PropTypes.string.isRequired,
+    img: PropTypes.string,
     email: PropTypes.string.isRequired,
   }).isRequired,
   fat: PropTypes.bool,
