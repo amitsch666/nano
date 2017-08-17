@@ -1,10 +1,12 @@
 import { combineReducers } from 'redux';
-import UserReducer from './user';
-import ModalsReducer from './modals';
+import user from './user';
+import modals from './modals';
+import navbar from './navbar';
 
 const allReducers = combineReducers({
-  user: UserReducer,
-  modals: ModalsReducer,
+  user,
+  modals,
+  navbar,
 });
 
 export default allReducers;

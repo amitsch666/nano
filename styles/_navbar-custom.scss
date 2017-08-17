@@ -27,14 +27,8 @@ ul.navbar-nav {
 	background-color: rgba($slimnav-bg, 1) !important;
 }
 .navbar-toggler {
-	// border: 1.5px solid hsla(0,0%,100%,.5) !important;
 	border: none !important;
 	border-radius: 3px;
-}
-.navbar-toggler:hover,
-.navbar-toggler:active,
-.navbar-toggler:focus {
-	background-color: hsla(0,0%,100%,0.2);
 }
 
 #collapse-nav-head {
@@ -71,7 +65,7 @@ ul.navbar-nav {
 	transform: translateY(-2px) rotate(-45deg);
 }
 #collapse-nav-head button:hover {
-	background-color: hsla(0,0%,100%,0.3);
+	background-color: inherit;
 }
 
 .navbar-toggleable-md .navbar-nav form input {

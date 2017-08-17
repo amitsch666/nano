@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button, UncontrolledTooltip } from 'reactstrap';
+import NanoButton from '../components/NanoButton';
 import withRedux from 'next-redux-wrapper';
 import Head from 'next/head';
 import Router from 'next/router';
@@ -16,7 +17,7 @@ import sessdata from '../lib/session-data';
 import MyModal from '../components/MyModal';
 import FullScreenBanner from '../components/FullScreenBanner';
 
-class IndexPage extends Component {
+class Page2 extends Component {
   static async getInitialProps({ store, isServer, res }) {
     sessdata(store, isServer, res);
   }
@@ -44,14 +45,13 @@ class IndexPage extends Component {
   }
   render() {
     return (
-      <div className="masterdiv-with-fatnav">
+      <div className="masterdiv">
         <Head>
           <title>Project Nano | Home</title>
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="stylesheet" type="text/css" href={`_s/${process.env.CSS}.min.css`} />
         </Head>
         <TopNav
-          fat
           user={this.props.user}
           onLogin={this.props.onLogin}
           isOpen={this.props.NavPaneIsOpen}
@@ -62,8 +62,7 @@ class IndexPage extends Component {
           ClickOutsideState={this.props.ClickOutsideState}
         />
         <main className="container-fluid px-0">
-          <FullScreenBanner headline={'Welcome home, Spinners!'} tagline={'This is just a random tagline, don\'t worry'} />
-          <Button type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</Button>
+          <NanoButton type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</NanoButton>
           <Link prefetch href="/about"><a>About Page</a></Link>
           <hr />
           {this.props.user ? (<p>{this.props.user.firstName}</p>) : (<p>not logged in</p>) }
@@ -80,7 +79,7 @@ class IndexPage extends Component {
   }
 }
 
-IndexPage.propTypes = {
+Page2.propTypes = {
   user: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
@@ -118,4 +117,4 @@ export default withRedux(
   makeStore,
   mapStateToProps,
   mapDispatchToProps,
-)(IndexPage);
+)(Page2);

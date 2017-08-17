@@ -9,7 +9,7 @@ const User = new Schema({
   firstName: String,
   lastName: String,
   email: String,
-  img: { type: Boolean, default: false },
+  img: String,
 }, { timestamps: true });
 
 User.plugin(passportLocalMongoose);
