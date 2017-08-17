@@ -9,11 +9,11 @@ export default class TopNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      fatnav: (this.props.fat ? 'fatnav' : 'slimnav'),
+      NavType: (this.props.fat ? 'fatnav' : 'slimnav'),
     };
   }
   componentDidMount() {
-    if ((window.pageYOffset > 0) && (this.state.fatnav === 'fatnav')) {
+    if ((window.pageYOffset > 0) && (this.state.NavType === 'fatnav')) {
       this.changeNav();
     }
     if (this.props.fat) {
@@ -22,18 +22,18 @@ export default class TopNav extends Component {
     }
   }
   changeNav() {
-    this.setState({ fatnav: 'slimnav' });
+    this.setState({ NavType: 'slimnav' });
   }
   handleScroll() {
     if (window.pageYOffset > 0) {
-      this.setState({ fatnav: 'slimnav' });
+      this.setState({ NavType: 'slimnav' });
     } else {
-      this.setState({ fatnav: 'fatnav' });
+      this.setState({ NavType: 'fatnav' });
     }
   }
   render() {
     return (
-      <Navbar color="inverse" inverse toggleable={'md'} fixed={'top'} className={this.state.fatnav}>
+      <Navbar color="inverse" inverse toggleable={'md'} fixed={'top'} className={this.state.NavType}>
         <NavbarToggler right onClick={this.props.toggleNav} />
         <Link prefetch href="/" passHref>
           <NavbarBrand>
@@ -42,6 +42,7 @@ export default class TopNav extends Component {
           </NavbarBrand>
         </Link>
         <NavPane
+          user={this.props.user}
           isOpen={this.props.isOpen}
           toggle={this.props.toggleNav}
           onLogin={this.props.onLogin}
@@ -56,6 +57,12 @@ export default class TopNav extends Component {
 }
 
 TopNav.propTypes = {
+  user: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    userame: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
   fat: PropTypes.bool,
   LoginModalState: PropTypes.bool.isRequired,
   ClickOutsideState: PropTypes.bool.isRequired,

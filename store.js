@@ -6,9 +6,7 @@ const reducer = (state = { allReducers }, action) => {
     case 'USER':
       return {
         ...state,
-        user_firstname: action.payload.firstName,
-        user_lastname: action.payload.lastName,
-        user_email: action.payload.email,
+        user: action.payload,
       };
     case 'TOGGLE_MODAL1':
       return {

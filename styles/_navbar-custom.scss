@@ -156,6 +156,20 @@ ul.navbar-nav {
 	color: hsla(0,0%,100%,.3);
 }
 
+/* USER PROFILE */
+.nav-item.py-1.profile-dropdown:hover {
+	background-color: inherit !important;
+}
+.user-thumbnail {
+	height: 32px;
+	width: 32px;
+	border-radius: 32px;
+	margin-top: -17px;
+  margin-bottom: -14px;
+	background-color: white;
+  border: 1px solid lightgray;
+}
+
 /*----------------------------------------------------------------------------*/
 /* NAVBAR IN MOBILE VIEW                                                      */
 /*----------------------------------------------------------------------------*/

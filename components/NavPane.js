@@ -14,6 +14,7 @@ import onClickOutside from 'react-onclickoutside';
 
 import Dropdown1 from './Dropdown1';
 import Dropdown2 from './Dropdown2';
+import ProfileDropdown from './ProfileDropdown';
 import LoginModal from './LoginModal';
 
 class NavPane extends Component {
@@ -86,9 +87,13 @@ class NavPane extends Component {
           </NavItem>
           <Dropdown1 />
           <Dropdown2 />
-          <NavItem className="py-1 login loggedout">
-            <NavLink onClick={this.toggleLoginModal}><i className="fa fa-user" />Log In</NavLink>
-          </NavItem>
+          {this.props.user ? (
+            <ProfileDropdown user={this.props.user} />
+          ) : (
+            <NavItem className="py-1 login loggedout">
+              <NavLink onClick={this.toggleLoginModal}><i className="fa fa-user" />Log In</NavLink>
+            </NavItem>
+          )}
         </Nav>
         <LoginModal isOpen={this.props.LoginModalState} toggle={this.toggleLoginModal} className={'someclass'} modalClassName={'login-modal'} onLogin={this.props.onLogin} />
       </Collapse>
@@ -97,6 +102,12 @@ class NavPane extends Component {
 }
 
 NavPane.propTypes = {
+  user: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    userame: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+  }).isRequired,
   LoginModalState: PropTypes.bool.isRequired,
   ClickOutsideState: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,

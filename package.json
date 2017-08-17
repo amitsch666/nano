@@ -36,7 +36,6 @@
     "extract-text-webpack-plugin": "^3.0.0",
     "font-awesome": "^4.7.0",
     "glob": "^7.1.2",
-    "isomorphic-unfetch": "^2.0.0",
     "mongodb": "^2.2.30",
     "mongoose": "^4.11.5",
     "next": "^3.0.3",
