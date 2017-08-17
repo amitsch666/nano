@@ -23,7 +23,7 @@ export default class ProfileDropdown extends Component {
             className="user-thumbnail"
             src={
               this.props.user.img ?
-                `${process.env.PROFILE_THUMBNAIL_PATH}${this.props.user.img}.jpg`
+                `${process.env.PROFILE_THUMBNAIL_PATH}${this.props.user.username}.jpg`
                 :
                 `${process.env.PROFILE_THUMBNAIL_PATH}default/default.jpg`
             }
@@ -48,7 +48,7 @@ ProfileDropdown.propTypes = {
   user: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
-    userame: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired,
     img: PropTypes.string,
     email: PropTypes.string.isRequired,
   }).isRequired,

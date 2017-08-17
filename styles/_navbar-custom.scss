@@ -169,6 +169,10 @@ ul.navbar-nav {
 	background-color: white;
   border: 1px solid lightgray;
 }
+.profile-dropdown .dropdown-menu {
+	left: inherit;
+	right: 0;
+}
 
 /*----------------------------------------------------------------------------*/
 /* NAVBAR IN MOBILE VIEW                                                      */

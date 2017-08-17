@@ -62,16 +62,16 @@ export default class LoginModal extends Component {
           </button>
         </div>
         <ModalBody className="py-0">
-          <div className="row social-login">
-            <div className="col col-xs-4 d-flex m-2 p-3 fb">
-              <i className="fa fa-lg fa-facebook m-auto" />
-            </div>
-            <div className="col col-xs-4 d-flex m-2 p-3 tw">
-              <i className="fa fa-lg fa-twitter m-auto" />
-            </div>
-            <div className="col col-xs-4 d-flex m-2 p-3 gg">
-              <i className="fa fa-lg fa-google m-auto" />
-            </div>
+          <div className="row social-login px-5 py-2">
+            <span id="facebook" className="fa-stack fa-2x m-auto">
+              <i className="fa fa-facebook fa-stack-1x" />
+            </span>
+            <span id="twitter" className="fa-stack fa-2x m-auto">
+              <i className="fa fa-twitter fa-stack-1x" />
+            </span>
+            <span id="google" className="fa-stack fa-2x m-auto">
+              <i className="fa fa-google fa-stack-1x" />
+            </span>
           </div>
           <div className="or row p-2">
             <p className="m-auto text-uppercase font-weight-bold">OR</p>
@@ -90,9 +90,8 @@ export default class LoginModal extends Component {
         </ModalBody>
         <ModalFooter className="pt-0">
           <div className="p-1">
-            <Link prefetch href="/about"><a className="small color-unchanged p-2">About Page</a></Link>
-            <a className="small color-unchanged p-2" href="/forgot">Forgot password?</a>
-            <a className="small color-unchanged p-2" href="/signup">New user?</a>
+            <Link prefetch href="/about"><a className="small color-unchanged p-2">Forgot password?</a></Link>
+            <Link prefetch href="/about"><a className="small color-unchanged p-2">New user?</a></Link>
           </div>
         </ModalFooter>
       </Modal>

@@ -12,12 +12,13 @@
   border: none;
   box-shadow: 0 0 50px -10px #222;
 }
-
+.login-modal .modal-content {
+	background: $modal-bg url('../static/img/sandpaper.png');
+}
 .login-modal .modal-header,
 .login-modal .modal-footer,
 .login-modal .modal-body {
-  // background-color: $modal-bg;
-  background: $modal-bg url('../static/img/sandpaper.png');
+  // background: $modal-bg url('../static/img/sandpaper.png');
   border: none;
 }
 .modal-brand-tagline {
@@ -34,28 +35,25 @@
 .social-login {
   color: white;
 }
-.social-login div {
-  cursor: pointer;
-}
-.social-login .fb {
+#facebook {
   background-color: $facebook;
 }
-.social-login .tw {
+#twitter {
   background-color: $twitter;
 }
-.social-login .gg {
+#google {
   background-color: $google;
 }
-.social-login .fb:hover,
-.social-login .fb:focus, {
+#facebook:hover,
+#facebook:focus {
   background-color: darken($facebook, 10%);
 }
-.social-login .tw:hover,
-.social-login .tw:focus, {
+#twitter:hover,
+#twitter:focus {
   background-color: darken($twitter, 10%);
 }
-.social-login .gg:hover,
-.social-login .gg:focus, {
+#google:hover,
+#google:focus {
   background-color: darken($google, 10%);
 }
 

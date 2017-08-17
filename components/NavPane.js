@@ -105,8 +105,8 @@ NavPane.propTypes = {
   user: PropTypes.shape({
     firstName: PropTypes.string.isRequired,
     lastName: PropTypes.string.isRequired,
-    userame: PropTypes.string.isRequired,
-    img: PropTypes.string,
+    username: PropTypes.string.isRequired,
+    img: PropTypes.bool.isRequired,
     email: PropTypes.string.isRequired,
   }).isRequired,
   LoginModalState: PropTypes.bool.isRequired,
