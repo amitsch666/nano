@@ -1,7 +1,5 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Button, UncontrolledTooltip } from 'reactstrap';
-import NanoButton from '../components/NanoButton';
 import withRedux from 'next-redux-wrapper';
 import Head from 'next/head';
 import Router from 'next/router';
@@ -11,11 +9,11 @@ import 'font-awesome/scss/font-awesome.scss';
 // eslint-disable-next-line no-unused-vars
 import stylesheet from '../styles/main.scss';
 
+import NanoButton from '../components/NanoButton';
 import makeStore from '../store';
 import TopNav from '../components/TopNav';
 import sessdata from '../lib/session-data';
 import MyModal from '../components/MyModal';
-import FullScreenBanner from '../components/FullScreenBanner';
 
 class Page2 extends Component {
   static async getInitialProps({ store, isServer, res }) {
@@ -66,12 +64,8 @@ class Page2 extends Component {
           <Link prefetch href="/about"><a>About Page</a></Link>
           <hr />
           {this.props.user ? (<p>{this.props.user.firstName}</p>) : (<p>not logged in</p>) }
-          <p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
-          <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
-            <strong>Hello</strong> world!
-          </UncontrolledTooltip>
           <hr />
-          <Button color="danger" size="lg" onClick={this.toggleModal1}>Open modal</Button>
+          <NanoButton type="button" color="danger" size="lg" onClick={this.toggleModal1}>Open modal</NanoButton>
           <MyModal isOpen={this.props.modal1_state} toggle={this.toggleModal1} className={'someclass'} modalClassName={'otherclass'} /> {/* value in className gets added to .modal-dialog */}
         </main>
       </div>
