@@ -1,9 +1,36 @@
+
+
 .btn-nano {
-	background-color: $nano-btn-color;
-	color: white;
   overflow: hidden;
   position: relative;
 	border: none !important;
+	text-transform: uppercase;
+	font-size: .9rem;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	transition: all 250ms;
+}
+.btn-nano:hover {
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+.btn-nano-primary {
+	background-color: $btn-nano-primary;
+	color: white;
+}
+.btn-nano-success {
+	background-color: $btn-nano-success;
+	color: white;
+}
+.btn-nano-info {
+	background-color: $btn-nano-info;
+	color: white;
+}
+.btn-nano-warning {
+	background-color: $btn-nano-warning;
+	color: white;
+}
+.btn-nano-danger {
+	background-color: $btn-nano-danger;
+	color: white;
 }
 
 .btn-nano .ripple {
@@ -13,7 +40,6 @@
   transform: scale(0);
   animation: ripple 0.6s linear;
 }
-
 @keyframes ripple {
   to {
     transform: scale(2.5);

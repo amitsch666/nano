@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import withRedux from 'next-redux-wrapper';
 import Head from 'next/head';
 import Router from 'next/router';
-import Link from 'next/link';
 
 import 'font-awesome/scss/font-awesome.scss';
 // eslint-disable-next-line no-unused-vars
@@ -13,7 +12,6 @@ import NanoButton from '../components/NanoButton';
 import makeStore from '../store';
 import TopNav from '../components/TopNav';
 import sessdata from '../lib/session-data';
-import MyModal from '../components/MyModal';
 
 class Page2 extends Component {
   static async getInitialProps({ store, isServer, res }) {
@@ -60,13 +58,25 @@ class Page2 extends Component {
           ClickOutsideState={this.props.ClickOutsideState}
         />
         <main className="container-fluid px-0">
-          <NanoButton type="button" className="btn btn-lg btn-nano" onClick={() => Router.push('/about')}>About</NanoButton>
-          <Link prefetch href="/about"><a>About Page</a></Link>
+          <NanoButton type="button" className="btn btn-lg" onClick={() => Router.push('/about')}>About</NanoButton>
           <hr />
-          {this.props.user ? (<p>{this.props.user.firstName}</p>) : (<p>not logged in</p>) }
+          <div className="d-flex justify-content-around">
+            <NanoButton type="button" className="btn btn-lg">Default</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-primary">Primary</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-info">Info</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-warning">Warning</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-success">Success</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-danger">Danger</NanoButton>
+          </div>
           <hr />
-          <NanoButton type="button" className="btn btn-lg btn-nano" onClick={this.toggleModal1}>Open modal</NanoButton>
-          <MyModal isOpen={this.props.modal1_state} toggle={this.toggleModal1} className={'someclass'} modalClassName={'otherclass'} /> {/* value in className gets added to .modal-dialog */}
+          <div className="d-flex justify-content-around">
+            <NanoButton type="button" className="btn btn-lg">Default</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-primary">Primary</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-info">Info</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-warning">Warning</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-success">Success</NanoButton>
+            <NanoButton type="button" className="btn btn-lg btn-nano-danger">Danger</NanoButton>
+          </div>
         </main>
       </div>
     );

@@ -27,7 +27,7 @@ class NanoButton extends Component {
   render() {
     return (
       <button
-        className={this.props.className}
+        className={`${this.props.className} btn-nano`}
         type={this.props.type}
         onClick={this.onClick}
       >

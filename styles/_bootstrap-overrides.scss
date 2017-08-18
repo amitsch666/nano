@@ -34,7 +34,11 @@ $navpane-bg: material-color($theme-grayscale-base, '700');
 $navpane-item-dropdown-hover: material-color($theme-grayscale-base, '800');
 $tooltip-bg: material-color($theme-color-base, '700');
 $tooltip-arrow-color: $tooltip-bg;
-$nano-btn-color: material-color($theme-color-base, '800');
+$btn-nano-primary: material-color('blue', '500');
+$btn-nano-success: material-color('light-green', '700');
+$btn-nano-info: material-color('cyan', '700');
+$btn-nano-warning: material-color('orange', '800');
+$btn-nano-danger: material-color('red', '400');
 
 $facebook: #3b5998;
 $twitter: #00b6f1;
