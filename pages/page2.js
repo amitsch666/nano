@@ -60,12 +60,12 @@ class Page2 extends Component {
           ClickOutsideState={this.props.ClickOutsideState}
         />
         <main className="container-fluid px-0">
-          <NanoButton type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</NanoButton>
+          <NanoButton type="button" className="btn btn-lg btn-success" onClick={() => Router.push('/about')}>About</NanoButton>
           <Link prefetch href="/about"><a>About Page</a></Link>
           <hr />
           {this.props.user ? (<p>{this.props.user.firstName}</p>) : (<p>not logged in</p>) }
           <hr />
-          <NanoButton type="button" color="danger" size="lg" onClick={this.toggleModal1}>Open modal</NanoButton>
+          <NanoButton type="button" className="btn btn-lg btn-danger" onClick={this.toggleModal1}>Open modal</NanoButton>
           <MyModal isOpen={this.props.modal1_state} toggle={this.toggleModal1} className={'someclass'} modalClassName={'otherclass'} /> {/* value in className gets added to .modal-dialog */}
         </main>
       </div>
