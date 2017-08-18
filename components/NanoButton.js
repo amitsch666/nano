@@ -12,7 +12,7 @@ class NanoButton extends Component {
   }
   // eslint-disable-next-line class-methods-use-this
   makeRipple(e) {
-    const elements = e.target.getElementsByTagName('div');
+    const elements = e.target.getElementsByClassName('ripple');
     while (elements[0]) elements[0].parentNode.removeChild(elements[0]);
     const circle = document.createElement('div');
     e.target.appendChild(circle);
