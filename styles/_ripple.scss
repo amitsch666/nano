@@ -1,9 +1,10 @@
-button {
+.btn-nano {
   overflow: hidden;
   position: relative;
+	border: none !important;
 }
 
-button .ripple {
+.btn-nano .ripple {
   border-radius: 50%;
   background-color: rgba(255, 255, 255, 0.7);
   position: absolute;
