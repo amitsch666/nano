@@ -23,13 +23,6 @@ class NanoButton extends Component {
     circle.style.left = `${e.clientX - rect.left - (d / 2)}px`;
     circle.style.top = `${e.clientY - rect.top - (d / 2)}px`;
     circle.classList.add('ripple');
-    // const circle = e.target.getElementsByTagName('div')[0];
-    // const d = Math.max(e.target.clientWidth, e.target.clientHeight);
-    // circle.style.width = `${d}px`;
-    // circle.style.height = `${d}px`;
-    // const rect = e.target.getBoundingClientRect();
-    // circle.style.left = `${e.clientX - rect.left - (d / 2)}px`;
-    // circle.style.top = `${e.clientY - rect.top - (d / 2)}px`;
   }
   render() {
     return (
@@ -39,7 +32,6 @@ class NanoButton extends Component {
         onClick={this.onClick}
       >
         {this.props.children}
-        {/*<div className="ripple" />*/}
       </button>
     );
   }
