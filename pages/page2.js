@@ -8,7 +8,7 @@ import 'font-awesome/scss/font-awesome.scss';
 // eslint-disable-next-line no-unused-vars
 import stylesheet from '../styles/main.scss';
 
-import NanoButton from '../components/NanoButton';
+import RippleButton from '../components/RippleButton';
 import makeStore from '../store';
 import TopNav from '../components/TopNav';
 import sessdata from '../lib/session-data';
@@ -58,24 +58,24 @@ class Page2 extends Component {
           ClickOutsideState={this.props.ClickOutsideState}
         />
         <main className="container-fluid px-0">
-          <NanoButton type="button" className="btn btn-lg" onClick={() => Router.push('/about')}>About</NanoButton>
+          <RippleButton type="button" className="btn btn-lg" onClick={() => Router.push('/about')}>About</RippleButton>
           <hr />
           <div className="d-flex justify-content-around">
-            <NanoButton type="button" className="btn btn-lg">Default</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-primary">Primary</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-info">Info</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-warning">Warning</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-success">Success</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-danger">Danger</NanoButton>
+            <RippleButton type="button" className="btn btn-lg">Default</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-flat">Flat</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-info">Info</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-warning">Warning</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-success">Success</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-danger">Danger</RippleButton>
           </div>
           <hr />
           <div className="d-flex justify-content-around">
-            <NanoButton type="button" className="btn btn-lg">Default</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-primary">Primary</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-info">Info</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-warning">Warning</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-success">Success</NanoButton>
-            <NanoButton type="button" className="btn btn-lg btn-nano-danger">Danger</NanoButton>
+            <RippleButton type="button" className="btn btn-lg">Default</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-primary">Primary</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-info">Info</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-warning">Warning</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-success">Success</RippleButton>
+            <RippleButton type="button" className="btn btn-lg btn-nano-danger">Danger</RippleButton>
           </div>
         </main>
       </div>
