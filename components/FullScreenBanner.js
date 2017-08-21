@@ -1,12 +1,14 @@
 import PropTypes from 'prop-types';
-import { Button } from 'reactstrap';
+import Router from 'next/router';
+
+import RippleButton from '../components/RippleButton';
 
 const FullScreenBanner = props => (
   <section id="intro">
     <div id="intro-inner" className="text-center align-middle">
       <h1>{props.headline}</h1>
       <p>{props.tagline}</p>
-      <Button color="info" size="lg">Test Button</Button>
+      <RippleButton type="button" className="btn btn-lg" onClick={() => Router.push('/page2')}>Test Page</RippleButton>
     </div>
   </section>
 );

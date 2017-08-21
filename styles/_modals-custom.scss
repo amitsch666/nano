@@ -13,7 +13,8 @@
   box-shadow: 0 0 50px -10px #222;
 }
 .login-modal .modal-content {
-	background: $modal-bg url('../static/img/sandpaper.png');
+	// background: $modal-bg url('../static/img/sandpaper.png');
+	background-color: white;
 }
 .login-modal .modal-header,
 .login-modal .modal-footer,

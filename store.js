@@ -3,6 +3,11 @@ import allReducers from './reducers';
 
 const reducer = (state = { allReducers }, action) => {
   switch (action.type) {
+		case 'LOGOUT':
+		  return {
+				...state,
+				user: null,
+			};
     case 'USER':
       return {
         ...state,

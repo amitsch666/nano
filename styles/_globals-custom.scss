@@ -85,7 +85,8 @@ input.form-control {
 	padding-right: 2rem;
 	box-shadow: none;
 	color: $input-text;
-	background-color: $input-color;
+	// background-color: $input-color;
+	background-color: white;
 	transition: all 0.4s ease;
 }
 input.form-control:hover,
@@ -98,11 +99,22 @@ input.form-control:active {
 .input-custom:hover,
 .input-custom:focus,
 .input-custom:active {
-  border-right: 1px solid $input-custom-bottom-right-border;
-  border-bottom: 1px solid $input-custom-bottom-right-border;
-  border-left: 1px solid $input-custom-top-left-border;
-  border-top: 1px solid $input-custom-top-left-border;
+  // border-right: 1px solid $input-custom-bottom-right-border;
+  // border-bottom: 1px solid $input-custom-bottom-right-border;
+  // border-left: 1px solid $input-custom-top-left-border;
+  // border-top: 1px solid $input-custom-top-left-border;
 }
+.input-custom {
+	border: 1px solid $input-custom-border;
+}
+.input-custom:hover {
+	border: 1px solid $input-custom-border-darker;
+}
+.input-custom:focus,
+.input-custom:active {
+	border: 1px solid $input-custom-border-darkest;
+}
+
 .input-rounded,
 .input-rounded:hover,
 .input-rounded:focus,
@@ -116,7 +128,7 @@ input.form-control:active {
 .input-box-icon {
 	position: absolute;
   z-index: 99;
-  top: 40%;
+  top: 33%;
   right: .7rem;
   opacity: .5;
 }

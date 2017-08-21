@@ -88,14 +88,26 @@ class NavPane extends Component {
           <Dropdown1 />
           <Dropdown2 />
           {this.props.user ? (
-            <ProfileDropdown user={this.props.user} />
+            <ProfileDropdown
+							user={this.props.user}
+							onLogout={this.props.onLogin}
+						/>
           ) : (
             <NavItem className="py-1 login loggedout">
-              <NavLink onClick={this.toggleLoginModal}><i className="fa fa-user" />Log In</NavLink>
+              <NavLink onClick={this.toggleLoginModal}>
+								<i className="fa fa-user" />
+							  Log In
+							</NavLink>
             </NavItem>
           )}
         </Nav>
-        <LoginModal isOpen={this.props.LoginModalState} toggle={this.toggleLoginModal} className={'someclass'} modalClassName={'login-modal'} onLogin={this.props.onLogin} />
+        <LoginModal
+					isOpen={this.props.LoginModalState}
+					toggle={this.toggleLoginModal}
+					className={'someclass'}
+					modalClassName={'login-modal'}
+					onLogin={this.props.onLogin}
+				/>
       </Collapse>
     );
   }

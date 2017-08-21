@@ -4,13 +4,14 @@ import { Modal, ModalBody, ModalFooter } from 'reactstrap';
 import Link from 'next/link';
 import axios from 'axios';
 
+import RippleButton from '../components/RippleButton';
+
 export default class LoginModal extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: '',
-      buttonState: 'btn btn-lg btn-primary w-100 my-2',
     };
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
@@ -22,21 +23,21 @@ export default class LoginModal extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
-    this.setState({
-      buttonState: 'btn btn-lg btn-primary w-100 my-2 disabled',
-    });
     axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
       .then((response) => {
         this.setState({
           username: '',
           password: '',
-          buttonState: 'btn btn-lg btn-primary w-100 my-2',
         });
         this.props.onLogin(response.data);
         this.props.toggle();
       })
       .catch((error) => {
         console.log(error); // eslint-disable-line no-console
+				this.setState({
+					username: '',
+          password: '',
+				});
       });
   }
   render() {
@@ -78,14 +79,20 @@ export default class LoginModal extends Component {
           </div>
           <form className="login-form" onSubmit={this.onSubmit}>
             <div className="input-group input-group">
-              <input name="username" type="text" className="form-control form-control-lg my-2 input-custom" id="login-userid" placeholder="Your username or email" value={this.state.username} onChange={this.onChange} />
+              <input name="username" type="text" className="form-control my-2 input-custom" id="login-userid" placeholder="Your username or email" value={this.state.username} onChange={this.onChange} />
               <span className="fa fa fa-user input-box-icon" />
             </div>
             <div className="input-group input-group">
-              <input name="password" type="password" className="form-control form-control-lg my-2 input-custom" id="login-password" placeholder="Password" value={this.state.password} onChange={this.onChange} />
+              <input name="password" type="password" className="form-control my-2 input-custom" id="login-password" placeholder="Password" value={this.state.password} onChange={this.onChange} />
               <span className="fa fa fa-key input-box-icon" />
             </div>
-            <button type="submit" className={this.state.buttonState}>LOGIN</button>
+            <RippleButton
+							type="submit"
+							className="btn btn-nano-success w-100 my-2"
+							disabled={((this.state.username === '') && (this.state.password === ''))}
+						>
+							LOGIN
+						</RippleButton>
           </form>
         </ModalBody>
         <ModalFooter className="pt-0">

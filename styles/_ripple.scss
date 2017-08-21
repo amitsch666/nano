@@ -2,24 +2,35 @@
   overflow: hidden;
   position: relative;
 	border: none !important;
+	border-radius: 2px;
 	text-transform: uppercase;
 	color: slategray;
-	font-size: .9rem;
-}
-.btn-nano,
-.btn-nano:focus {
+	// font-size: .9rem;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-	transition: all 250ms;
+	&:focus {
+		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+		transition: all 250ms;
+	}
+	&:hover {
+		opacity: .8;
+		box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  }
+	&:active {
+		opacity: .7;
+	}
+	&:disabled {
+		opacity: .6;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	}
 }
-.btn-nano:hover {
-	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-}
+
 .btn-nano-flat {
 	background-color: transparent;
 	color: slategray;
-	box-shadow: none;
 }
-.btn-nano-flat:hover {
+.btn-nano-flat,
+.btn-nano-flat:hover,
+.btn-nano-flat:focus {
 	box-shadow: none;
 }
 .btn-nano-primary {
@@ -48,7 +59,7 @@
   background-color: rgba(255, 255, 255, 0.7);
   position: absolute;
   transform: scale(0);
-	animation: ripple 0.6s cubic-bezier(0,0,.2,1);
+	animation: ripple 0.9s cubic-bezier(0,0,.2,1);
 }
 .btn-nano-flat .ripple {
 	background-color: rgba(224, 224, 224, 0.7);
@@ -59,3 +70,140 @@
     opacity: 0;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*!
+ * Waves v0.6.0
+ * http://fian.my.id/Waves
+ *
+ * Copyright 2014 Alfiana E. Sibuea and other contributors
+ * Released under the MIT license
+ * https://github.com/fians/Waves/blob/master/LICENSE
+ */
+// .btn-nano {
+//     position: relative;
+//     cursor: pointer;
+//     display: inline-block;
+//     overflow: hidden;
+//     user-select: none;
+//     -webkit-tap-highlight-color: transparent;
+//     z-index: 1;
+//     transition: .3s ease-out
+// }
+//
+// .btn-nano .ripple {
+//     position: absolute;
+//     border-radius: 50%;
+//     width: 20px;
+//     height: 20px;
+//     margin-top: -10px;
+//     margin-left: -10px;
+//     opacity: 0;
+//     background: rgba(0,0,0,0.2);
+//     -webkit-transition: all 0.7s ease-out;
+//     transition: all 0.7s ease-out;
+//     -webkit-transition-property: opacity, -webkit-transform;
+//     transition-property: opacity, -webkit-transform;
+//     transition-property: transform, opacity;
+//     transition-property: transform, opacity, -webkit-transform;
+//     transform: scale(0);
+//     pointer-events: none
+// }
+//
+// .btn-nano.waves-light .ripple {
+//     background-color: rgba(255,255,255,0.45)
+// }
+//
+// .btn-nano.waves-red .ripple {
+//     background-color: rgba(244,67,54,0.7)
+// }
+//
+// .btn-nano.waves-yellow .ripple {
+//     background-color: rgba(255,235,59,0.7)
+// }
+//
+// .btn-nano.waves-orange .ripple {
+//     background-color: rgba(255,152,0,0.7)
+// }
+//
+// .btn-nano.waves-purple .ripple {
+//     background-color: rgba(156,39,176,0.7)
+// }
+//
+// .btn-nano.waves-green .ripple {
+//     background-color: rgba(76,175,80,0.7)
+// }
+//
+// .btn-nano.waves-teal .ripple {
+//     background-color: rgba(0,150,136,0.7)
+// }
+//
+// .btn-nano input[type="button"],.btn-nano input[type="reset"],.btn-nano input[type="submit"] {
+//     border: 0;
+//     font-style: normal;
+//     font-size: inherit;
+//     text-transform: inherit;
+//     background: none
+// }
+//
+// .btn-nano img {
+//     position: relative;
+//     z-index: -1
+// }
+//
+// .waves-notransition {
+//     -webkit-transition: none !important;
+//     transition: none !important
+// }
+//
+// .waves-circle {
+//     -webkit-transform: translateZ(0);
+//     transform: translateZ(0);
+//     -webkit-mask-image: -webkit-radial-gradient(circle, white 100%, black 100%)
+// }
+//
+// .waves-input-wrapper {
+//     border-radius: 0.2em;
+//     vertical-align: bottom
+// }
+//
+// .waves-input-wrapper .waves-button-input {
+//     position: relative;
+//     top: 0;
+//     left: 0;
+//     z-index: 1
+// }
+//
+// .waves-circle {
+//     text-align: center;
+//     width: 2.5em;
+//     height: 2.5em;
+//     line-height: 2.5em;
+//     border-radius: 50%;
+//     -webkit-mask-image: none
+// }
+//
+// .waves-block {
+//     display: block
+// }
+//
+// .btn-nano .ripple {
+//     z-index: -1
+// }

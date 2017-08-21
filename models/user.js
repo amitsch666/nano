@@ -1,4 +1,4 @@
-const { mongoose } = require('../dbconfig');
+const { mongoose } = require('../config/dbconfig');
 
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');

@@ -1,14 +1,17 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class RippleButton extends Component {
+class RippleButton1 extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
   }
   onClick(e) {
     this.makeRipple(e);
-    setTimeout(() => this.props.onClick(), 200);
+		const click = this.props.onClick;
+		if(click) {
+			setTimeout(() => this.props.onClick(), 200);
+		}
   }
   // eslint-disable-next-line class-methods-use-this
   makeRipple(e) {
@@ -27,9 +30,10 @@ class RippleButton extends Component {
   render() {
     return (
       <button
-        className={`${this.props.className} btn-nano`}
+        className={`btn-nano ${this.props.className}`}
         type={this.props.type}
         onClick={this.onClick}
+				disabled={this.props.disabled}
       >
         {this.props.children}
       </button>
@@ -37,9 +41,9 @@ class RippleButton extends Component {
   }
 }
 
-export default RippleButton;
+export default RippleButton1;
 
-RippleButton.propTypes = {
+RippleButton1.propTypes = {
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,

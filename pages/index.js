@@ -66,7 +66,11 @@ class IndexPage extends Component {
           <Button type="button" color="success" size="lg" onClick={() => Router.push('/about')}>About</Button>
           <Link prefetch href="/about"><a>About Page</a></Link>
           <hr />
-          {this.props.user ? (<p>{this.props.user.firstName}</p>) : (<p>not logged in</p>) }
+          {this.props.user ? (
+						<div>
+							<p>{this.props.user.firstName}</p>
+						</div>
+					) : (<p>not logged in</p>) }
           <p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
           <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
             <strong>Hello</strong> world!
