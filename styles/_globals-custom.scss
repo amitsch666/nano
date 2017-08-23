@@ -128,7 +128,10 @@ input.form-control:active {
 .input-box-icon {
 	position: absolute;
   z-index: 99;
-  top: 33%;
   right: .7rem;
+	top: 33%;
   opacity: .5;
+}
+.input-box-icon.input-box-icon-lg {
+  top: 40%;
 }

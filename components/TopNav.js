@@ -50,6 +50,7 @@ export default class TopNav extends Component {
           toggleLoginModalState={this.props.toggleLoginModalState}
           toggleClickOutsideState={this.props.toggleClickOutsideState}
           ClickOutsideState={this.props.ClickOutsideState}
+					TokenFoundOnLogin = {this.props.TokenFoundOnLogin}
         />
       </Navbar>
     );

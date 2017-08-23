@@ -40,7 +40,7 @@ app.prepare()
         host: process.env.REDIS_HOST,
         port: process.env.REDIS_PORT,
         client,
-        // ttl: 260,
+        ttl: 172800,
       }),
       saveUninitialized: false,
       resave: false,

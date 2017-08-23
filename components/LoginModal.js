@@ -14,23 +14,23 @@ export default class LoginModal extends Component {
       password: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
+		this.onChange = this.onChange.bind(this);
   }
   onChange(e) {
     this.setState({
-      [e.target.name]: e.target.value,
+			[e.target.name]: e.target.value,
     });
   }
   onSubmit(e) {
     e.preventDefault();
     axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
       .then((response) => {
-        this.setState({
-          username: '',
-          password: '',
-        });
-        this.props.onLogin(response.data);
-        this.props.toggle();
+				this.setState({
+					username: '',
+					password: '',
+				});
+				this.props.onLogin(response.data);
+				this.props.toggle();
       })
       .catch((error) => {
         console.log(error); // eslint-disable-line no-console
@@ -79,17 +79,33 @@ export default class LoginModal extends Component {
           </div>
           <form className="login-form" onSubmit={this.onSubmit}>
             <div className="input-group input-group">
-              <input name="username" type="text" className="form-control my-2 input-custom" id="login-userid" placeholder="Your username or email" value={this.state.username} onChange={this.onChange} />
-              <span className="fa fa fa-user input-box-icon" />
+              <input
+								name="username"
+								type="text"
+								className="form-control form-control-lg my-2 input-custom"
+								id="login-userid"
+								placeholder="Your username or email"
+								value={this.state.username}
+								onChange={this.onChange}
+							/>
+              <span className="fa fa fa-user input-box-icon input-box-icon-lg" />
             </div>
             <div className="input-group input-group">
-              <input name="password" type="password" className="form-control my-2 input-custom" id="login-password" placeholder="Password" value={this.state.password} onChange={this.onChange} />
-              <span className="fa fa fa-key input-box-icon" />
+              <input
+								name="password"
+								type="password"
+								className="form-control form-control-lg my-2 input-custom"
+								id="login-password"
+								placeholder="Password"
+								value={this.state.password}
+								onChange={this.onChange}
+							/>
+              <span className="fa fa fa-key input-box-icon input-box-icon-lg" />
             </div>
             <RippleButton
 							type="submit"
-							className="btn btn-nano-success w-100 my-2"
-							disabled={((this.state.username === '') && (this.state.password === ''))}
+							className="btn btn-lg btn-nano-success w-100 my-2"
+							disabled={((this.state.username === '') || (this.state.password === ''))}
 						>
 							LOGIN
 						</RippleButton>

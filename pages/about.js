@@ -4,6 +4,7 @@ import { Button } from 'reactstrap';
 import withRedux from 'next-redux-wrapper';
 import Head from 'next/head';
 import Router from 'next/router';
+import axios from 'axios';
 
 import 'font-awesome/scss/font-awesome.scss';
 // eslint-disable-next-line no-unused-vars
@@ -13,13 +14,18 @@ import makeStore from '../store';
 import TopNav from '../components/TopNav';
 import sessdata from '../lib/session-data';
 
+const cookies = require('browser-cookies');
+const jwt_decode = require('jwt-decode');
+
 class AboutPage extends Component {
   static async getInitialProps({ store, isServer, res }) {
     sessdata(store, isServer, res);
   }
   constructor(props) {
     super(props);
+		// const self = this;
     this.toggleNav = this.toggleNav.bind(this);
+		this.TokenFoundOnLogin = this.TokenFoundOnLogin.bind(this);
     this.toggleLoginModalState = this.toggleLoginModalState.bind(this);
     this.toggleClickOutsideState = this.toggleClickOutsideState.bind(this);
   }
@@ -29,6 +35,17 @@ class AboutPage extends Component {
   toggleNav() {
     this.props.toggle_nav(!this.props.NavPaneIsOpen);
   }
+	TokenFoundOnLogin(){
+		axios.get('/api/authentication/validate')
+			.then((response) => {
+				const decodedJWT = jwt_decode(cookies.get('token'));
+				this.props.onLogin(decodedJWT);
+			})
+			.catch((error) => {
+				this.props.onLogin(null);
+				this.props.toggle_login_modal_state(true);
+			});
+	}
   toggleLoginModalState(LoginModalState = this.props.LoginModalState) {
     this.props.toggle_login_modal_state(!LoginModalState);
   }
@@ -52,6 +69,7 @@ class AboutPage extends Component {
           toggleLoginModalState={this.toggleLoginModalState}
           toggleClickOutsideState={this.toggleClickOutsideState}
           ClickOutsideState={this.props.ClickOutsideState}
+					TokenFoundOnLogin = {this.TokenFoundOnLogin}
         />
         <main className="container-fluid px-0">
           {this.props.user ?

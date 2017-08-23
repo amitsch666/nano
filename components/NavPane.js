@@ -11,6 +11,7 @@ import {
   InputGroup,
 } from 'reactstrap';
 import onClickOutside from 'react-onclickoutside';
+const cookies = require('browser-cookies');
 
 import Dropdown1 from './Dropdown1';
 import Dropdown2 from './Dropdown2';
@@ -28,12 +29,17 @@ class NavPane extends Component {
     this.props.toggleClickOutsideState(true);
   }
   toggleLoginModal() {
-    if (!this.props.LoginModalState) {
-      this.props.toggleClickOutsideState(false);
-    } else {
-      this.props.toggleClickOutsideState(true);
-    }
-    this.props.toggleLoginModalState();
+		if(!this.props.LoginModalState && cookies.get('token')) {
+			// console.log('token found');
+			this.props.TokenFoundOnLogin();
+		} else {
+			if (!this.props.LoginModalState) {
+	      this.props.toggleClickOutsideState(false);
+	    } else {
+	      this.props.toggleClickOutsideState(true);
+	    }
+	    this.props.toggleLoginModalState();
+		}
   }
   handleClickOutside = () => {
     if (this.props.isOpen && this.props.ClickOutsideState) {

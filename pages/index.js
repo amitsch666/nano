@@ -5,6 +5,7 @@ import withRedux from 'next-redux-wrapper';
 import Head from 'next/head';
 import Router from 'next/router';
 import Link from 'next/link';
+import axios from 'axios';
 
 import 'font-awesome/scss/font-awesome.scss';
 // eslint-disable-next-line no-unused-vars
@@ -16,6 +17,9 @@ import sessdata from '../lib/session-data';
 import MyModal from '../components/MyModal';
 import FullScreenBanner from '../components/FullScreenBanner';
 
+const cookies = require('browser-cookies');
+const jwt_decode = require('jwt-decode');
+
 class IndexPage extends Component {
   static async getInitialProps({ store, isServer, res }) {
     sessdata(store, isServer, res);
@@ -23,7 +27,8 @@ class IndexPage extends Component {
   constructor(props) {
     super(props);
     this.toggleModal1 = this.toggleModal1.bind(this);
-    this.toggleNav = this.toggleNav.bind(this);
+		this.toggleNav = this.toggleNav.bind(this);
+		this.TokenFoundOnLogin = this.TokenFoundOnLogin.bind(this);
     this.toggleLoginModalState = this.toggleLoginModalState.bind(this);
     this.toggleClickOutsideState = this.toggleClickOutsideState.bind(this);
   }
@@ -33,6 +38,18 @@ class IndexPage extends Component {
   toggleNav() {
     this.props.toggle_nav(!this.props.NavPaneIsOpen);
   }
+	TokenFoundOnLogin(){
+		console.log('token found in page');
+		axios.get('/api/authentication/validate')
+			.then((response) => {
+				const decodedJWT = jwt_decode(cookies.get('token'));
+				this.props.onLogin(decodedJWT);
+			})
+			.catch((error) => {
+				this.props.onLogin(null);
+				this.props.toggle_login_modal_state(true);
+			});
+	}
   toggleModal1() {
     this.props.toggle_modal1(!this.props.modal1_state);
   }
@@ -60,6 +77,7 @@ class IndexPage extends Component {
           toggleLoginModalState={this.toggleLoginModalState}
           toggleClickOutsideState={this.toggleClickOutsideState}
           ClickOutsideState={this.props.ClickOutsideState}
+					TokenFoundOnLogin = {this.TokenFoundOnLogin}
         />
         <main className="container-fluid px-0">
           <FullScreenBanner headline={'Welcome home, Spinners!'} tagline={'This is just a random tagline, don\'t worry'} />
@@ -68,7 +86,7 @@ class IndexPage extends Component {
           <hr />
           {this.props.user ? (
 						<div>
-							<p>{this.props.user.firstName}</p>
+							<p>firstName: {this.props.user.firstName}</p>
 						</div>
 					) : (<p>not logged in</p>) }
           <p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
