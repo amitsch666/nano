@@ -9,6 +9,7 @@ import 'font-awesome/scss/font-awesome.scss';
 import stylesheet from '../styles/main.scss';
 
 import RippleButton from '../components/RippleButton';
+import NLabeledFieldSet from '../components/NLabeledFieldSet';
 import makeStore from '../store';
 import TopNav from '../components/TopNav';
 import sessdata from '../lib/session-data';

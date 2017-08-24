@@ -8,8 +8,13 @@
     min-height: calc(100vh - 20px);
   }
 }
+.modal-backdrop {
+	background-color: gray;
+}
+
 .modal-content {
   border: none;
+	border-radius: .2rem;
   box-shadow: 0 0 50px -10px #222;
 }
 .login-modal .modal-content {

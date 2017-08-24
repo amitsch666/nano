@@ -14,7 +14,7 @@ import stylesheet from '../styles/main.scss';
 import makeStore from '../store';
 import TopNav from '../components/TopNav';
 import sessdata from '../lib/session-data';
-import MyModal from '../components/MyModal';
+import NModal from '../components/NModal';
 import FullScreenBanner from '../components/FullScreenBanner';
 
 const cookies = require('browser-cookies');
@@ -95,7 +95,7 @@ class IndexPage extends Component {
           </UncontrolledTooltip>
           <hr />
           <Button color="danger" size="lg" onClick={this.toggleModal1}>Open modal</Button>
-          <MyModal isOpen={this.props.modal1_state} toggle={this.toggleModal1} className={'someclass'} modalClassName={'otherclass'} /> {/* value in className gets added to .modal-dialog */}
+          <NModal isOpen={this.props.modal1_state} toggle={this.toggleModal1} className={'someclass'} modalClassName={'otherclass'} /> {/* value in className gets added to .modal-dialog */}
         </main>
       </div>
     );

@@ -1,0 +1,49 @@
+
+.lfs {
+	color: #616161; // to be removed
+	margin-bottom: 1.5rem;
+	position: relative;
+}
+.lfs i {
+	position: absolute;
+	top: .4rem;
+	font-size: 1.5rem;
+	transition: color .2s;
+}
+
+.lfs input {
+	width: calc(100% - 2.2rem);
+	margin-left: 2.2rem;
+	margin-top: .2rem;
+  margin-bottom: 1rem;
+	padding: .2rem 0 .2rem 0;
+  line-height: .5;
+  border: none;
+  border-bottom: 1px solid #bdbdbd;
+  outline: 0;
+	height: 2.1rem;
+	box-sizing: content-box;
+}
+.lfs input:focus {
+	border-bottom-color: $input-active;
+}
+.lfs label {
+	transition: .2s ease-out;
+  opacity: .6;
+  position: absolute;
+  top: .5rem;
+  left: 0;
+  cursor: text;
+	margin-left: 2.2rem;
+}
+.lfs label.ready {
+	transform: translateY(-125%);
+	opacity: 1;
+	font-size: .9rem;
+}
+.lfs label.active {
+	color: $input-active;
+}
+.lfs i.active {
+	color: $input-active;
+}

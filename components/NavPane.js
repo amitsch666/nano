@@ -111,7 +111,7 @@ class NavPane extends Component {
 					isOpen={this.props.LoginModalState}
 					toggle={this.toggleLoginModal}
 					className={'someclass'}
-					modalClassName={'login-modal'}
+					modalClassName={'login-modal fade-scale'}
 					onLogin={this.props.onLogin}
 				/>
       </Collapse>

@@ -11,8 +11,6 @@ const RedisStore = require('connect-redis')(expressSession);
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const favicon = require('serve-favicon');
-
-const client = redis.createClient();
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
@@ -39,7 +37,6 @@ app.prepare()
       store: new RedisStore({
         host: process.env.REDIS_HOST,
         port: process.env.REDIS_PORT,
-        client,
         ttl: 172800,
       }),
       saveUninitialized: false,
