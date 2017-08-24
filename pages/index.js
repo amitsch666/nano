@@ -95,8 +95,15 @@ class IndexPage extends Component {
           </UncontrolledTooltip>
           <hr />
           <Button color="danger" size="lg" onClick={this.toggleModal1}>Open modal</Button>
-          <NModal isOpen={this.props.modal1_state} toggle={this.toggleModal1} className={'someclass'} modalClassName={'otherclass'} /> {/* value in className gets added to .modal-dialog */}
         </main>
+				<NModal
+					fade={true}
+					isOpen={this.props.modal1_state}
+					toggle={this.toggleModal1}
+					className={'someclass'}
+					modalClassName={'nmodal fade-scale'}
+					onLogin={this.props.onLogin}
+				/> {/* value in className gets added to .modal-dialog */}
       </div>
     );
   }

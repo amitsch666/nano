@@ -1,69 +1,69 @@
-.centered-modal .modal-dialog {
-  min-height: calc(100vh - 60px);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  overflow: auto;
-  @media(max-width: 991px) {
-    min-height: calc(100vh - 20px);
-  }
-}
-.modal-backdrop {
-	background-color: gray;
-}
-
-.modal-content {
-  border: none;
-	border-radius: .2rem;
-  box-shadow: 0 0 50px -10px #222;
-}
-.login-modal .modal-content {
-	// background: $modal-bg url('../static/img/sandpaper.png');
-	background-color: white;
-}
-.login-modal .modal-header,
-.login-modal .modal-footer,
-.login-modal .modal-body {
-  // background: $modal-bg url('../static/img/sandpaper.png');
-  border: none;
-}
-.modal-brand-tagline {
-  opacity: .5;
-  font-weight: normal;
-  font-size: 1.1rem;
-}
-.login-modal button.close {
-  position: absolute;
-  top: .5rem;
-  right: .75rem;
-}
-
-.social-login {
-  color: white;
-}
-#facebook {
-  background-color: $facebook;
-}
-#twitter {
-  background-color: $twitter;
-}
-#google {
-  background-color: $google;
-}
-#facebook:hover,
-#facebook:focus {
-  background-color: darken($facebook, 10%);
-}
-#twitter:hover,
-#twitter:focus {
-  background-color: darken($twitter, 10%);
-}
-#google:hover,
-#google:focus {
-  background-color: darken($google, 10%);
-}
-
-.or p {
-  opacity: .5;
-  font-size: .75rem;
-}
+// .centered-modal .modal-dialog {
+//   min-height: calc(100vh - 60px);
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: center;
+//   overflow: auto;
+//   @media(max-width: 991px) {
+//     min-height: calc(100vh - 20px);
+//   }
+// }
+// .modal-backdrop {
+// 	background-color: gray;
+// }
+//
+// .modal-content {
+//   border: none;
+// 	border-radius: .2rem;
+//   box-shadow: 0 0 50px -10px #222;
+// }
+// .login-modal .modal-content {
+// 	// background: $modal-bg url('../static/img/sandpaper.png');
+// 	background-color: white;
+// }
+// .login-modal .modal-header,
+// .login-modal .modal-footer,
+// .login-modal .modal-body {
+//   // background: $modal-bg url('../static/img/sandpaper.png');
+//   border: none;
+// }
+// .modal-brand-tagline {
+//   opacity: .5;
+//   font-weight: normal;
+//   font-size: 1.1rem;
+// }
+// .login-modal button.close {
+//   position: absolute;
+//   top: .5rem;
+//   right: .75rem;
+// }
+//
+// .social-login {
+//   color: white;
+// }
+// #facebook {
+//   background-color: $facebook;
+// }
+// #twitter {
+//   background-color: $twitter;
+// }
+// #google {
+//   background-color: $google;
+// }
+// #facebook:hover,
+// #facebook:focus {
+//   background-color: darken($facebook, 10%);
+// }
+// #twitter:hover,
+// #twitter:focus {
+//   background-color: darken($twitter, 10%);
+// }
+// #google:hover,
+// #google:focus {
+//   background-color: darken($google, 10%);
+// }
+//
+// .or p {
+//   opacity: .5;
+//   font-size: .75rem;
+// }

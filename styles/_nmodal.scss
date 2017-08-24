@@ -1,0 +1,49 @@
+
+
+body.modal-open main,
+body.modal-open nav {
+	filter: grayscale(100%);
+}
+.modal-backdrop {
+	background-color: black;
+}
+.nmodal .modal-content {
+	margin-top: 5rem;
+	border: none;
+	border-radius: 2px;
+}
+.modal-brand-tagline {
+  opacity: .5;
+  font-weight: normal;
+  font-size: 1.1rem;
+	margin-top: -.3rem;
+}
+.modal-brand img {
+	position: absolute;
+  top: -4rem;
+	height: 4rem;
+}
+.modal-brand .h2 {
+	margin-top: -.8rem;
+}
+.nmodal .close {
+	position: absolute;
+  top: .6rem;
+  right: 1rem;
+}
+
+.or {
+	border-bottom: 1px solid lightgrey;
+	margin-bottom: 2rem;
+	margin-top: 1rem;
+	& > span {
+		margin-bottom: -2.1rem;
+    background-color: white;
+    padding: 1rem;
+		border: 1px solid lightgrey;
+	}
+	& p {
+		opacity: .5;
+    font-size: .75rem;
+	}
+}

@@ -31,7 +31,7 @@ export default class ProfileDropdown extends Component {
   render() {
     return (
       <NavDropdown className="py-1 profile-dropdown" isOpen={this.state.dropdownOpen} toggle={this.toggledropdown}>
-        <DropdownToggle nav>
+        <DropdownToggle nav caret>
           <img
             className="user-thumbnail"
             src={
