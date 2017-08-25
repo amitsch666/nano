@@ -7,6 +7,9 @@ body.modal-open nav {
 .modal-backdrop {
 	background-color: black;
 }
+.modal-backdrop.show {
+	opacity: .6;
+}
 .nmodal .modal-content {
 	margin-top: 5rem;
 	border: none;
@@ -45,5 +48,6 @@ body.modal-open nav {
 	& p {
 		opacity: .5;
     font-size: .75rem;
+		cursor: default;
 	}
 }

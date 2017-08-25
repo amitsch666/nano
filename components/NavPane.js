@@ -16,7 +16,7 @@ const cookies = require('browser-cookies');
 import Dropdown1 from './Dropdown1';
 import Dropdown2 from './Dropdown2';
 import ProfileDropdown from './ProfileDropdown';
-import NModal from './NModal';
+import NModalLogin from './NModalLogin';
 
 class NavPane extends Component {
   constructor(props) {
@@ -107,7 +107,7 @@ class NavPane extends Component {
             </NavItem>
           )}
         </Nav>
-        <NModal
+        <NModalLogin
 					fade={true}
 					isOpen={this.props.LoginModalState}
 					toggle={this.toggleLoginModal}

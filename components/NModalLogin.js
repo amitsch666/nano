@@ -8,12 +8,13 @@ import RippleButton from '../components/RippleButton';
 import NLabeledFieldSet from '../components/NLabeledFieldSet';
 import NSocial from '../components/NSocial';
 
-export default class LoginModal extends Component {
+export default class NModalLogin extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: '',
       password: '',
+			waiting: '',
     };
     this.onSubmit = this.onSubmit.bind(this);
 		this.onChange = this.onChange.bind(this);
@@ -25,11 +26,13 @@ export default class LoginModal extends Component {
   }
   onSubmit(e) {
     e.preventDefault();
+		this.setState({ waiting: 'waiting' });
     axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
       .then((response) => {
 				this.setState({
 					username: '',
 					password: '',
+					waiting: '',
 				});
 				this.props.onLogin(response.data);
 				this.props.toggle();
@@ -39,6 +42,7 @@ export default class LoginModal extends Component {
 				this.setState({
 					username: '',
           password: '',
+					waiting: '',
 				});
       });
   }
@@ -100,7 +104,7 @@ export default class LoginModal extends Component {
 						/>
 						<RippleButton
 							type="submit"
-							className="btn btn-nano-success w-100 my-2"
+							className={`btn btn-nano-success w-100 my-2 ${this.state.waiting}`}
 							disabled={((this.state.username === '') || (this.state.password === ''))}
 						>
 							LOGIN
@@ -119,14 +123,14 @@ export default class LoginModal extends Component {
   }
 }
 
-LoginModal.propTypes = {
+NModalLogin.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
   className: PropTypes.string,
   modalClassName: PropTypes.string,
   onLogin: PropTypes.func.isRequired,
 };
-LoginModal.defaultProps = {
+NModalLogin.defaultProps = {
   className: '',
   modalClassName: '',
 };

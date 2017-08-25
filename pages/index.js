@@ -14,7 +14,7 @@ import stylesheet from '../styles/main.scss';
 import makeStore from '../store';
 import TopNav from '../components/TopNav';
 import sessdata from '../lib/session-data';
-import NModal from '../components/NModal';
+import NModalLogin from '../components/NModalLogin';
 import FullScreenBanner from '../components/FullScreenBanner';
 
 const cookies = require('browser-cookies');
@@ -96,7 +96,7 @@ class IndexPage extends Component {
           <hr />
           <Button color="danger" size="lg" onClick={this.toggleModal1}>Open modal</Button>
         </main>
-				<NModal
+				<NModalLogin
 					fade={true}
 					isOpen={this.props.modal1_state}
 					toggle={this.toggleModal1}
