@@ -30,7 +30,6 @@ class NavPane extends Component {
   }
   toggleLoginModal() {
 		if(!this.props.LoginModalState && cookies.get('token')) {
-			// console.log('token found');
 			this.props.TokenFoundOnLogin();
 		} else {
 			if (!this.props.LoginModalState) {

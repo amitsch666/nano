@@ -4,11 +4,11 @@ import { Modal, ModalBody, ModalFooter } from 'reactstrap';
 import Link from 'next/link';
 import axios from 'axios';
 
-import RippleButton from '../components/RippleButton';
-import NLabeledFieldSet from '../components/NLabeledFieldSet';
-import NSocial from '../components/NSocial';
+import RippleButton from './RippleButton';
+import NLabeledFieldSet from './NLabeledFieldSet';
+import NSocial from './NSocial';
 
-export default class NModalRegister extends Component {
+export default class NLoginModalContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -27,8 +27,10 @@ export default class NModalRegister extends Component {
   onSubmit(e) {
     e.preventDefault();
 		this.setState({ waiting: 'waiting' });
-    axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
-      .then((response) => {
+    axios.post('/api/authentication/login', {
+			username: this.state.username,
+		  password: this.state.password
+	  }).then((response) => {
 				this.setState({
 					username: '',
 					password: '',
@@ -46,9 +48,13 @@ export default class NModalRegister extends Component {
 				});
       });
   }
+	toggleRegister(e, val) {
+		e.preventDefault();
+		this.props.toggleRegister(val);
+	}
   render() {
     return (
-      <Modal
+			<Modal
 				fade={this.props.fade}
         isOpen={this.props.isOpen}
         toggle={this.props.toggle}
@@ -70,44 +76,25 @@ export default class NModalRegister extends Component {
           </button>
         </div>
         <ModalBody className="py-0">
+					<div className="row social-login px-5 py-2 d-flex justify-content-around">
+						<NSocial icon="facebook" />
+						<NSocial icon="twitter" />
+						<NSocial icon="google" />
+					</div>
+          <div className="or row p-2">
+						<span className="mx-auto rounded-circle">
+	            <p className="m-auto text-uppercase font-weight-bold">OR</p>
+						</span>
+          </div>
+
 					<form className="login-form px-2 pt-3" onSubmit={this.onSubmit}>
-						<NLabeledFieldSet
-							name="firstname"
-							type="text"
-							className="form-control"
-							icon="fa fa-vcard"
-							id="login-userid"
-							label="Your first name"
-							value={this.state.username}
-							onChange={this.onChange}
-						/>
-						<NLabeledFieldSet
-							name="lastname"
-							type="text"
-							className="form-control"
-							icon="fa fa-vcard"
-							id="login-userid"
-							label="Your last name"
-							value={this.state.username}
-							onChange={this.onChange}
-						/>
 						<NLabeledFieldSet
 							name="username"
 							type="text"
 							className="form-control"
 							icon="fa fa-user"
 							id="login-userid"
-							label="Your username"
-							value={this.state.username}
-							onChange={this.onChange}
-						/>
-						<NLabeledFieldSet
-							name="email"
-							type="email"
-							className="form-control"
-							icon="fa fa-envelope"
-							id="login-userid"
-							label="Your email"
+							label="Your username or email"
 							value={this.state.username}
 							onChange={this.onChange}
 						/>
@@ -121,30 +108,20 @@ export default class NModalRegister extends Component {
 							value={this.state.password}
 							onChange={this.onChange}
 						/>
-						<NLabeledFieldSet
-							name="passwordagain"
-							type="password"
-							className="form-control"
-							icon="fa fa-lock"
-							id="login-password"
-							label="Confirm password"
-							value={this.state.password}
-							onChange={this.onChange}
-						/>
 						<RippleButton
 							type="submit"
 							className={`btn btn-nano-success w-100 my-2 ${this.state.waiting}`}
 							disabled={((this.state.username === '') || (this.state.password === ''))}
 						>
-							LOGIN
-							<i className="fa fa-lg fa-sign-in icon-right" />
+							<i className="fa fa-lg fa-sign-in icon-left" />
+							log in
 						</RippleButton>
 					</form>
         </ModalBody>
         <ModalFooter className="pt-0 border-0">
           <div className="p-1">
-            <Link prefetch href="/about"><a className="small color-unchanged p-2">Forgot password?</a></Link>
-            <Link prefetch href="/about"><a className="small color-unchanged p-2">New user?</a></Link>
+						<a href="#" className="small color-unchanged p-2" onClick={(e) => this.toggleRegister(e, 'yes')}>Forgot password?</a>
+						<a href="#" className="small color-unchanged p-2" onClick={(e) => this.toggleRegister(e, 'yes')}>New user?</a>
           </div>
         </ModalFooter>
       </Modal>
@@ -152,14 +129,14 @@ export default class NModalRegister extends Component {
   }
 }
 
-NModalRegister.propTypes = {
+NLoginModalContent.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
   className: PropTypes.string,
   modalClassName: PropTypes.string,
   onLogin: PropTypes.func.isRequired,
 };
-NModalRegister.defaultProps = {
+NLoginModalContent.defaultProps = {
   className: '',
   modalClassName: '',
 };

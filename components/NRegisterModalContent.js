@@ -4,19 +4,23 @@ import { Modal, ModalBody, ModalFooter } from 'reactstrap';
 import Link from 'next/link';
 import axios from 'axios';
 
-import RippleButton from '../components/RippleButton';
-import NLabeledFieldSet from '../components/NLabeledFieldSet';
-import NSocial from '../components/NSocial';
+import RippleButton from './RippleButton';
+import NLabeledFieldSet from './NLabeledFieldSet';
+import NSocial from './NSocial';
 
-export default class NModalRegister extends Component {
+export default class NLoginModalContent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: '',
+			firstName: '',
+			lastName: '',
+			username: '',
+			email: '',
+			password: '',
 			waiting: '',
     };
-    this.onSubmit = this.onSubmit.bind(this);
+		this.toggle = this.toggle.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 		this.onChange = this.onChange.bind(this);
   }
   onChange(e) {
@@ -27,10 +31,19 @@ export default class NModalRegister extends Component {
   onSubmit(e) {
     e.preventDefault();
 		this.setState({ waiting: 'waiting' });
-    axios.post('/api/authentication/login', { username: this.state.username, password: this.state.password })
-      .then((response) => {
+    axios.post('/api/authentication/register', {
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
+			username: this.state.username,
+			email: this.state.email,
+			password: this.state.password,
+			img: 'untouchable',
+	  }).then((response) => {
 				this.setState({
+					firstName: '',
+					lastName: '',
 					username: '',
+					email: '',
 					password: '',
 					waiting: '',
 				});
@@ -40,18 +53,25 @@ export default class NModalRegister extends Component {
       .catch((error) => {
         console.log(error); // eslint-disable-line no-console
 				this.setState({
+					firstName: '',
+					lastName: '',
 					username: '',
-          password: '',
+					email: '',
+					password: '',
 					waiting: '',
 				});
       });
   }
+	toggle() {
+		this.props.toggleRegister();
+		this.props.toggle();
+	}
   render() {
     return (
-      <Modal
+			<Modal
 				fade={this.props.fade}
         isOpen={this.props.isOpen}
-        toggle={this.props.toggle}
+        toggle={this.toggle}
         className={this.props.className}
         modalClassName={this.props.modalClassName}
       >
@@ -63,7 +83,7 @@ export default class NModalRegister extends Component {
             <div className="d-flex justify-content-center h2">
               <span className="tale">Tale</span><span className="spinners">Spinners</span>
             </div>
-            <div className="modal-brand-tagline text-center">Just log in and start spinning!</div>
+            <div className="modal-brand-tagline text-center">Just sign up and start spinning!</div>
           </div>
           <button type="button" className="close" onClick={this.props.toggle} aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -72,23 +92,23 @@ export default class NModalRegister extends Component {
         <ModalBody className="py-0">
 					<form className="login-form px-2 pt-3" onSubmit={this.onSubmit}>
 						<NLabeledFieldSet
-							name="firstname"
+							name="firstName"
 							type="text"
 							className="form-control"
-							icon="fa fa-vcard"
-							id="login-userid"
+							icon="fa fa-user"
+							id="register-firstName"
 							label="Your first name"
-							value={this.state.username}
+							value={this.state.firstName}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
-							name="lastname"
+							name="lastName"
 							type="text"
 							className="form-control"
-							icon="fa fa-vcard"
-							id="login-userid"
+							icon="fa fa-user"
+							id="register-lastName"
 							label="Your last name"
-							value={this.state.username}
+							value={this.state.lastName}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
@@ -96,8 +116,8 @@ export default class NModalRegister extends Component {
 							type="text"
 							className="form-control"
 							icon="fa fa-user"
-							id="login-userid"
-							label="Your username"
+							id="register-username"
+							label="Your desired username"
 							value={this.state.username}
 							onChange={this.onChange}
 						/>
@@ -105,10 +125,10 @@ export default class NModalRegister extends Component {
 							name="email"
 							type="email"
 							className="form-control"
-							icon="fa fa-envelope"
-							id="login-userid"
-							label="Your email"
-							value={this.state.username}
+							icon="fa fa-send"
+							id="register-email"
+							label="Your email address"
+							value={this.state.email}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
@@ -116,18 +136,8 @@ export default class NModalRegister extends Component {
 							type="password"
 							className="form-control"
 							icon="fa fa-lock"
-							id="login-password"
+							id="register-password"
 							label="Your password"
-							value={this.state.password}
-							onChange={this.onChange}
-						/>
-						<NLabeledFieldSet
-							name="passwordagain"
-							type="password"
-							className="form-control"
-							icon="fa fa-lock"
-							id="login-password"
-							label="Confirm password"
 							value={this.state.password}
 							onChange={this.onChange}
 						/>
@@ -136,8 +146,8 @@ export default class NModalRegister extends Component {
 							className={`btn btn-nano-success w-100 my-2 ${this.state.waiting}`}
 							disabled={((this.state.username === '') || (this.state.password === ''))}
 						>
-							LOGIN
-							<i className="fa fa-lg fa-sign-in icon-right" />
+							<i className="fa fa-lg fa-pencil icon-left" />
+							register
 						</RippleButton>
 					</form>
         </ModalBody>
@@ -152,14 +162,14 @@ export default class NModalRegister extends Component {
   }
 }
 
-NModalRegister.propTypes = {
+NLoginModalContent.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   toggle: PropTypes.func.isRequired,
   className: PropTypes.string,
   modalClassName: PropTypes.string,
   onLogin: PropTypes.func.isRequired,
 };
-NModalRegister.defaultProps = {
+NLoginModalContent.defaultProps = {
   className: '',
   modalClassName: '',
 };

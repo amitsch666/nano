@@ -42,13 +42,18 @@ export default class ProfileDropdown extends Component {
             }
             alt={`${this.props.user.firstName} ${this.props.user.lastName}`}
           />
+				<span className="pdname">{this.props.user.username}</span>
         </DropdownToggle>
         <DropdownMenu>
           <DropdownItem className="font-weight-bold text-uppercase" header>{this.props.user.firstName}</DropdownItem>
           <hr className="my-0" />
-          <DropdownItem className="font-weight-bold text-uppercase">Edit Profile</DropdownItem>
+          <DropdownItem className="font-weight-bold text-uppercase">My Profile</DropdownItem>
           <hr className="my-0" />
-          <DropdownItem className="font-weight-bold text-uppercase">View Profile</DropdownItem>
+          <DropdownItem className="font-weight-bold text-uppercase">Library</DropdownItem>
+          <hr className="my-0" />
+					<DropdownItem className="font-weight-bold text-uppercase">Help</DropdownItem>
+          <hr className="my-0" />
+					<DropdownItem className="font-weight-bold text-uppercase">Settings</DropdownItem>
           <hr className="my-0" />
           <DropdownItem className="font-weight-bold text-uppercase" onClick={this.logout}>Logout</DropdownItem>
         </DropdownMenu>

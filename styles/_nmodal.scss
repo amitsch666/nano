@@ -10,6 +10,9 @@ body.modal-open nav {
 .modal-backdrop.show {
 	opacity: .6;
 }
+.nmodal .modal-header {
+	background-color: lightgrey;
+}
 .nmodal .modal-content {
 	margin-top: 5rem;
 	border: none;
@@ -34,7 +37,9 @@ body.modal-open nav {
   top: .6rem;
   right: 1rem;
 }
-
+.social-login {
+	margin-top: 1.5rem;
+}
 .or {
 	border-bottom: 1px solid lightgrey;
 	margin-bottom: 2rem;
