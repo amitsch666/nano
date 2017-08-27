@@ -98,8 +98,8 @@ class NavPane extends Component {
 							onLogout={this.props.onLogin}
 						/>
           ) : (
-            <NavItem className="py-1 login loggedout">
-              <NavLink onClick={this.toggleLoginModal}>
+            <NavItem className="py-1 login loggedout" onClick={this.toggleLoginModal}>
+              <NavLink>
 								<i className="fa fa-user" />
 							  Log In
 							</NavLink>

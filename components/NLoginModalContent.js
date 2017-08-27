@@ -15,10 +15,19 @@ export default class NLoginModalContent extends Component {
       username: '',
       password: '',
 			waiting: '',
+			disabled: false,
     };
-    this.onSubmit = this.onSubmit.bind(this);
+		this.toggle = this.toggle.bind(this);
+		this.onSubmit = this.onSubmit.bind(this);
 		this.onChange = this.onChange.bind(this);
   }
+	toggle() {
+		this.setState({
+			username: '',
+			password: '',
+		});
+		this.props.toggle();
+	}
   onChange(e) {
     this.setState({
 			[e.target.name]: e.target.value,
@@ -57,7 +66,7 @@ export default class NLoginModalContent extends Component {
 			<Modal
 				fade={this.props.fade}
         isOpen={this.props.isOpen}
-        toggle={this.props.toggle}
+        toggle={this.toggle}
         className={this.props.className}
         modalClassName={this.props.modalClassName}
       >
@@ -99,6 +108,7 @@ export default class NLoginModalContent extends Component {
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
+							password
 							name="password"
 							type="password"
 							className="form-control"

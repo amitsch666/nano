@@ -8,6 +8,7 @@ const User = new Schema({
 		type: String,
 		lowercase: true,
 		required: true,
+		unique: true,
 	},
   password: {
 		type: String,
@@ -26,6 +27,7 @@ const User = new Schema({
 		type: String,
 		lowercase: true,
 		required: true,
+		unique: true,
 	},
   img: {
 		type: String,

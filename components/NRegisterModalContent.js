@@ -8,6 +8,8 @@ import RippleButton from './RippleButton';
 import NLabeledFieldSet from './NLabeledFieldSet';
 import NSocial from './NSocial';
 
+import { validatefirstName, validatelastName, validateusername, validateemail, validatepassword } from '../lib/validateInput';
+
 export default class NLoginModalContent extends Component {
   constructor(props) {
     super(props);
@@ -17,38 +19,93 @@ export default class NLoginModalContent extends Component {
 			username: '',
 			email: '',
 			password: '',
+			firstNameError: '',
+			lastNameError: '',
+			usernameError: '',
+			emailError: '',
+			passwordError: '',
 			waiting: '',
     };
 		this.toggle = this.toggle.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.toggleDisable = this.toggleDisable.bind(this);
   }
+	toggleDisable() {
+		if((this.state.firstNameError === '' &&
+	    this.state.lastNameError === '' &&
+		  this.state.usernameError === '' &&
+		  this.state.passwordError === '' &&
+		  this.state.emailError === '' &&
+		  this.state.firstName !== '' &&
+			this.state.lastName !== '' &&
+		  this.state.username !== '' &&
+		  this.state.password !== '' &&
+		  this.state.email !== '') ||
+		  this.state.waiting !== '') {
+			return false;
+		} else {
+			return true;
+		}
+	}
   onChange(e) {
-    this.setState({
+		this.setState({
 			[e.target.name]: e.target.value,
-    });
+		});
+		switch(e.target.name) {
+			case 'firstName':
+			  this.setState({ firstNameError: validatefirstName(e) });
+				break;
+			case 'lastName':
+			  this.setState({ lastNameError: validatelastName(e) });
+				break;
+			case 'username':
+			  this.setState({ usernameError: validateusername(e) });
+				break;
+			case 'email':
+			  this.setState({ emailError: validateemail(e) });
+				break;
+			case 'password':
+			  this.setState({ passwordError: validatepassword(e) });
+				break;
+			default: break;
+		}
+		// this.toggleDisable(e);
   }
   onSubmit(e) {
     e.preventDefault();
-		this.setState({ waiting: 'waiting' });
+		this.setState({
+			waiting: 'waiting',
+			disabled: true,
+		});
     axios.post('/api/authentication/register', {
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
 			username: this.state.username,
 			email: this.state.email,
 			password: this.state.password,
-			img: 'untouchable',
 	  }).then((response) => {
-				this.setState({
-					firstName: '',
-					lastName: '',
-					username: '',
-					email: '',
-					password: '',
-					waiting: '',
-				});
-				this.props.onLogin(response.data);
-				this.props.toggle();
+				// this.props.onLogin(response.data);
+				if(response.data.error) {
+					// handle error
+					console.log(response.data.error);
+				} else {
+					this.setState({
+						firstName: '',
+						lastName: '',
+						username: '',
+						email: '',
+						password: '',
+						firstNameError: '',
+						lastNameError: '',
+						usernameError: '',
+						emailError: '',
+						passwordError: '',
+						waiting: '',
+					});
+					this.props.toggleRegister();
+					this.props.toggle();
+				}
       })
       .catch((error) => {
         console.log(error); // eslint-disable-line no-console
@@ -58,6 +115,11 @@ export default class NLoginModalContent extends Component {
 					username: '',
 					email: '',
 					password: '',
+					firstNameError: '',
+					lastNameError: '',
+					usernameError: '',
+					emailError: '',
+					passwordError: '',
 					waiting: '',
 				});
       });
@@ -95,20 +157,22 @@ export default class NLoginModalContent extends Component {
 							name="firstName"
 							type="text"
 							className="form-control"
-							icon="fa fa-user"
+							icon="fa fa-address-book"
 							id="register-firstName"
 							label="Your first name"
 							value={this.state.firstName}
+							error={this.state.firstNameError}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
 							name="lastName"
 							type="text"
 							className="form-control"
-							icon="fa fa-user"
+							icon="fa fa-address-book"
 							id="register-lastName"
 							label="Your last name"
 							value={this.state.lastName}
+							error={this.state.lastNameError}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
@@ -119,6 +183,7 @@ export default class NLoginModalContent extends Component {
 							id="register-username"
 							label="Your desired username"
 							value={this.state.username}
+							error={this.state.usernameError}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
@@ -129,9 +194,11 @@ export default class NLoginModalContent extends Component {
 							id="register-email"
 							label="Your email address"
 							value={this.state.email}
+							error={this.state.emailError}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
+							password
 							name="password"
 							type="password"
 							className="form-control"
@@ -139,12 +206,13 @@ export default class NLoginModalContent extends Component {
 							id="register-password"
 							label="Your password"
 							value={this.state.password}
+							error={this.state.passwordError}
 							onChange={this.onChange}
 						/>
 						<RippleButton
 							type="submit"
 							className={`btn btn-nano-success w-100 my-2 ${this.state.waiting}`}
-							disabled={((this.state.username === '') || (this.state.password === ''))}
+							disabled={this.toggleDisable()}
 						>
 							<i className="fa fa-lg fa-pencil icon-left" />
 							register
@@ -153,8 +221,7 @@ export default class NLoginModalContent extends Component {
         </ModalBody>
         <ModalFooter className="pt-0 border-0">
           <div className="p-1">
-            <Link prefetch href="/about"><a className="small color-unchanged p-2">Forgot password?</a></Link>
-            <Link prefetch href="/about"><a className="small color-unchanged p-2">New user?</a></Link>
+						<a href="#" className="small color-unchanged p-2" onClick={(e) => this.toggleRegister(e, 'yes')}>Already have an account?</a>
           </div>
         </ModalFooter>
       </Modal>

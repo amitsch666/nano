@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Button, UncontrolledTooltip } from 'reactstrap';
 
 class NLabeledFieldSet extends Component {
   constructor(props) {
@@ -8,12 +9,15 @@ class NLabeledFieldSet extends Component {
 			isReady: '',
 			isActive: '',
 			inputText: '',
+			visible: null,
+			type: this.props.type,
 		};
 		this.onFocus = this.onFocus.bind(this);
 		this.onMouseOver = this.onMouseOver.bind(this);
 		this.iFocus = this.iFocus.bind(this);
 		this.onBlur = this.onBlur.bind(this);
 		this.onChange = this.onChange.bind(this);
+		this.onClick = this.onClick.bind(this);
   }
 	onMouseOver(e) {
 		e.target.focus();
@@ -34,6 +38,7 @@ class NLabeledFieldSet extends Component {
 		});
 	}
 	onBlur(e) {
+		if(this.props.onBlur) this.props.onBlur(e);
 		if(e.target.value === '') {
 			this.setState({
 				isReady: '',
@@ -45,18 +50,29 @@ class NLabeledFieldSet extends Component {
 	    });
 		}
 	}
+	onClick(e) {
+		if(this.state.type === 'password') {
+			this.setState({
+				type: 'text',
+			});
+		} else {
+			this.setState({
+				type: 'password',
+			});
+		}
+	}
   render() {
     return (
-			<div className="lfs">
+			<div className={`lfs ${this.props.error ? 'lfs-error' : ''}`}>
 				<i
-					className={`${this.props.icon} ${this.state.isReady} ${this.state.isActive}`}
+					className={`labelicon ${this.props.icon} ${this.state.isReady} ${this.state.isActive}`}
 					onMouseOver={this.iFocus}
 					onClick={this.iFocus}
 				/>
 				<input
 					name={this.props.name}
-					type={this.props.type}
-					className={this.props.className}
+					type={this.state.type}
+					className={`${this.props.className} ${this.props.error ? 'error' : ''} ${this.props.type === 'password' ? 'pwdinput' : ''}`}
 					id={this.props.id}
 					onFocus={this.onFocus}
 					onMouseOver={this.onMouseOver}
@@ -64,6 +80,30 @@ class NLabeledFieldSet extends Component {
 					onChange={this.onChange}
 					value={this.props.value}
 				/>
+				{this.props.password && this.state.type === 'password' ? (
+					<span>
+						<i id="showpwd" className="pwdicon fa fa-eye-slash" onClick={this.onClick} />
+						<UncontrolledTooltip placement="top" target="showpwd">
+							Show password
+						</UncontrolledTooltip>
+					</span>
+				) : ('')}
+				{this.props.password && this.state.type === 'text' ? (
+					<span>
+						<i id="hidepwd" className="pwdicon fa fa-eye" onClick={this.onClick} />
+						<UncontrolledTooltip placement="top" target="hidepwd">
+							Hide password
+						</UncontrolledTooltip>
+					</span>
+				) : ('')}
+				{this.props.error ? (
+					<span className="inputError">
+						<i id={`${this.props.id}-error`} className="fa fa-exclamation-circle" />
+						<UncontrolledTooltip placement="left" target={`${this.props.id}-error`}>
+							{this.props.error}
+						</UncontrolledTooltip>
+					</span>
+				) : ('')}
 				<label
 					htmlFor={this.props.id}
 					className={`${this.state.isReady}  ${this.state.isActive}`}

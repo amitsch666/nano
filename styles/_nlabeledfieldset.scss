@@ -4,11 +4,31 @@
 	margin-bottom: 1.5rem;
 	position: relative;
 }
-.lfs i {
+.lfs .labelicon {
 	position: absolute;
 	top: .4rem;
 	font-size: 1.5rem;
 	transition: color .2s;
+}
+.pwdicon {
+	font-size: 1.5rem;
+	position: absolute;
+	top: .4rem;
+	right: 0;
+	cursor: pointer;
+	&.fa-eye-slash {
+		opacity: .6;
+	}
+}
+.lfs-error .pwdicon {
+	right: 2.2rem;
+}
+.fa-exclamation-circle {
+	font-size: 1.5rem;
+	position: absolute;
+	top: .4rem;
+	right: 0;
+	color: $validation-fail;
 }
 
 .lfs input {
@@ -23,6 +43,18 @@
   outline: 0;
 	height: 2.1rem;
 	box-sizing: content-box;
+	&.pwdinput {
+		width: calc(100% - 4.4rem);
+		padding-right: 2.2rem;
+	}
+}
+.lfs-error input {
+	width: calc(100% - 4.4rem);
+	padding-right: 2.2rem;
+	&.pwdinput {
+		width: calc(100% - 6.6rem);
+		padding-right: 4.4rem;
+	}
 }
 .lfs input:focus {
 	border-bottom-color: $input-active;
@@ -44,6 +76,6 @@
 .lfs label.active {
 	color: $input-active;
 }
-.lfs i.active {
+.lfs i.labelicon.active {
 	color: $input-active;
 }
