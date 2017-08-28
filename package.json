@@ -56,7 +56,8 @@
     "reactstrap": "^4.8.0",
     "redis": "^2.7.1",
     "redux": "^3.7.2",
-    "serve-favicon": "^2.4.3"
+    "serve-favicon": "^2.4.3",
+    "validator": "^8.1.0"
   },
   "devDependencies": {
     "css-loader": "^0.28.4",

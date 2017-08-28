@@ -19,30 +19,29 @@ export default class NLoginModalContent extends Component {
 			username: '',
 			email: '',
 			password: '',
-			firstNameError: '',
-			lastNameError: '',
-			usernameError: '',
-			emailError: '',
-			passwordError: '',
+			errors: {},
 			waiting: '',
     };
 		this.toggle = this.toggle.bind(this);
 		this.onSubmit = this.onSubmit.bind(this);
 		this.onChange = this.onChange.bind(this);
 		this.toggleDisable = this.toggleDisable.bind(this);
+		this.isEmpty = this.isEmpty.bind(this);
   }
+	isEmpty(obj) {
+		for (let i in obj) {
+      if (obj[i] !== '') return false;
+    }
+		return true;
+	}
 	toggleDisable() {
-		if((this.state.firstNameError === '' &&
-	    this.state.lastNameError === '' &&
-		  this.state.usernameError === '' &&
-		  this.state.passwordError === '' &&
-		  this.state.emailError === '' &&
+		if(this.isEmpty(this.state.errors) &&
 		  this.state.firstName !== '' &&
 			this.state.lastName !== '' &&
 		  this.state.username !== '' &&
 		  this.state.password !== '' &&
-		  this.state.email !== '') ||
-		  this.state.waiting !== '') {
+		  this.state.email !== '' &&
+		  this.state.waiting === '') {
 			return false;
 		} else {
 			return true;
@@ -54,19 +53,19 @@ export default class NLoginModalContent extends Component {
 		});
 		switch(e.target.name) {
 			case 'firstName':
-			  this.setState({ firstNameError: validatefirstName(e) });
+				this.setState({ errors:{firstName: validatefirstName(e)} });
 				break;
 			case 'lastName':
-			  this.setState({ lastNameError: validatelastName(e) });
+				this.setState({ errors: {lastName: validatelastName(e)} });
 				break;
 			case 'username':
-			  this.setState({ usernameError: validateusername(e) });
+				this.setState({ errors: {username: validateusername(e)} });
 				break;
 			case 'email':
-			  this.setState({ emailError: validateemail(e) });
+				this.setState({ errors: {email: validateemail(e)} });
 				break;
 			case 'password':
-			  this.setState({ passwordError: validatepassword(e) });
+				this.setState({ errors: {password: validatepassword(e)} });
 				break;
 			default: break;
 		}
@@ -96,11 +95,7 @@ export default class NLoginModalContent extends Component {
 						username: '',
 						email: '',
 						password: '',
-						firstNameError: '',
-						lastNameError: '',
-						usernameError: '',
-						emailError: '',
-						passwordError: '',
+						errors: {},
 						waiting: '',
 					});
 					this.props.toggleRegister();
@@ -115,11 +110,7 @@ export default class NLoginModalContent extends Component {
 					username: '',
 					email: '',
 					password: '',
-					firstNameError: '',
-					lastNameError: '',
-					usernameError: '',
-					emailError: '',
-					passwordError: '',
+					errors: {},
 					waiting: '',
 				});
       });
@@ -161,7 +152,7 @@ export default class NLoginModalContent extends Component {
 							id="register-firstName"
 							label="Your first name"
 							value={this.state.firstName}
-							error={this.state.firstNameError}
+							error={this.state.errors !== '' ? this.state.errors.firstName : null}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
@@ -172,7 +163,7 @@ export default class NLoginModalContent extends Component {
 							id="register-lastName"
 							label="Your last name"
 							value={this.state.lastName}
-							error={this.state.lastNameError}
+							error={this.state.errors !== '' ? this.state.errors.lastName : null}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
@@ -183,7 +174,7 @@ export default class NLoginModalContent extends Component {
 							id="register-username"
 							label="Your desired username"
 							value={this.state.username}
-							error={this.state.usernameError}
+							error={this.state.errors !== '' ? this.state.errors.username : null}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
@@ -194,7 +185,7 @@ export default class NLoginModalContent extends Component {
 							id="register-email"
 							label="Your email address"
 							value={this.state.email}
-							error={this.state.emailError}
+							error={this.state.errors !== '' ? this.state.errors.email : null}
 							onChange={this.onChange}
 						/>
 						<NLabeledFieldSet
@@ -206,7 +197,7 @@ export default class NLoginModalContent extends Component {
 							id="register-password"
 							label="Your password"
 							value={this.state.password}
-							error={this.state.passwordError}
+							error={this.state.errors !== '' ? this.state.errors.password : null}
 							onChange={this.onChange}
 						/>
 						<RippleButton
