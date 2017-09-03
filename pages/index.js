@@ -14,21 +14,19 @@ import stylesheet from '../styles/main.scss';
 import makeStore from '../store';
 import TopNav from '../components/TopNav';
 import sessdata from '../lib/session-data';
-import NModalRegister from '../components/NModalRegister';
 import FullScreenBanner from '../components/FullScreenBanner';
 
 const cookies = require('browser-cookies');
-const jwt_decode = require('jwt-decode');
+const jwtDecode = require('jwt-decode');
 
 class IndexPage extends Component {
-  static async getInitialProps({ store, isServer, res }) {
-    sessdata(store, isServer, res);
+  static async getInitialProps({ store, isServer, res, req }) {
+    sessdata(store, isServer, res, req);
   }
   constructor(props) {
     super(props);
-    this.toggleModal1 = this.toggleModal1.bind(this);
-		this.toggleNav = this.toggleNav.bind(this);
-		this.TokenFoundOnLogin = this.TokenFoundOnLogin.bind(this);
+    this.toggleNav = this.toggleNav.bind(this);
+    this.TokenFoundOnLogin = this.TokenFoundOnLogin.bind(this);
     this.toggleLoginModalState = this.toggleLoginModalState.bind(this);
     this.toggleClickOutsideState = this.toggleClickOutsideState.bind(this);
   }
@@ -38,20 +36,17 @@ class IndexPage extends Component {
   toggleNav() {
     this.props.toggle_nav(!this.props.NavPaneIsOpen);
   }
-	TokenFoundOnLogin(){
-		console.log('token found in page');
-		axios.get('/api/authentication/validate')
-			.then((response) => {
-				const decodedJWT = jwt_decode(cookies.get('token'));
-				this.props.onLogin(decodedJWT);
-			})
-			.catch((error) => {
-				this.props.onLogin(null);
-				this.props.toggle_login_modal_state(true);
-			});
-	}
-  toggleModal1() {
-    this.props.toggle_modal1(!this.props.modal1_state);
+  TokenFoundOnLogin() {
+    // console.log('token found in page');
+    axios.get('/api/authentication/validate')
+      .then(() => {
+        const decodedJWT = jwtDecode(cookies.get('token'));
+        this.props.onLogin(decodedJWT);
+      })
+      .catch(() => {
+        this.props.onLogin(null);
+        this.props.toggle_login_modal_state(true);
+      });
   }
   toggleLoginModalState(LoginModalState = this.props.LoginModalState) {
     this.props.toggle_login_modal_state(!LoginModalState);
@@ -77,7 +72,7 @@ class IndexPage extends Component {
           toggleLoginModalState={this.toggleLoginModalState}
           toggleClickOutsideState={this.toggleClickOutsideState}
           ClickOutsideState={this.props.ClickOutsideState}
-					TokenFoundOnLogin = {this.TokenFoundOnLogin}
+          TokenFoundOnLogin={this.TokenFoundOnLogin}
         />
         <main className="container-fluid px-0">
           <FullScreenBanner headline={'Welcome home, Spinners!'} tagline={'This is just a random tagline, don\'t worry'} />
@@ -85,25 +80,16 @@ class IndexPage extends Component {
           <Link prefetch href="/about"><a>About Page</a></Link>
           <hr />
           {this.props.user ? (
-						<div>
-							<p>firstName: {this.props.user.firstName}</p>
-						</div>
-					) : (<p>not logged in</p>) }
+            <div>
+              <p>firstName: {this.props.user.firstName}</p>
+            </div>
+          ) : (<p>not logged in</p>) }
+					<a href="/api/authentication/auth/facebook">facebook</a>
           <p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
           <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
             <strong>Hello</strong> world!
           </UncontrolledTooltip>
-          <hr />
-          <Button color="danger" size="lg" onClick={this.toggleModal1}>Open modal</Button>
         </main>
-				<NModalRegister
-					fade={true}
-					isOpen={this.props.modal1_state}
-					toggle={this.toggleModal1}
-					className={'someclass'}
-					modalClassName={'nmodal fade-scale'}
-					onLogin={this.props.onLogin}
-				/> {/* value in className gets added to .modal-dialog */}
       </div>
     );
   }
@@ -117,12 +103,10 @@ IndexPage.propTypes = {
     img: PropTypes.string,
     email: PropTypes.string.isRequired,
   }).isRequired,
-  modal1_state: PropTypes.bool.isRequired,
   NavPaneIsOpen: PropTypes.bool.isRequired,
   LoginModalState: PropTypes.bool.isRequired,
   ClickOutsideState: PropTypes.bool.isRequired,
   onLogin: PropTypes.func.isRequired,
-  toggle_modal1: PropTypes.func.isRequired,
   toggle_nav: PropTypes.func.isRequired,
   toggle_login_modal_state: PropTypes.func.isRequired,
   toggle_click_outside_state: PropTypes.func.isRequired,
@@ -130,14 +114,12 @@ IndexPage.propTypes = {
 
 const mapDispatchToProps = dispatch => ({
   onLogin: currUser => dispatch({ type: 'USER', payload: currUser }),
-  toggle_modal1: modal1State => dispatch({ type: 'TOGGLE_MODAL1', payload: modal1State }),
   toggle_nav: NavPaneIsOpen => dispatch({ type: 'TOGGLE_NAV', payload: NavPaneIsOpen }),
   toggle_login_modal_state: LoginModalState => dispatch({ type: 'TOGGLE_LOGIN_MODAL_STATE', payload: LoginModalState }),
   toggle_click_outside_state: ClickOutsideState => dispatch({ type: 'TOGGLE_CLICK_OUTSIDE_STATE', payload: ClickOutsideState }),
 });
 const mapStateToProps = state => ({
   user: state.user,
-  modal1_state: state.modal1_state,
   NavPaneIsOpen: state.NavPaneIsOpen,
   LoginModalState: state.LoginModalState,
   ClickOutsideState: state.ClickOutsideState,

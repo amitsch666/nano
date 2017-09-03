@@ -1,5 +1,3 @@
-
-
 body.modal-open main,
 body.modal-open nav {
 	filter: grayscale(100%);
@@ -10,13 +8,15 @@ body.modal-open nav {
 .modal-backdrop.show {
 	opacity: .6;
 }
-.nmodal .modal-header {
-	background-color: lightgrey;
-}
 .nmodal .modal-content {
 	margin-top: 5rem;
 	border: none;
 	border-radius: 2px;
+	& .modal-header {
+		border-top-left-radius: 2px;
+		border-top-right-radius: 2px;
+		background-color: lightgrey;
+	}
 }
 .modal-brand-tagline {
   opacity: .5;
@@ -55,4 +55,13 @@ body.modal-open nav {
     font-size: .75rem;
 		cursor: default;
 	}
+}
+
+.fineprint {
+	color: $signup-disclaimer;
+	margin-bottom: 1.5rem;
+	line-height: 1.4;
+}
+.auth-footer {
+	color: $signup-disclaimer;
 }

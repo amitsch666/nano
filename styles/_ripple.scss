@@ -71,18 +71,20 @@
   }
 }
 
+.btn-nano-lg {
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+}
+
 /* icons */
-.btn-nano > .icon-right {
-  margin-left: .6rem;
+.btn-nano {
+	& > .icon-right {
+		margin-left: .6rem;
+	}
+	& > .icon-left {
+		margin-right: .6rem;
+	}
 }
-.btn-nano > .icon-left {
-  margin-right: .6rem;
-}
-
-.waiting {
-	cursor: wait;
-}
-
 
 
 

@@ -15,17 +15,17 @@ import TopNav from '../components/TopNav';
 import sessdata from '../lib/session-data';
 
 const cookies = require('browser-cookies');
-const jwt_decode = require('jwt-decode');
+const jwtDecode = require('jwt-decode');
 
 class AboutPage extends Component {
-  static async getInitialProps({ store, isServer, res }) {
-    sessdata(store, isServer, res);
+  static async getInitialProps({ store, isServer, res, req }) {
+    sessdata(store, isServer, res, req);
   }
   constructor(props) {
     super(props);
-		// const self = this;
+    // const self = this;
     this.toggleNav = this.toggleNav.bind(this);
-		this.TokenFoundOnLogin = this.TokenFoundOnLogin.bind(this);
+    this.TokenFoundOnLogin = this.TokenFoundOnLogin.bind(this);
     this.toggleLoginModalState = this.toggleLoginModalState.bind(this);
     this.toggleClickOutsideState = this.toggleClickOutsideState.bind(this);
   }
@@ -35,17 +35,17 @@ class AboutPage extends Component {
   toggleNav() {
     this.props.toggle_nav(!this.props.NavPaneIsOpen);
   }
-	TokenFoundOnLogin(){
-		axios.get('/api/authentication/validate')
-			.then((response) => {
-				const decodedJWT = jwt_decode(cookies.get('token'));
-				this.props.onLogin(decodedJWT);
-			})
-			.catch((error) => {
-				this.props.onLogin(null);
-				this.props.toggle_login_modal_state(true);
-			});
-	}
+  TokenFoundOnLogin() {
+    axios.get('/api/authentication/validate')
+      .then(() => {
+        const decodedJWT = jwtDecode(cookies.get('token'));
+        this.props.onLogin(decodedJWT);
+      })
+      .catch(() => {
+        this.props.onLogin(null);
+        this.props.toggle_login_modal_state(true);
+      });
+  }
   toggleLoginModalState(LoginModalState = this.props.LoginModalState) {
     this.props.toggle_login_modal_state(!LoginModalState);
   }
@@ -69,7 +69,7 @@ class AboutPage extends Component {
           toggleLoginModalState={this.toggleLoginModalState}
           toggleClickOutsideState={this.toggleClickOutsideState}
           ClickOutsideState={this.props.ClickOutsideState}
-					TokenFoundOnLogin = {this.TokenFoundOnLogin}
+          TokenFoundOnLogin={this.TokenFoundOnLogin}
         />
         <main className="container-fluid px-0">
           {this.props.user ?

@@ -3,20 +3,15 @@ import allReducers from './reducers';
 
 const reducer = (state = { allReducers }, action) => {
   switch (action.type) {
-		case 'LOGOUT':
-		  return {
-				...state,
-				user: null,
-			};
+    case 'LOGOUT':
+      return {
+        ...state,
+        user: null,
+      };
     case 'USER':
       return {
         ...state,
         user: action.payload,
-      };
-    case 'TOGGLE_MODAL1':
-      return {
-        ...state,
-        modal1_state: action.payload,
       };
     case 'TOGGLE_LOGIN_MODAL_STATE':
       return {

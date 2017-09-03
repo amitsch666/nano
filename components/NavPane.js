@@ -11,12 +11,12 @@ import {
   InputGroup,
 } from 'reactstrap';
 import onClickOutside from 'react-onclickoutside';
-const cookies = require('browser-cookies');
-
 import Dropdown1 from './Dropdown1';
 import Dropdown2 from './Dropdown2';
 import ProfileDropdown from './ProfileDropdown';
 import NModalLogin from './NModalLogin';
+
+const cookies = require('browser-cookies');
 
 class NavPane extends Component {
   constructor(props) {
@@ -29,16 +29,16 @@ class NavPane extends Component {
     this.props.toggleClickOutsideState(true);
   }
   toggleLoginModal() {
-		if(!this.props.LoginModalState && cookies.get('token')) {
-			this.props.TokenFoundOnLogin();
-		} else {
-			if (!this.props.LoginModalState) {
-	      this.props.toggleClickOutsideState(false);
-	    } else {
-	      this.props.toggleClickOutsideState(true);
-	    }
-	    this.props.toggleLoginModalState();
-		}
+    if (!this.props.LoginModalState && cookies.get('token')) {
+      this.props.TokenFoundOnLogin();
+    } else {
+      if (!this.props.LoginModalState) {
+        this.props.toggleClickOutsideState(false);
+      } else {
+        this.props.toggleClickOutsideState(true);
+      }
+      this.props.toggleLoginModalState();
+    }
   }
   handleClickOutside = () => {
     if (this.props.isOpen && this.props.ClickOutsideState) {
@@ -94,26 +94,26 @@ class NavPane extends Component {
           <Dropdown2 />
           {this.props.user ? (
             <ProfileDropdown
-							user={this.props.user}
-							onLogout={this.props.onLogin}
-						/>
+              user={this.props.user}
+              onLogout={this.props.onLogin}
+            />
           ) : (
             <NavItem className="py-1 login loggedout" onClick={this.toggleLoginModal}>
               <NavLink>
-								<i className="fa fa-user" />
-							  Log In
-							</NavLink>
+                <i className="fa fa-user" />
+                Log In
+              </NavLink>
             </NavItem>
           )}
         </Nav>
         <NModalLogin
-					fade={true}
-					isOpen={this.props.LoginModalState}
-					toggle={this.toggleLoginModal}
-					className={'someclass'}
-					modalClassName={'nmodal'}
-					onLogin={this.props.onLogin}
-				/>
+          fade
+          isOpen={this.props.LoginModalState}
+          toggle={this.toggleLoginModal}
+          className={'someclass'}
+          modalClassName={'nmodal'}
+          onLogin={this.props.onLogin}
+        />
       </Collapse>
     );
   }
@@ -127,6 +127,7 @@ NavPane.propTypes = {
     img: PropTypes.string,
     email: PropTypes.string.isRequired,
   }).isRequired,
+  TokenFoundOnLogin: PropTypes.bool.isRequired,
   LoginModalState: PropTypes.bool.isRequired,
   ClickOutsideState: PropTypes.bool.isRequired,
   isOpen: PropTypes.bool.isRequired,

@@ -1,58 +1,51 @@
-// const passport = require('passport')
-// const LocalStrategy = require('passport-local').Strategy;
-//
-// const User = require('../models/user');
-//
-// passport.serializeUser(function(user, done) {
-// 	done(null, user.id);
-// });
-// passport.deserializeUser(function(id, done) {
-// 	User.findById(id, function(err, user) {
-// 		done(err, user);
-// 	});
-// });
-//
-// passport.use('local.signup', new LocalStrategy({
-// 	usernameField: 'username',
-// 	passwordField: 'password',
-// 	passReqToCallback: true,
-// }, function(req, username, password, done){
-// 	User.findOne({
-// 		'username': username,
-// 	}, function(err, user){
-// 		if(err) {
-// 			return done(err);
-// 		}
-// 		if(user) {
-// 			return done(null, false);
-// 		}
-// 		const newUser = new User();
-// 		newUser.firstName = req.body.firstName;
-// 		newUser.lastName = req.body.lastName;
-// 		newUser.email = req.body.email;
-// 		newUser.img = req.body.img;
-// 		newUser.password = newUser.encryptPassword(req.body.password);
-//
-// 		newUser.save(function(err) {
-// 			if(err) {
-// 				return done(err);
-// 			}
-// 			return done(null, newUser);
-// 		});
-// 	});
-// }));
-//
-// // passport.use(new LocalStrategy(
-// //   function(username, password, done) {
-// //     User.findOne({ username: username }, function (err, user) {
-// //       if (err) { return done(err); }
-// //       if (!user) {
-// //         return done(null, false, { message: 'Incorrect username.' });
-// //       }
-// //       if (!user.validPassword(password)) {
-// //         return done(null, false, { message: 'Incorrect password.' });
-// //       }
-// //       return done(null, user);
-// //     });
-// //   }
-// // ));
+const passport = require('passport')
+const LocalStrategy = require('passport-local').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
+
+const User = require('../models/user');
+
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+// Local strategy
+// -----------------------------------------------------------------------------
+passport.use(new LocalStrategy(User.authenticate()));
+
+// Facebook strategy
+// -----------------------------------------------------------------------------
+passport.use(new FacebookStrategy({
+  clientID: process.env.FACEBOOK_APP_ID,
+  clientSecret: process.env.FACEBOOK_APP_SECRET,
+  callbackURL: 'http://54.197.22.181/api/authentication/facebook/callback',
+  profileFields: [
+    'id',
+    'first_name',
+    'last_name',
+    'gender',
+    'email',
+    'birthday',
+    'picture.type(large)',
+  ],
+},
+  function (accessToken, refreshToken, profile, done) {
+    console.log(accessToken, profile);
+    // process.nextTick(function(){
+    //   User.findOne({'facebook.id': profile.id}, function(err, user){
+    //     if(err) return done(err);
+    //     if(user) return done(null, user);
+    //     else {
+    //       let newUser = new User();
+    //       console.log(profile);
+    //       newUser.facebook.id = profile.id;
+    //       newUser.facebook.token = accessToken;
+    //       newUser.facebook.email = profile.emails[0].value;
+    //       newUser.facebook.name = profile.name.givenName + profile.name.familyName;
+    //       newUser.save(function(err){
+    //         if(err) throw err;
+    //         return done(null, newUser);
+    //       });
+    //     }
+    //   });
+    // });
+  }
+));

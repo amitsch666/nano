@@ -5,15 +5,15 @@ const next = require('next');
 const compression = require('compression');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const redis = require('redis');
 const expressSession = require('express-session');
 const RedisStore = require('connect-redis')(expressSession);
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const favicon = require('serve-favicon');
+
 const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
+
 const User = require('./models/user');
 const api = require('./lib/api/index');
 const users = require('./lib/api/users');
@@ -81,13 +81,6 @@ app.prepare()
       res.locals.user = req.user || null;
       handle(req, res);
     });
-
-    // Configure Passport
-    // ---------------------------------------------------------------
-    passport.use(new LocalStrategy(User.authenticate()));
-    passport.serializeUser(User.serializeUser());
-    passport.deserializeUser(User.deserializeUser());
-    // ---------------------------------------------------------------
 
     // Normalize a port into a number, string, or false.
     function normalizePort(val) {
