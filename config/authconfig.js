@@ -1,4 +1,4 @@
-const passport = require('passport')
+const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
@@ -27,25 +27,24 @@ passport.use(new FacebookStrategy({
     'picture.type(large)',
   ],
 },
-  function (accessToken, refreshToken, profile, done) {
-    console.log(accessToken, profile);
-    // process.nextTick(function(){
-    //   User.findOne({'facebook.id': profile.id}, function(err, user){
-    //     if(err) return done(err);
-    //     if(user) return done(null, user);
-    //     else {
-    //       let newUser = new User();
-    //       console.log(profile);
-    //       newUser.facebook.id = profile.id;
-    //       newUser.facebook.token = accessToken;
-    //       newUser.facebook.email = profile.emails[0].value;
-    //       newUser.facebook.name = profile.name.givenName + profile.name.familyName;
-    //       newUser.save(function(err){
-    //         if(err) throw err;
-    //         return done(null, newUser);
-    //       });
-    //     }
-    //   });
-    // });
-  }
-));
+function (accessToken, refreshToken, profile, done) {
+  console.log(accessToken, profile);
+  // process.nextTick(function(){
+  //   User.findOne({'facebook.id': profile.id}, function(err, user){
+  //     if(err) return done(err);
+  //     if(user) return done(null, user);
+  //     else {
+  //       let newUser = new User();
+  //       console.log(profile);
+  //       newUser.facebook.id = profile.id;
+  //       newUser.facebook.token = accessToken;
+  //       newUser.facebook.email = profile.emails[0].value;
+  //       newUser.facebook.name = profile.name.givenName + profile.name.familyName;
+  //       newUser.save(function(err){
+  //         if(err) throw err;
+  //         return done(null, newUser);
+  //       });
+  //     }
+  //   });
+  // });
+}));

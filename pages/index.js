@@ -84,7 +84,7 @@ class IndexPage extends Component {
               <p>firstName: {this.props.user.firstName}</p>
             </div>
           ) : (<p>not logged in</p>) }
-					<a href="/api/authentication/auth/facebook">facebook</a>
+          <a href="/api/authentication/auth/facebook">facebook</a>
           <p>This is a <span id="UncontrolledTooltipExample">tooltip</span>.</p>
           <UncontrolledTooltip placement="right" target="UncontrolledTooltipExample">
             <strong>Hello</strong> world!
