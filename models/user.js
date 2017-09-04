@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const { mongoose } = require('../config/dbconfig');
 
 const Schema = mongoose.Schema;
@@ -12,7 +13,7 @@ const User = new Schema({
   },
   password: {
     type: String,
-    select: false,
+    select: true,
     required: true,
   },
   firstName: {
@@ -39,6 +40,32 @@ const User = new Schema({
     name: String,
   },
 }, { timestamps: true });
+
+// eslint-disable-next-line prefer-arrow-callback
+User.pre('save', function cb(next) {
+  const user = this;
+  if (this.isModified('password') || this.isNew) {
+    bcrypt.genSalt(10, (err, salt) => {
+      if (err) return next(err);
+      bcrypt.hash(user.password, salt, (error, hash) => {
+        if (error) return next(error);
+        user.password = hash;
+        next();
+        return null;
+      });
+      return null;
+    });
+  } else return next();
+  return null;
+});
+User.methods.comparePassword = (passw, cb) => {
+  bcrypt.compare(passw, this.password, (err, isMatch) => {
+    if (err) {
+      return cb(err);
+    }
+    return cb(null, isMatch);
+  });
+};
 
 User.plugin(passportLocalMongoose);
 

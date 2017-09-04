@@ -32,7 +32,6 @@ app.prepare()
     // ---------------------------------------------------------------
     server.use(expressSession({
       secret: process.env.SESSION_SECRET,
-      // create new Redis store.
       store: new RedisStore({
         host: process.env.REDIS_HOST,
         port: process.env.REDIS_PORT,
