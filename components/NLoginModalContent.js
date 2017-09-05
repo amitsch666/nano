@@ -31,7 +31,7 @@ export default class NLoginModalContent extends Component {
       case 'username':
         this.setState({
           errors: {
-            username: Validator.validateusername(e.target.value),
+            username: Validator.validateusernameoremail(e.target.value),
             password: this.state.errors.password,
           },
         });
