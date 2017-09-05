@@ -21,10 +21,10 @@
   },
   "main": "./server.js",
   "dependencies": {
+    "argon2": "^0.16.1",
     "autoprefixer": "^7.1.2",
     "axios": "^0.16.2",
     "babel-eslint": "^7.2.3",
-    "bcrypt": "^1.0.3",
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "browser-cookies": "^1.1.0",

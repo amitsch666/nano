@@ -1,4 +1,5 @@
-const bcrypt = require('bcrypt');
+const argon2 = require('argon2');
+require('dotenv').config();
 const { mongoose } = require('../config/dbconfig');
 
 const Schema = mongoose.Schema;
@@ -13,7 +14,7 @@ const User = new Schema({
   },
   password: {
     type: String,
-    select: true,
+    select: false,
     required: true,
   },
   firstName: {
@@ -45,26 +46,24 @@ const User = new Schema({
 User.pre('save', function cb(next) {
   const user = this;
   if (this.isModified('password') || this.isNew) {
-    bcrypt.genSalt(10, (err, salt) => {
-      if (err) return next(err);
-      bcrypt.hash(user.password, salt, (error, hash) => {
-        if (error) return next(error);
-        user.password = hash;
-        next();
-        return null;
-      });
-      return null;
-    });
+    argon2.hash(user.password, {
+      timeCost: process.env.TIME_COST,
+      memoryCost: process.env.MEMORY_COST,
+      parallelism: process.env.CORES,
+      type: argon2.argon2i,
+    })
+    .then((hash) => {
+      user.password = hash;
+      next();
+    })
+    .catch(err => next(err));
   } else return next();
   return null;
 });
 User.methods.comparePassword = (passw, cb) => {
-  bcrypt.compare(passw, this.password, (err, isMatch) => {
-    if (err) {
-      return cb(err);
-    }
-    return cb(null, isMatch);
-  });
+  argon2.verify(this.password, passw)
+  .then(match => cb(null, match))
+  .catch(err => cb(err));
 };
 
 User.plugin(passportLocalMongoose);
