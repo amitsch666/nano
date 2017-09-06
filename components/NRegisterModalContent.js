@@ -4,8 +4,8 @@ import { Modal, ModalBody, ModalFooter } from 'reactstrap';
 import Link from 'next/link';
 import axios from 'axios';
 
-import RippleButton from './RippleButton';
-import NLabeledFieldSet from './NLabeledFieldSet';
+import NanoButton from './elements/NanoButton';
+import NanoFieldset from './elements/NanoFieldset';
 
 import * as Validator from '../lib/validateInput';
 
@@ -150,7 +150,7 @@ export default class NLoginModalContent extends Component {
         </div>
         <ModalBody className="py-0">
           <form className="login-form px-2 pt-3" onSubmit={this.onSubmit}>
-            <NLabeledFieldSet
+            <NanoFieldset
               name="firstName"
               type="text"
               className="form-control"
@@ -161,7 +161,7 @@ export default class NLoginModalContent extends Component {
               error={this.state.errors !== '' ? this.state.errors.firstName : null}
               onChange={this.onChange}
             />
-            <NLabeledFieldSet
+            <NanoFieldset
               name="lastName"
               type="text"
               className="form-control"
@@ -172,7 +172,7 @@ export default class NLoginModalContent extends Component {
               error={this.state.errors !== '' ? this.state.errors.lastName : null}
               onChange={this.onChange}
             />
-            <NLabeledFieldSet
+            <NanoFieldset
               name="username"
               type="text"
               className="form-control"
@@ -183,7 +183,7 @@ export default class NLoginModalContent extends Component {
               error={this.state.errors !== '' ? this.state.errors.username : null}
               onChange={this.onChange}
             />
-            <NLabeledFieldSet
+            <NanoFieldset
               name="email"
               type="email"
               className="form-control"
@@ -194,7 +194,7 @@ export default class NLoginModalContent extends Component {
               error={this.state.errors !== '' ? this.state.errors.email : null}
               onChange={this.onChange}
             />
-            <NLabeledFieldSet
+            <NanoFieldset
               password
               name="password"
               type="password"
@@ -221,14 +221,14 @@ export default class NLoginModalContent extends Component {
               </Link>
               . You may receive email notifications from TaleSpinners and can opt out at any time.
             </div>
-            <RippleButton
+            <NanoButton
               type="submit"
               className={`btn btn-nano-lg btn-nano-warning w-100 my-2 ${this.state.waiting}`}
               disabled={this.toggleDisable()}
             >
               sign up
               <i className="fa fa-lg fa-sign-in icon-right" />
-            </RippleButton>
+            </NanoButton>
           </form>
         </ModalBody>
         <ModalFooter className="pt-0 border-0 justify-content-center">

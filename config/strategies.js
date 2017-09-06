@@ -12,6 +12,7 @@ passport.deserializeUser(User.deserializeUser());
 // -----------------------------------------------------------------------------
 passport.use(new LocalStrategy(User.authenticate()));
 
+/* eslint-disable */
 // Facebook strategy
 // -----------------------------------------------------------------------------
 passport.use(new FacebookStrategy({

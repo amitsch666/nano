@@ -2,7 +2,7 @@
 import PropTypes from 'prop-types';
 // import Link from 'next/link';
 
-// export default class NSocial extends Component {
+// export default class NanoSocial extends Component {
 //   render() {
 //     return (
 //       <button className={`btn btn-social btn-${this.props.icon}`}>
@@ -13,14 +13,14 @@ import PropTypes from 'prop-types';
 // }
 
 
-const NSocial = props => (
+const NanoSocial = props => (
   <button className={`btn btn-social btn-${props.icon}`}>
     <i className={`fa fa-2x fa-${props.icon}`} />
   </button>
 );
 
-export default NSocial;
+export default NanoSocial;
 
-NSocial.propTypes = {
+NanoSocial.propTypes = {
   icon: PropTypes.string.isRequired,
 };

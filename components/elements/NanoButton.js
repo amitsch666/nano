@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 
-class RippleButton extends Component {
+class NanoButton extends Component {
   constructor(props) {
     super(props);
     this.onClick = this.onClick.bind(this);
@@ -41,15 +41,15 @@ class RippleButton extends Component {
   }
 }
 
-export default RippleButton;
+export default NanoButton;
 
-RippleButton.propTypes = {
+NanoButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   children: PropTypes.element.isRequired,
 };
-RippleButton.defaultProps = {
+NanoButton.defaultProps = {
   disabled: false,
 };

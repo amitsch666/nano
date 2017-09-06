@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'reactstrap';
@@ -7,15 +8,11 @@ import Router from 'next/router';
 import axios from 'axios';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import IconMenu from 'material-ui/IconMenu';
-import IconButton from 'material-ui/IconButton';
-import FontIcon from 'material-ui/FontIcon';
-import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
-import MenuItem from 'material-ui/MenuItem';
-import DropDownMenu from 'material-ui/DropDownMenu';
 import RaisedButton from 'material-ui/RaisedButton';
-import FlatButton from 'material-ui/FlatButton';
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import ActionAndroid from 'material-ui/svg-icons/action/visibility';
+import TextField from 'material-ui/TextField';
+import { orange500 } from 'material-ui/styles/colors';
+import NanoFieldset from '../components/elements/NanoFieldset';
 
 import 'font-awesome/scss/font-awesome.scss';
 // eslint-disable-next-line no-unused-vars
@@ -68,11 +65,17 @@ class AboutPage extends Component {
       alert('onClick triggered on the title component');
     }
 
-    const styles = {
-      title: {
-        cursor: 'pointer',
-      },
-    };
+		const styles = {
+		  underlineFocusStyle: {
+		    borderColor: orange500,
+		  },
+		  floatingLabelStyle: {
+		    color: orange500,
+		  },
+		  floatingLabelFocusStyle: {
+		    color: orange500,
+		  },
+		};
     return (
       <div className="masterdiv">
         <Head>
@@ -80,7 +83,7 @@ class AboutPage extends Component {
           <meta name="viewport" content="initial-scale=1.0, width=device-width" />
           <link rel="stylesheet" type="text/css" href={`_s/${process.env.CSS}.min.css`} />
         </Head>
-        {/*<TopNav
+        <TopNav
           user={this.props.user}
           onLogin={this.props.onLogin}
           isOpen={this.props.NavPaneIsOpen}
@@ -90,41 +93,44 @@ class AboutPage extends Component {
           toggleClickOutsideState={this.toggleClickOutsideState}
           ClickOutsideState={this.props.ClickOutsideState}
           TokenFoundOnLogin={this.TokenFoundOnLogin}
-        />*/}
-        <MuiThemeProvider>
-          <Toolbar>
-            <ToolbarGroup firstChild={true}>
-              <DropDownMenu value={1}>
-                <MenuItem value={1} primaryText="All Broadcasts" />
-                <MenuItem value={2} primaryText="All Voice" />
-                <MenuItem value={3} primaryText="All Text" />
-                <MenuItem value={4} primaryText="Complete Voice" />
-                <MenuItem value={5} primaryText="Complete Text" />
-                <MenuItem value={6} primaryText="Active Voice" />
-                <MenuItem value={7} primaryText="Active Text" />
-              </DropDownMenu>
-            </ToolbarGroup>
-            <ToolbarGroup>
-              <ToolbarTitle text="Options" />
-              <FontIcon className="muidocs-icon-custom-sort" />
-              <ToolbarSeparator />
-              <RaisedButton label="Create Broadcast" primary={true} />
-              <IconMenu
-                iconButtonElement={
-                  <IconButton touch={true}>
-                    <NavigationExpandMoreIcon />
-                  </IconButton>
-                }
-              >
-                <MenuItem primaryText="Download" />
-                <MenuItem primaryText="More Info" />
-              </IconMenu>
-            </ToolbarGroup>
-          </Toolbar>
-        </MuiThemeProvider>
+        />
         <main className="container-fluid px-0">
+					<p>No magic is involved, it auto-creates Redux store when getInitialProps
+          is called by Next.js and then passes this store down to React Reduxs
+          Provider, which is used to wrap the original component, also automatically.
+          On the client side it also takes care of using same store every time, whereas
+          on server new store is created for each request.</p>
+					<NanoFieldset
+						name="username"
+						type="text"
+						className="form-control"
+						icon="fa fa-user"
+						id="login-userid"
+						label="Your username or email"
+						value=''
+						error={null}
+						onChange=''
+					/>
+					<br />
+					<MuiThemeProvider>
+						<TextField
+							fullWidth
+				      hintText="Hint Text"
+				      floatingLabelText="Floating Label Text"
+							underlineFocusStyle={styles.underlineFocusStyle}
+							floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+				    />
+					</MuiThemeProvider>
           <MuiThemeProvider>
-            <RaisedButton label="Default MUI" />
+						<RaisedButton
+							fullWidth
+							disabled
+				      label="Label before"
+				      labelPosition="before"
+				      primary={true}
+				      icon={<ActionAndroid />}
+				      style={styles.button}
+				    />
           </MuiThemeProvider>
           {this.props.user ?
             (

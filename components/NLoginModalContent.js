@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import { Modal, ModalBody, ModalFooter } from 'reactstrap';
 import axios from 'axios';
 
-import RippleButton from './RippleButton';
-import NLabeledFieldSet from './NLabeledFieldSet';
-import NSocial from './NSocial';
+import NanoButton from './elements/NanoButton';
+import NanoFieldset from './elements/NanoFieldset';
+import NanoSocial from './elements/NanoSocial';
 
 import * as Validator from '../lib/validateInput';
 
@@ -140,9 +140,9 @@ export default class NLoginModalContent extends Component {
         </div>
         <ModalBody className="py-0">
           <div className="row social-login px-5 py-2 d-flex justify-content-around">
-            <NSocial icon="facebook" />
-            <NSocial icon="twitter" />
-            <NSocial icon="google" />
+            <NanoSocial icon="facebook" />
+            <NanoSocial icon="twitter" />
+            <NanoSocial icon="google" />
           </div>
           <div className="or row p-2">
             <span className="mx-auto rounded-circle">
@@ -151,7 +151,7 @@ export default class NLoginModalContent extends Component {
           </div>
 
           <form className="login-form px-2 pt-3" onSubmit={this.onSubmit}>
-            <NLabeledFieldSet
+            <NanoFieldset
               name="username"
               type="text"
               className="form-control"
@@ -162,7 +162,7 @@ export default class NLoginModalContent extends Component {
               error={this.state.errors !== '' ? this.state.errors.username : null}
               onChange={this.onChange}
             />
-            <NLabeledFieldSet
+            <NanoFieldset
               password
               name="password"
               type="password"
@@ -174,14 +174,14 @@ export default class NLoginModalContent extends Component {
               error={this.state.errors !== '' ? this.state.errors.password : null}
               onChange={this.onChange}
             />
-            <RippleButton
+            <NanoButton
               type="submit"
               className={`btn btn-nano-lg btn-nano-warning w-100 my-2 ${this.state.waiting}`}
               disabled={this.toggleDisable()}
             >
               log in
               <i className="fa fa-lg fa-power-off icon-right" />
-            </RippleButton>
+            </NanoButton>
           </form>
         </ModalBody>
         <ModalFooter className="pt-0 border-0 justify-content-center">

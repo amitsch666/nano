@@ -16,7 +16,7 @@
     "dev": "next",
     "build": "next build",
     "start": "node server.js",
-    "lint": "eslint .",
+		"lint": "eslint",
     "test": "jest"
   },
   "main": "./server.js",

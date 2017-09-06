@@ -2,7 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UncontrolledTooltip } from 'reactstrap';
 
-class NLabeledFieldSet extends Component {
+class NanoFieldset extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -128,7 +128,7 @@ class NLabeledFieldSet extends Component {
   }
 }
 
-NLabeledFieldSet.propTypes = {
+NanoFieldset.propTypes = {
   id: PropTypes.string.isRequired,
   className: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
@@ -141,8 +141,8 @@ NLabeledFieldSet.propTypes = {
   onChange: PropTypes.func.isRequired,
   password: PropTypes.bool,
 };
-NLabeledFieldSet.defaultProps = {
+NanoFieldset.defaultProps = {
   password: false,
 };
 
-export default NLabeledFieldSet;
+export default NanoFieldset;
