@@ -52,18 +52,18 @@ User.pre('save', function cb(next) {
       parallelism: process.env.CORES,
       type: argon2.argon2i,
     })
-    .then((hash) => {
-      user.password = hash;
-      next();
-    })
-    .catch(err => next(err));
+      .then((hash) => {
+        user.password = hash;
+        next();
+      })
+      .catch(err => next(err));
   } else return next();
   return null;
 });
 User.methods.comparePassword = (passw, cb) => {
   argon2.verify(this.password, passw)
-  .then(match => cb(null, match))
-  .catch(err => cb(err));
+    .then(match => cb(null, match))
+    .catch(err => cb(err));
 };
 
 User.plugin(passportLocalMongoose);
